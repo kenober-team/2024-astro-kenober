@@ -1,12 +1,11 @@
+import associate from "./collections/associate";
+import { defineConfig } from "tinacms";
+import home from "./collections/home";
 import navDataPrimary from "./collections/navDataPrimary";
 import navDataSecondary from "./collections/navDataSecondary";
 import page from "./collections/page";
-import index from "./collections/home";
-import team from "./collections/team";
-import associate from "./collections/associate";
 import siteData from "./collections/siteData";
-
-import { defineConfig } from "tinacms";
+import team from "./collections/team";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -40,8 +39,8 @@ export default defineConfig({
       navDataSecondary,
       siteData,
       page,
-      index,
       team,
+      home,
       associate,
     ],
   },

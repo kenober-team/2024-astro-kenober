@@ -2,26 +2,21 @@ import { pagesDefaultFields, completeRichText } from "./commons/tinaFields";
 import { onPagesBeforeSubmit_Page } from "./commons/utils";
 import type { Collection, Form, TinaCMS } from "tinacms";
 
-const index: Collection = {
-  name: "home",
+const home: Collection = {
   label: "Home page",
-  path: "src/content/pages",
-  format: "mdx",
-  match: { include: "index" },
+  name: "homeData",
+  path: "src/data",
+  match: { include: "homeData" },
+  format: "json",
   ui: {
-    router: ({ document }) => {
-      // navigate to the post that was clicked
-      // return document._sys.path;
-      return `/index/index.html`;
-    },
+    global: true,
     allowedActions: {
       create: false,
       delete: false,
     },
-    beforeSubmit: onPagesBeforeSubmit_Page,
   },
   fields: [
-    ...pagesDefaultFields,
+    // ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
     { type: "string", name: "intro_title", label: "Intro - Title" },
     { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
@@ -138,4 +133,4 @@ const index: Collection = {
   ],
 };
 
-export default index;
+export default home;

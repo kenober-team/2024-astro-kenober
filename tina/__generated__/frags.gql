@@ -62,13 +62,38 @@ fragment PageParts on Page {
   body
 }
 
-fragment HomeParts on Home {
+fragment TeamParts on Team {
   __typename
-  title
-  hero_bg
-  createdAt
-  updatedAt
-  description
+  equipe {
+    __typename
+    title
+    hero_bg
+  }
+  Contact {
+    __typename
+    title
+    hero_bg
+    before_text
+    after_title
+    after_text
+  }
+  members {
+    __typename
+    name
+    published
+    role
+    education
+    citation
+    bio
+    image_inactive
+    image_active
+    linkedin
+    email
+  }
+}
+
+fragment HomeDataParts on HomeData {
+  __typename
   hero_text
   intro_title
   intro_text
@@ -104,36 +129,6 @@ fragment HomeParts on Home {
     __typename
     src
     alt
-  }
-}
-
-fragment TeamParts on Team {
-  __typename
-  equipe {
-    __typename
-    title
-    hero_bg
-  }
-  Contact {
-    __typename
-    title
-    hero_bg
-    before_text
-    after_title
-    after_text
-  }
-  members {
-    __typename
-    name
-    published
-    role
-    education
-    citation
-    bio
-    image_inactive
-    image_active
-    linkedin
-    email
   }
 }
 
