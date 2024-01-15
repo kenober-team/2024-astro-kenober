@@ -1,0 +1,25 @@
+{
+  "title": "Nos complices",
+  "hero_bg": "/src/assets/heros/hero-complices.svg",
+  "intro": "Parce que vos sujets sont complexes et nécessitent des points de vue et des savoir-faire d’expert·e·s, nous travaillons en lien étroit avec nos précieux partenaires. Expert·e·s en mobilisation dans des projets de transformation, spécialistes des grands projets à impacts positifs, professionnel·le·s de transformation stratégique, facilitateur·rice·s graphiques, designers, réalisateur·rice·s… ",
+  "associates": [
+    {
+      "name": "Next Level Formation ",
+      "published": true,
+      "description": "Plus qu’un partenaire, Next Level Formation c’est notre autre identité ! Next Level, c’est notre marque de formation en soft skills. Une entreprise originale qui rassemble 25 adhérent·e·s et une trentaine de formateur·rice·s autour d’une passion pour la formation en intelligence émotionnelle et relationnelle. Chez Next, nous intervenons fréquemment pour animer des formations bien sûr, mais nous sommes aussi de fervent·e·s créateur·rice·s de déroulés pédagogiques nourris notamment par les neurosciences, la fantaisie et le plaisir.\nCo-fondateur·rice·s de cet écosystème en perpétuel mouvement, nous sommes fièr·e·s de continuer à développer cette organisation et ces offres qui complètent si bien ce que nous faisons avec Kenober !\n",
+      "image": {
+        "src": "/src/assets/associates/complice-1.png",
+        "alt": "Next Level Formation "
+      }
+    },
+    {
+      "name": "Albus Conseil",
+      "published": true,
+      "description": "**Albus Conseil** est un cabinet de conseil qui bouscule les idées reçues que vous pourriez avoir sur les cabinets de conseil… Leur mission : accompagner le changement dans vos organisations. Comme Albus Dumbledore dans Harry Potter (eh oui, leur nom vient de là !), ils jouent pour vous le rôle de magicien pour vous aider à transformer les choses.\nGrâce à des outils bien sûr, mais surtout à une approche qui vous fera grandir et prendre confiance en vous… et vos équipes. Chez Albus, on fait de l’impro le lundi après-midi pour travailler sur sa posture, des tournages le vendredi pour proposer des contenus souvent engagés, drôles, étonnants sur le management, mais aussi des articles pour un wikimanagement en opensource ! Et nous, on en profite car nous sommes leurs colocataires depuis presque 10 ans. Et plus nous les fréquentons, plus notre envie de faire des choses ensemble grandit !\n",
+      "image": {
+        "src": "/src/assets/associates/complice-2.png",
+        "alt": "Albus Conseil"
+      }
+    }
+  ]
+}

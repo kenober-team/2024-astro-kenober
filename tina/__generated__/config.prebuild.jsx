@@ -252,13 +252,13 @@ var pagesDefaultFields = [
     isTitle: true,
     required: true
   },
+  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
   { type: "datetime", name: "createdAt", label: "Creation date" },
   { type: "datetime", name: "updatedAt", label: "Updated date" },
-  { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },
   {
     type: "string",
     name: "description",
-    label: "Description",
+    label: "Description - SEO",
     required: true,
     ui: {
       component: "textarea"
@@ -297,7 +297,7 @@ var page = {
   label: "Pages",
   path: "src/content/pages",
   format: "mdx",
-  match: { exclude: "{about,home}" },
+  match: { exclude: "{about,index,contact}" },
   ui: {
     router: ({ document }) => {
       return `/${document._sys.breadcrumbs.join("/")}`;
@@ -306,12 +306,319 @@ var page = {
   },
   fields: [
     ...pagesDefaultFields,
+    { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },
     {
       ...completeRichText
     }
   ]
 };
 var page_default = page;
+
+// tina/collections/home.ts
+var index = {
+  name: "home",
+  label: "Home page",
+  path: "src/content/pages",
+  format: "mdx",
+  match: { include: "index" },
+  ui: {
+    router: ({ document }) => {
+      return `/index/index.html`;
+    },
+    allowedActions: {
+      create: false,
+      delete: false
+    },
+    beforeSubmit: onPagesBeforeSubmit_Page
+  },
+  fields: [
+    ...pagesDefaultFields,
+    { type: "rich-text", name: "hero_text", label: "Hero Texte" },
+    { type: "string", name: "intro_title", label: "Intro - Title" },
+    { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
+    { type: "string", name: "intro_offre", label: "Intro - Offre" },
+    {
+      type: "object",
+      name: "offres",
+      label: "Offres",
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.title };
+        }
+      },
+      fields: [
+        { type: "string", name: "title", label: "Title" },
+        {
+          type: "string",
+          name: "base_line",
+          label: "Base line (bold)",
+          ui: {
+            component: "textarea"
+          }
+        },
+        {
+          type: "string",
+          name: "text",
+          label: "Text",
+          ui: {
+            component: "textarea"
+          }
+        },
+        {
+          type: "object",
+          name: "image",
+          label: "Image",
+          fields: [
+            { type: "image", name: "src", label: "Image", required: true },
+            { type: "string", name: "alt", label: "Alt", required: true }
+          ]
+        }
+      ]
+    },
+    { type: "string", name: "principe_title", label: "Principe - Titre" },
+    {
+      type: "rich-text",
+      name: "principe_sub_title",
+      label: "Principe - Sous titre"
+    },
+    { type: "rich-text", name: "principe_text", label: "Principe - Text" },
+    {
+      type: "object",
+      name: "principe_image",
+      label: "Principe - Image",
+      fields: [
+        { type: "image", name: "src", label: "Image", required: true },
+        { type: "string", name: "alt", label: "Alt", required: true }
+      ]
+    },
+    {
+      type: "rich-text",
+      name: "principe_text_image",
+      label: "Principe - Image > Text"
+    },
+    {
+      type: "string",
+      name: "principe_text_bt_label",
+      label: "Principe - Image > BT > Label"
+    },
+    {
+      type: "string",
+      name: "principe_text_bt_url",
+      label: "Principe - Image > BT > URL"
+    },
+    {
+      type: "object",
+      name: "testimonial",
+      label: "T\xE9moignages",
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.name };
+        }
+      },
+      fields: [
+        {
+          type: "string",
+          name: "text",
+          label: "Texte",
+          ui: {
+            component: "textarea"
+          }
+        },
+        { type: "string", name: "name", label: "Nom" }
+      ]
+    },
+    {
+      type: "object",
+      name: "gallery",
+      label: "Gallerie",
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return { label: item?.alt };
+        }
+      },
+      fields: [
+        { type: "image", name: "src", label: "Image", required: true },
+        { type: "string", name: "alt", label: "Alt", required: true }
+      ]
+    }
+  ]
+};
+var home_default = index;
+
+// tina/collections/team.ts
+var team = {
+  label: "\xC9quipe",
+  name: "team",
+  path: "src/data",
+  match: { include: "team" },
+  format: "json",
+  ui: {
+    global: true,
+    allowedActions: {
+      create: false,
+      delete: false
+    }
+  },
+  fields: [
+    {
+      type: "object",
+      name: "equipe",
+      label: "Page \xE9quipe",
+      fields: [
+        { type: "string", name: "title", label: "Titre", required: true },
+        { type: "image", name: "hero_bg", label: "Hero Image", required: true }
+      ]
+    },
+    {
+      type: "object",
+      name: "Contact",
+      label: "Page contact",
+      fields: [
+        { type: "string", name: "title", label: "Titre", required: true },
+        { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+        { type: "string", name: "before_text", label: "Intro" },
+        { type: "string", name: "after_title", label: "Bas de page - Titre" },
+        { type: "string", name: "after_text", label: "Bas de page - Texte" }
+      ]
+    },
+    {
+      type: "object",
+      name: "members",
+      label: "Membres",
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return {
+            label: `${item?.name}, publi\xE9: ${item?.published || false}`
+          };
+        },
+        defaultItem: () => {
+          return { isButton: false };
+        }
+      },
+      fields: [
+        {
+          type: "string",
+          name: "name",
+          label: "Nom",
+          required: true,
+          isTitle: true
+        },
+        {
+          type: "boolean",
+          name: "published",
+          label: "Published",
+          required: true
+        },
+        { type: "string", name: "role", label: "R\xF4le(s)", required: true },
+        {
+          type: "string",
+          name: "education",
+          label: "\xC9tude(s)",
+          required: true
+        },
+        { type: "string", name: "citation", label: "Citation", required: true },
+        {
+          type: "rich-text",
+          name: "bio",
+          label: "Bio",
+          required: true
+        },
+        {
+          type: "image",
+          name: "image_inactive",
+          label: "Image - inactive",
+          required: true
+        },
+        {
+          type: "image",
+          name: "image_active",
+          label: "Image - active",
+          required: true
+        },
+        {
+          type: "string",
+          name: "linkedin",
+          label: "Linkedin",
+          required: false
+        },
+        { type: "string", name: "email", label: "Email", required: false }
+      ]
+    }
+  ]
+};
+var team_default = team;
+
+// tina/collections/associate.ts
+var team2 = {
+  label: "Complices",
+  name: "associate",
+  path: "src/data",
+  match: { include: "associate" },
+  format: "json",
+  ui: {
+    global: true,
+    allowedActions: {
+      create: false,
+      delete: false
+    }
+  },
+  fields: [
+    { type: "string", name: "title", label: "Titre", required: true },
+    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+    { type: "string", name: "intro", label: "Intro" },
+    {
+      type: "object",
+      name: "associates",
+      label: "Complices",
+      list: true,
+      ui: {
+        itemProps: (item) => {
+          return {
+            label: `${item?.name}, publi\xE9: ${item?.published || false}`
+          };
+        },
+        defaultItem: () => {
+          return { isButton: false };
+        }
+      },
+      fields: [
+        {
+          type: "string",
+          name: "name",
+          label: "Nom",
+          required: true,
+          isTitle: true
+        },
+        {
+          type: "boolean",
+          name: "published",
+          label: "Published",
+          required: true
+        },
+        {
+          type: "rich-text",
+          name: "description",
+          label: "Description",
+          required: true
+        },
+        {
+          type: "object",
+          name: "image",
+          label: "Image",
+          fields: [
+            { type: "image", name: "src", label: "Image", required: true },
+            { type: "string", name: "alt", label: "Alt", required: true }
+          ]
+        }
+      ]
+    }
+  ]
+};
+var associate_default = team2;
 
 // tina/collections/siteData.ts
 var siteData = {
@@ -431,7 +738,15 @@ var config_default = defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [navDataPrimary_default, navDataSecondary_default, siteData_default, page_default]
+    collections: [
+      navDataPrimary_default,
+      navDataSecondary_default,
+      siteData_default,
+      page_default,
+      home_default,
+      team_default,
+      associate_default
+    ]
   }
 });
 export {

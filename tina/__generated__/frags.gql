@@ -54,9 +54,103 @@ fragment SiteDataParts on SiteData {
 fragment PageParts on Page {
   __typename
   title
+  hero_bg
   createdAt
   updatedAt
-  useProse
   description
+  useProse
   body
+}
+
+fragment HomeParts on Home {
+  __typename
+  title
+  hero_bg
+  createdAt
+  updatedAt
+  description
+  hero_text
+  intro_title
+  intro_text
+  intro_offre
+  offres {
+    __typename
+    title
+    base_line
+    text
+    image {
+      __typename
+      src
+      alt
+    }
+  }
+  principe_title
+  principe_sub_title
+  principe_text
+  principe_image {
+    __typename
+    src
+    alt
+  }
+  principe_text_image
+  principe_text_bt_label
+  principe_text_bt_url
+  testimonial {
+    __typename
+    text
+    name
+  }
+  gallery {
+    __typename
+    src
+    alt
+  }
+}
+
+fragment TeamParts on Team {
+  __typename
+  equipe {
+    __typename
+    title
+    hero_bg
+  }
+  Contact {
+    __typename
+    title
+    hero_bg
+    before_text
+    after_title
+    after_text
+  }
+  members {
+    __typename
+    name
+    published
+    role
+    education
+    citation
+    bio
+    image_inactive
+    image_active
+    linkedin
+    email
+  }
+}
+
+fragment AssociateParts on Associate {
+  __typename
+  title
+  hero_bg
+  intro
+  associates {
+    __typename
+    name
+    published
+    description
+    image {
+      __typename
+      src
+      alt
+    }
+  }
 }

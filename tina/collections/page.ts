@@ -7,7 +7,7 @@ const page: Collection = {
   label: "Pages",
   path: "src/content/pages",
   format: "mdx",
-  match: { exclude: "{about,home}" },
+  match: { exclude: "{about,index,contact}" },
   ui: {
     router: ({ document }) => {
       // navigate to the post that was clicked
@@ -18,6 +18,8 @@ const page: Collection = {
   },
   fields: [
     ...pagesDefaultFields,
+
+    { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },
     {
       ...completeRichText,
     },

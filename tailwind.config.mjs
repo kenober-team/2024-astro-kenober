@@ -4,7 +4,10 @@ export default {
   theme: {
     fontFamily: {},
     extend: {
-      colors: {},
+      colors: {
+        primary: "#F6C700",
+        neutre: "#000000",
+      },
       container: {
         center: true,
         padding: {

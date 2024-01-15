@@ -1,6 +1,9 @@
 import navDataPrimary from "./collections/navDataPrimary";
 import navDataSecondary from "./collections/navDataSecondary";
 import page from "./collections/page";
+import index from "./collections/home";
+import team from "./collections/team";
+import associate from "./collections/associate";
 import siteData from "./collections/siteData";
 
 import { defineConfig } from "tinacms";
@@ -32,6 +35,14 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
-    collections: [navDataPrimary, navDataSecondary, siteData, page],
+    collections: [
+      navDataPrimary,
+      navDataSecondary,
+      siteData,
+      page,
+      index,
+      team,
+      associate,
+    ],
   },
 });

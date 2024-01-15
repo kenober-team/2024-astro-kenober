@@ -28,10 +28,13 @@ const navDesignClass: NavClassConfig = {
 };
 ---
 
-<header
-  class="border-souris dark:bg-secondary sticky top-0 z-10 border-b bg-white py-0 shadow-sm dark:border-transparent"
->
-  <NavRoot menuName="Principal" hasMobileButton menuData={navPrimary}>
+<header class="sticky top-0 z-10 bg-black">
+  <NavRoot
+    menuName="Principal"
+    navDesignConfig={navDesignClass}
+    hasMobileButton
+    menuData={navPrimary}
+  >
     {/* logo + lien */}
     <a
       slot="firstPlaceHolder"
@@ -41,9 +44,9 @@ const navDesignClass: NavClassConfig = {
     >
       <Icon
         name="logomark"
-        width={280}
-        height={80}
-        class="text-secondary dark:text-background ml-2 w-[150px] md:w-[280px] lg:ml-0"
+        width={201}
+        height={32}
+        class="ml-2 w-[201px] text-white md:w-[201px] lg:ml-0"
       />
     </a>
   </NavRoot>

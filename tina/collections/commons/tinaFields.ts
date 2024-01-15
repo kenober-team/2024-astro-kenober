@@ -24,13 +24,13 @@ const pagesDefaultFields: TinaField[] = [
     isTitle: true,
     required: true,
   },
+  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
   { type: "datetime", name: "createdAt", label: "Creation date" },
   { type: "datetime", name: "updatedAt", label: "Updated date" },
-  { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },
   {
     type: "string",
     name: "description",
-    label: "Description",
+    label: "Description - SEO",
     required: true,
     ui: {
       component: "textarea",
