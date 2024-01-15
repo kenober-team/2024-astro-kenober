@@ -1,0 +1,80 @@
+---
+import { slugify } from "@js/utils";
+import { Icon } from "astro-icon/components";
+import ItemLink from "./ItemLink.astro";
+type Props = {
+  key: string;
+  name: string;
+  children?: NavElement[];
+  level: number;
+  navDesignConfig?: NavClassConfig;
+};
+const { key, name, children, level, navDesignConfig } = Astro.props;
+const lv = level + 1;
+const designConfig = {
+  button: navDesignConfig?.menu
+    ? navDesignConfig.menu.button
+    : "btn btn-primary",
+  ulList: navDesignConfig?.menu
+    ? navDesignConfig.menu.ulList
+    : "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
+};
+---
+
+<li
+  class={`group has-submenu menu--${key} menu-level--${lv}`}
+  aria-label={`Dropdown menu ${name}`}
+>
+  <button
+    id={`${slugify(name)}NavbarLink`}
+    class={designConfig.button}
+    aria-expanded="false"
+    aria-label={`Toggle dropdown menu ${name}`}
+  >
+    {name}{" "}
+    <Icon
+      name="tabler:chevron-down"
+      class={`hidden group-has-[>.dropdownNavbar.hidden]:inline-block`}
+      width={20}
+    />{" "}
+    <Icon
+      name="tabler:chevron-up"
+      class={`hidden group-has-[>.dropdownNavbar.block]:inline-block`}
+      width={20}
+    />
+  </button>
+  <div
+    id={`${slugify(name)}DropdownNavbar`}
+    class="dropdownNavbar relative z-10 mx-auto hidden w-full pt-2 md:absolute md:w-auto"
+  >
+    <ul
+      id={`${slugify(name)}dropdownNavbar`}
+      class={designConfig.ulList}
+      aria-label={`${name} link list`}
+    >
+      {
+        children?.map((item, idx) => {
+          if (item.children) {
+            return (
+              <ItemMenu
+                key={`${key}_${idx}`}
+                level={lv}
+                {navDesignConfig}
+                {...item}
+              />
+            );
+          } else {
+            return (
+              <ItemLink
+                key={`${key}_${idx}`}
+                level={lv}
+                {navDesignConfig}
+                {...item}
+              />
+            );
+          }
+        })
+      }
+    </ul>
+  </div>
+</li>

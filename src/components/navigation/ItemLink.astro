@@ -1,0 +1,25 @@
+---
+type Props = {
+  key: string;
+  level: number;
+  navDesignConfig?: NavClassConfig;
+} & NavElement;
+
+const { key, name, path, title, target, isButton, level, navDesignConfig } =
+  Astro.props;
+const lv = level + 1;
+const rel = target === "_blank" ? { rel: "noopener" } : {};
+const designConfig = navDesignConfig?.link
+  ? navDesignConfig?.link(isButton)
+  : ["btn", { "btn-cta": isButton }, { "btn-primary": !isButton }];
+---
+
+<a
+  href={path}
+  data-navLink
+  {title}
+  {target}
+  {...rel}
+  class:list={[`menu-item--${key}`, `menu-item-level--${lv}`, ...designConfig]}
+  >{name}</a
+>

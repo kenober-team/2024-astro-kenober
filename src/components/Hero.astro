@@ -1,0 +1,10 @@
+---
+type Props = {
+  title: string;
+};
+const { title } = Astro.props;
+---
+
+<section class="bg-primary py-8">
+  <h1 class="container text-white dark:text-dark-primary">{title}</h1>
+</section>

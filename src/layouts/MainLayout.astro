@@ -1,0 +1,37 @@
+---
+import "../styles/base.css";
+// component import
+import Footer from "@components/Footer.astro";
+import MainHead from "@components/MainHead.astro";
+import Nav from "@components/Nav.astro";
+import SkipLinks from "@components/SkipLinks.astro";
+
+const {
+  title = "My Astro Site",
+  description = "Change values in siteData.json to update this description",
+  image,
+  frontmatter,
+  noRobots,
+  classes,
+  overrideSiteTemplate = false,
+} = Astro.props;
+---
+
+<html lang="fr">
+  <MainHead
+    {title}
+    {description}
+    {overrideSiteTemplate}
+    {image}
+    {frontmatter}
+    {noRobots}
+  />
+  <body>
+    <SkipLinks />
+    <Nav />
+    <main id="main-content" class:list={["flex flex-col", classes]}>
+      <slot> Default Text</slot>
+    </main>
+    <Footer />
+  </body>
+</html>

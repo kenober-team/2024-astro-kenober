@@ -1,0 +1,62 @@
+fragment NavDataPrimaryParts on NavDataPrimary {
+  __typename
+  links {
+    __typename
+    name
+    path
+    title
+    isButton
+    target
+    children {
+      __typename
+      name
+      title
+      isButton
+      path
+      target
+    }
+  }
+}
+
+fragment NavDataSecondaryParts on NavDataSecondary {
+  __typename
+  links {
+    __typename
+    name
+    path
+    title
+    isButton
+    target
+  }
+}
+
+fragment SiteDataParts on SiteData {
+  __typename
+  title
+  titleTemplate
+  twitterUsername
+  fbPageUrl
+  description
+  image {
+    __typename
+    url
+    alt
+  }
+  informations
+  networks {
+    __typename
+    url
+    title
+    icon
+  }
+}
+
+fragment PageParts on Page {
+  __typename
+  title
+  createdAt
+  updatedAt
+  useProse
+  description
+  body
+}

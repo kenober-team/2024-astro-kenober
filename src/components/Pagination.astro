@@ -1,0 +1,29 @@
+---
+// component imports
+import { Icon } from "astro-icon/components";
+
+const { prevUrl, nextUrl, title } = Astro.props;
+---
+
+{
+  (prevUrl || nextUrl) && (
+    <nav aria-label={title} class="my-8 flex justify-between">
+      {prevUrl ? (
+        <a href={prevUrl} class="flex gap-4">
+          <Icon name="tabler:arrow-big-left-line" height={24} width={24} />
+          <span class="hidden md:inline-block">Précédent</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {nextUrl ? (
+        <a href={nextUrl} class="flex gap-4">
+          <span class="hidden md:inline-block">Suivant</span>
+          <Icon name="tabler:arrow-big-right-line" height={24} width={24} />
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+  )
+}

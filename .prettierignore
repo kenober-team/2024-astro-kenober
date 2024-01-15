@@ -1,7 +1,5 @@
 # build output
 dist/
-# generated types
-.astro/
 
 # dependencies
 node_modules/
@@ -20,4 +18,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-node_modules
+# netlify build files
+.netlify
+functions/.netlify
+coverage

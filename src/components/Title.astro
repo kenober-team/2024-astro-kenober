@@ -1,0 +1,14 @@
+---
+const { icon, title, classes, as } = Astro.props;
+const CustomTag = as || "h2";
+---
+
+<div
+  class:list={[
+    `flex flex-row content-center items-center justify-center gap-4`,
+    classes,
+  ]}
+>
+  {icon && <div class="text-4xl text-primary">{icon}</div>}
+  <CustomTag class="m-0 p-0">{title || "titre manquant"}</CustomTag>
+</div>

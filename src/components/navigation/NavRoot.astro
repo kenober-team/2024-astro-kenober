@@ -1,0 +1,180 @@
+---
+import ItemLink from "./ItemLink.astro";
+import ItemMenu from "./ItemMenu.astro";
+import MobileButton from "./MobileButton.astro";
+
+type Props = {
+  menuName: string;
+  menuData: {
+    links: NavElement[];
+  };
+  hasMobileButton?: boolean;
+  navDesignConfig?: NavClassConfig;
+};
+
+const {
+  menuName,
+  hasMobileButton = false,
+  menuData: { links },
+  navDesignConfig = undefined,
+  ...rest
+} = Astro.props;
+
+const level = 0;
+
+const designConfig = {
+  navRoot: navDesignConfig
+    ? navDesignConfig.navRoot
+    : "container relative flex flex-wrap items-center justify-between",
+  ulList: navDesignConfig
+    ? navDesignConfig.ulList
+    : "my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-4 rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 lg:items-center rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900",
+};
+const hasMenus = links.some((item) => item.children);
+---
+
+<nav
+  aria-label={menuName}
+  data-menu={menuName}
+  class={designConfig.navRoot}
+  {...rest}
+>
+  <slot name="firstPlaceHolder" />
+  {hasMobileButton && <MobileButton id="mobileButton" />}
+  <div class="group inline w-full md:w-auto">
+    <ul
+      class:list={[`menu`, designConfig.ulList]}
+      aria-expanded={hasMobileButton && "false"}
+    >
+      <slot name="firstInnerPlaceHolder" />
+      <slot />
+      {
+        links.map((item, idx) => {
+          if (item.children) {
+            return (
+              <ItemMenu
+                key={idx.toString()}
+                level={level}
+                {navDesignConfig}
+                {...item}
+              />
+            );
+          } else {
+            return (
+              <ItemLink
+                key={idx.toString()}
+                level={level}
+                {navDesignConfig}
+                {...item}
+              />
+            );
+          }
+        })
+      }
+      <slot name="lastInnerPlaceHolder" />
+    </ul>
+    <slot name="lastPlaceHolder" />
+  </div>
+</nav>
+<script define:vars={{ menuName, hasMenus, hasMobileButton }}>
+  if (hasMobileButton) {
+    // Mobile menu handler
+    const mobileBT = document.getElementById("mobileButton");
+    mobileBT.addEventListener("click", function (event) {
+      const menu = document.querySelectorAll(
+        `[aria-label='${menuName}'] .menu`,
+      );
+      menu[0].classList.toggle("hidden");
+      menu[0].classList.toggle("flex");
+      event.preventDefault();
+    });
+  }
+
+  if (hasMenus) {
+    // Set aria-current="page" on current page link
+    const navLinks = document.querySelectorAll(
+      "[aria-label='" + menuName + "'] [data-navLink]",
+    );
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === window.location.pathname) {
+        link.setAttribute("aria-current", "page");
+      }
+    });
+
+    // Handle submenus
+
+    function openMenu(el) {
+      el.classList.add("open");
+      el.getElementsByTagName("button")[0].setAttribute("aria-expanded", true);
+      var block = el.getElementsByClassName("dropdownNavbar")[0];
+      block.classList.remove("hidden");
+      block.classList.add("block");
+      // block.setAttribute("style", "left:20%;");
+    }
+
+    function closeMenu(el) {
+      el.classList.remove("open");
+      el.getElementsByTagName("button")[0].setAttribute("aria-expanded", false);
+      var block = el.getElementsByClassName("dropdownNavbar")[0];
+      block.classList.add("hidden");
+      block.classList.remove("block");
+      // block.removeAttribute("style");
+    }
+
+    var timer1, timer2;
+    var menuItems = document.querySelectorAll(
+      "[aria-label='" + menuName + "'] .has-submenu",
+    );
+    Array.prototype.forEach.call(menuItems, function (el, i) {
+      el.getElementsByTagName("button")[0].addEventListener(
+        "touchstart",
+        function (event) {
+          if (!el.classList.contains("open")) {
+            openMenu(el);
+          } else {
+            closeMenu(el);
+          }
+          event.preventDefault();
+        },
+      );
+      el.getElementsByTagName("button")[0].addEventListener(
+        "click",
+        function (event) {
+          if (!el.classList.contains("open")) {
+            openMenu(el);
+          } else {
+            closeMenu(el);
+          }
+          event.preventDefault();
+        },
+      );
+      el.addEventListener("mouseover", function (event) {
+        openMenu(el);
+        clearTimeout(timer1);
+        event.preventDefault();
+      });
+      el.addEventListener("mouseout", function (event) {
+        timer1 = setTimeout(function (event) {
+          closeMenu(el);
+        }, 1000);
+        event.preventDefault();
+      });
+      var links = el.querySelectorAll("a");
+      Array.prototype.forEach.call(links, function (eel, i) {
+        eel.addEventListener("focus", function () {
+          if (timer2) {
+            clearTimeout(timer2);
+            timer2 = null;
+          }
+        });
+        eel.addEventListener("blur", function (event) {
+          timer2 = setTimeout(function () {
+            if (el) {
+              closeMenu(el);
+            }
+          }, 10);
+        });
+      });
+    });
+  }
+</script>

@@ -1,0 +1,78 @@
+---
+import navSecondary from "@data/navDataSecondary.json";
+import siteData from "@data/siteData.json";
+import { Icon } from "astro-icon/components";
+import SimpleMardownRender from "./SimpleMardownRender.astro";
+import NavRoot from "./navigation/NavRoot.astro";
+const navDesignClass: NavClassConfig = {
+  navRoot: "",
+  ulList: "flex flex-col gap-4",
+  link: (i) => {
+    return ["underline dark:dark-primary-content"];
+  },
+};
+---
+
+<footer class="container mb-4 mt-8">
+  <div
+    class="flex flex-col gap-4 rounded-md border border-souris bg-white p-4 shadow-sm dark:border-transparent dark:bg-secondary dark:text-dark-primary-content [&_a:hover]:text-primary-focus [&_a]:text-primary"
+  >
+    <div class="col-span-3 grid px-4">
+      <NavRoot
+        menuData={navSecondary}
+        menuName="Secondary"
+        navDesignConfig={navDesignClass}
+      />
+    </div>
+    <div class="flex items-center gap-4 px-4">
+      <span class="font-bold">Suivez-nous :</span>
+      {
+        siteData.networks.map((network) => (
+          <a
+            href={network.url}
+            class="inline-flex gap-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            title={network.title}
+          >
+            <Icon name={network.icon} width={30} height={30} />
+          </a>
+        ))
+      }
+    </div>
+    {
+      siteData.informations && siteData.informations.length > 0 && (
+        <div class=" px-4">
+          <SimpleMardownRender
+            markdown={siteData.informations}
+            classes="*:mb-0 *:text-sm"
+          />
+        </div>
+      )
+    }
+    <div class="px-4 *:text-sm">
+      <p>
+        Copyright &copy; <span id="copyright"></span> | All rights reserved | Made
+        with <a
+          href="https://astro.build/"
+          target="_blank"
+          rel="noopener noreferrer">Astro</a
+        >
+      </p>
+      <p>
+        <a href="/rss.xml" class="inline-flex gap-1">
+          Subscribe to RSS
+          <Icon name="tabler:rss" width={20} height={20} />
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const obj = document.querySelector("#copyright") || undefined;
+    if (obj !== undefined) {
+      obj.textContent = new Date().getFullYear().toString();
+    } else {
+    }
+  </script>
+</footer>

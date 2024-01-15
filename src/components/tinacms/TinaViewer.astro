@@ -1,0 +1,57 @@
+---
+import Hero from "@components/Hero.astro";
+import components from "@components/mdx/getMDXcomponents";
+import { TinaReactHelper as TinaHelper } from "@components/tinacms/react";
+type Props = {
+  entry: any;
+  response?: any;
+  Content: any;
+  displayTitle?: string;
+  useProse?: boolean;
+};
+const {
+  entry,
+  response,
+  Content,
+  displayTitle = undefined,
+  useProse = false,
+} = Astro.props;
+---
+
+{
+  response.data ? (
+    <TinaHelper client:tina client:only tina={response} entry={entry}>
+      {displayTitle && <Hero title={displayTitle} />}
+      <slot name="before" />
+      {Content && (
+        <section
+          class:list={[
+            "section-center my-8",
+            { "prose dark:prose-invert": useProse },
+          ]}
+        >
+          <Content components={components} />
+        </section>
+      )}
+      <slot />
+      <slot name="after" />
+    </TinaHelper>
+  ) : (
+    <>
+      {displayTitle && <Hero title={displayTitle} />}
+      <slot name="before" />
+      {Content && (
+        <section
+          class:list={[
+            "section-center my-8",
+            { "prose dark:prose-invert": useProse },
+          ]}
+        >
+          <Content components={components} />
+        </section>
+      )}
+      <slot />
+      <slot name="after" />
+    </>
+  )
+}

@@ -1,0 +1,39 @@
+{
+  "title": "NovaGaïa",
+  "titleTemplate": "%s | NovaGaïa",
+  "twitterUsername": "@NovaGaiaFr",
+  "fbPageUrl": "https://www.facebook.com/NovaGaia.fr",
+  "description": "NovaGaïa vous accompagne dans un monde technologique responsable et durable grâce à l'éco-conception et le GreenIT. ",
+  "image": {
+    "url": "/src/assets/eco-conception-emballage-cartoffset.jpg",
+    "alt": "NovaGaïa"
+  },
+  "informations": "7 rue Pierre Brossolette\n\n94130, Nogent sur Marne, France\n\nSIRET 89211383800023\n\ntel: +33 06 16 19 22 73\n\nCe site est hébergé chez [Infomaniak 🌱](https://www.infomaniak.com/fr/)\n\n[→ tous leurs services sont propulsés avec de l'énergie renouvelable.](https://www.infomaniak.com/fr/ecologie/)\n",
+  "networks": [
+    {
+      "url": "https://github.com/NovaGaia/",
+      "title": "Notre organisation Github",
+      "icon": "tabler:brand-github"
+    },
+    {
+      "url": "https://www.linkedin.com/company/novagaiafr/",
+      "title": "Notre page Linkedin",
+      "icon": "tabler:brand-linkedin"
+    },
+    {
+      "url": "https://www.facebook.com/NovaGaia.fr/",
+      "title": "Notre page Facebook",
+      "icon": "tabler:brand-facebook"
+    },
+    {
+      "url": "https://www.instagram.com/novagaiafr/?hl=fr",
+      "title": "Notre page Instagram",
+      "icon": "tabler:brand-instagram"
+    },
+    {
+      "url": "https://g.page/r/CUmY8ODsV6e7EAE",
+      "title": "Notre page Google My Business",
+      "icon": "tabler:brand-google-maps"
+    }
+  ]
+}

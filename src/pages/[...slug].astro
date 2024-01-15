@@ -1,0 +1,59 @@
+---
+import TinaViewer from "@components/tinacms/TinaViewer.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { client } from "@tina/__generated__/client";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+// Pages props type
+type Props = {
+  entry: CollectionEntry<"pages">;
+};
+
+// generate getStaticPaths (params, props) from collection
+export async function getStaticPaths() {
+  const entries = await getCollection("pages");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get entry activated by getStaticPaths
+const { entry } = Astro.props as Props;
+let response: any = {};
+try {
+  await client.queries
+    .page({
+      relativePath: `/${entry.id}`,
+    })
+    .then((res) => {
+      response = res;
+    });
+} catch (error) {
+  // not in edit mode
+}
+
+// Use Astro Entry renderer
+const { Content } = await entry.render();
+---
+
+<MainLayout title={entry.data.title} description={entry.data.description}>
+  {
+    (() => {
+      switch (entry.id) {
+        default:
+          return (
+            <TinaViewer
+              displayTitle={entry.data.title}
+              {entry}
+              {Content}
+              {response}
+              useProse={entry.data.useProse}
+            />
+          );
+          break;
+      }
+    }).call(this)
+  }
+</MainLayout>

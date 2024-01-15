@@ -1,0 +1,18 @@
+---
+import Title from "./Title.astro";
+
+const { classes, title, icon, innerClasses, as, id } = Astro.props;
+---
+
+<section id={id} class:list={[`section`, classes]}>
+  {
+    title && (
+      <div class={`section-center`}>
+        <Title title={title} icon={icon} as={as} />
+      </div>
+    )
+  }
+  <div class={`section-center ${innerClasses ? innerClasses : ""}`}>
+    <slot />
+  </div>
+</section>

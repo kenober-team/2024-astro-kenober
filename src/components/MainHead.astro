@@ -1,0 +1,53 @@
+---
+// component imports
+import favIcon from "@assets/favicon.png";
+import Seo from "@components/Seo.astro";
+import siteData from "@data/siteData.json";
+
+const {
+  title,
+  description,
+  image,
+  frontmatter,
+  noRobots,
+  overrideSiteTemplate = false,
+} = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href={favIcon.src} />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  {
+    !overrideSiteTemplate && siteData.titleTemplate ? (
+      <title>{siteData.titleTemplate.replace("%s", title)}</title>
+    ) : (
+      <title>{title}</title>
+    )
+  }
+  <meta name="description" content={description} />
+
+  <Seo
+    {title}
+    {description}
+    url={Astro.url}
+    {overrideSiteTemplate}
+    {image}
+    {frontmatter}
+    {noRobots}
+  />
+  <link rel="stylesheet" href="/print.css" media="print" />
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      localStorage.getItem("color-theme") === "dark" ||
+      (!("color-theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+</head>
