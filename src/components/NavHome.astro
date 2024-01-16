@@ -1,0 +1,53 @@
+---
+// library imports
+import { Icon } from "astro-icon/components";
+
+// component imports
+import NavRoot from "@components/navigation/NavRoot.astro";
+
+// data imports
+import navPrimary from "@data/navDataPrimary.json";
+
+const navDesignClass: NavClassConfig = {
+  navRoot: "container relative flex flex-wrap items-center justify-between",
+  ulList:
+    "mb-0 my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-4 rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 lg:items-center rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900",
+  menu: {
+    button: "btn btn-primary",
+    ulList:
+      "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
+  },
+  link: (isButton) => {
+    return isButton ? [`btn btn-cta coucou`] : [`btn btn-primary coucou`];
+  },
+  mobileButton: {
+    button:
+      "inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
+    svg: "h-5 w-5",
+  },
+};
+---
+
+<header class="sticky top-0 z-10 bg-black">
+  <NavRoot
+    menuName="Principal"
+    navDesignConfig={navDesignClass}
+    hasMobileButton
+    menuData={navPrimary}
+  >
+    {/* logo + lien */}
+    <a
+      slot="firstPlaceHolder"
+      href="/"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+      title="Retour à l'accueil"
+    >
+      <Icon
+        name="logomark"
+        width={201}
+        height={32}
+        class="ml-2 w-[201px] text-white md:w-[201px] lg:ml-0"
+      />
+    </a>
+  </NavRoot>
+</header>

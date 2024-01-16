@@ -64,7 +64,14 @@ const team = {
         { type: "image", name: "hero_bg", label: "Hero Image", required: true },
         { type: "string", name: "before_text", label: "Intro" },
         { type: "string", name: "after_title", label: "Bas de page - Titre" },
-        { type: "string", name: "after_text", label: "Bas de page - Texte" },
+        {
+          type: "string",
+          name: "after_text",
+          label: "Bas de page - Texte",
+          ui: {
+            component: "textarea",
+          },
+        },
       ],
     },
     {

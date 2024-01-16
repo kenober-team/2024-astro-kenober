@@ -57,7 +57,7 @@ var team = {
     },
     { type: "string", name: "title", label: "Titre", required: true },
     { type: "image", name: "hero_bg", label: "Hero Image", required: true },
-    { type: "string", name: "intro", label: "Intro" },
+    { type: "rich-text", name: "intro", label: "Intro" },
     {
       type: "object",
       name: "associates",
@@ -80,6 +80,11 @@ var team = {
           label: "Nom",
           required: true,
           isTitle: true
+        },
+        {
+          type: "string",
+          name: "url",
+          label: "URL"
         },
         {
           type: "boolean",
@@ -649,14 +654,14 @@ var siteData = {
     {
       type: "string",
       name: "title",
-      label: "SEO, default Title",
+      label: "Default Title",
       isTitle: true,
       required: true
     },
     {
       type: "string",
       name: "description",
-      label: "SEO, default Description",
+      label: "Default Description",
       ui: {
         component: "textarea"
       }
@@ -679,7 +684,7 @@ var siteData = {
     {
       type: "object",
       name: "image",
-      label: "SEO, default Image",
+      label: "Default Image",
       fields: [
         {
           type: "image",
@@ -798,7 +803,14 @@ var team2 = {
         { type: "image", name: "hero_bg", label: "Hero Image", required: true },
         { type: "string", name: "before_text", label: "Intro" },
         { type: "string", name: "after_title", label: "Bas de page - Titre" },
-        { type: "string", name: "after_text", label: "Bas de page - Texte" }
+        {
+          type: "string",
+          name: "after_text",
+          label: "Bas de page - Texte",
+          ui: {
+            component: "textarea"
+          }
+        }
       ]
     },
     {

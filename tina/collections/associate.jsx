@@ -26,7 +26,7 @@ const team = {
     },
     { type: "string", name: "title", label: "Titre", required: true },
     { type: "image", name: "hero_bg", label: "Hero Image", required: true },
-    { type: "string", name: "intro", label: "Intro" },
+    { type: "rich-text", name: "intro", label: "Intro" },
     {
       type: "object",
       name: "associates",
@@ -49,6 +49,11 @@ const team = {
           label: "Nom",
           required: true,
           isTitle: true,
+        },
+        {
+          type: "string",
+          name: "url",
+          label: "URL",
         },
         {
           type: "boolean",

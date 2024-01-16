@@ -36,14 +36,14 @@ const siteData = {
     {
       type: "string",
       name: "title",
-      label: "SEO, default Title",
+      label: "Default Title",
       isTitle: true,
       required: true,
     },
     {
       type: "string",
       name: "description",
-      label: "SEO, default Description",
+      label: "Default Description",
       ui: {
         component: "textarea",
       },
@@ -66,7 +66,7 @@ const siteData = {
     {
       type: "object",
       name: "image",
-      label: "SEO, default Image",
+      label: "Default Image",
       fields: [
         {
           type: "image",

@@ -324,6 +324,7 @@ type AssociateAssociatesImage {
 
 type AssociateAssociates {
   name: String!
+  url: String
   published: Boolean!
   description: JSON!
   image: AssociateAssociatesImage
@@ -333,7 +334,7 @@ type Associate implements Node & Document {
   _warning: String
   title: String!
   hero_bg: String!
-  intro: String
+  intro: JSON
   associates: [AssociateAssociates]
   id: ID!
   _sys: SystemInfo!
@@ -347,6 +348,7 @@ input AssociateAssociatesImageFilter {
 
 input AssociateAssociatesFilter {
   name: StringFilter
+  url: StringFilter
   published: BooleanFilter
   description: RichTextFilter
   image: AssociateAssociatesImageFilter
@@ -356,7 +358,7 @@ input AssociateFilter {
   _warning: StringFilter
   title: StringFilter
   hero_bg: ImageFilter
-  intro: StringFilter
+  intro: RichTextFilter
   associates: AssociateAssociatesFilter
 }
 
@@ -719,6 +721,7 @@ input AssociateAssociatesImageMutation {
 
 input AssociateAssociatesMutation {
   name: String
+  url: String
   published: Boolean
   description: JSON
   image: AssociateAssociatesImageMutation
@@ -728,7 +731,7 @@ input AssociateMutation {
   _warning: String
   title: String
   hero_bg: String
-  intro: String
+  intro: JSON
   associates: [AssociateAssociatesMutation]
 }
 

@@ -1,13 +1,13 @@
 {
   "hero_text": "vous propose un espace de \\`recherche\\` et de \\`création\\` de formules  singulières, parfois surprenantes, toujours pertinentes pour \\`épanouir\\` les  dynamiques de groupe.\n",
   "intro_title": "KENOBER, ça veut dire coopération (en breton…)",
-  "intro_text": "Alors bien sûr, cela veut dire que nous aimons le beurre salé, mais c’est  aussi une façon pour nous de raconter que nous concevons toutes nos  interventions avec une attention particulière à l’identité de nos client·e·s :  Quel est leur ancrage géographique ? à quel moment de leur histoire  sont-ils·elles ? Quelle est leur culture ? Chaque combinaison est unique et  nécessite un accompagnement et un design d’intervention spécifique. Ça tombe  bien, on adore écouter, inventer, ajuster, adapter, bricoler, affiner… et puis  requestionner, réinventer, réajuster, réadapter… enfin, vous voyez l’idée !\n",
+  "intro_text": "Alors bien sûr, cela veut dire que nous aimons le beurre salé, mais c’est aussi une façon pour nous de raconter que nous concevons toutes nos interventions avec une attention particulière à l’identité de nos client·e·s : quel est leur ancrage géographique ? À quel moment de leur histoire sont-ils·elles ? Quelle est leur culture ? Chaque combinaison est unique et nécessite un accompagnement et un design d’intervention spécifique. Ça tombe bien, on adore écouter, inventer, ajuster, adapter, bricoler, affiner… et puis requestionner, réinventer, réajuster, réadapter… enfin, vous voyez l’idée ! \n",
   "intro_offre": "Nos OFFRES",
   "offres": [
     {
       "title": "Séminaires",
       "base_line": "Nous co-concevons et facilitons des temps forts captivants, rythmés, où vous faites de grands pas sur le fond sans vous ennuyer sur la forme.",
-      "text": "#Lancement_de_projet #Construire_ensemble #Cohésion d’équipe #Se_parler #(Sou)rires",
+      "text": "#Lancement_de_projet #Construire_ensemble #Cohésion_d’équipe #Se_parler #(Sou)rires",
       "image": {
         "src": "/src/assets/home/offres/offre-1.png",
         "alt": "Séminaires"
@@ -42,13 +42,13 @@
     }
   ],
   "principe_title": "Nos PRINCIPES actifs",
-  "principe_sub_title": "**Une équipe** haute en couleurs aux **méthodes** éprouvées et parfois  déroutantes.\n",
-  "principe_text": "Nous mettons de la **joie** et de la **profondeur** dans ce que nous faisons, même lorsque les sujets sont difficiles. Convaincu·e·s que le plus haut potentiel d’un collectif ne peut apparaître que si on **prend soin** de lui et de chacun de ses membres, nous affirmons qu’il est indispensable d’**inviter le plaisir, le rire et l’émotion dans le travail**.\n\nNous sommes **exigeant·e·s**. La performance, nous allons la chercher en insufflant des pratiques nouvelles, en challengeant vos projets de façon constructive, et en animant des temps de **prise de hauteur** qui font progresser.\n\nOù trouvons-nous toute cette **énergie** ? Dans les projets qui nous motivent et dans les échanges avec les personnes qui nous inspirent !\n",
+  "principe_sub_title": "**Une équipe** haute en couleurs aux **méthodes** éprouvées et parfois déroutantes.\n",
+  "principe_text": "Nous mettons de la joie et de la profondeur dans ce que nous faisons, même lorsque les sujets sont difficiles. Convaincu·e·s que le plus haut potentiel d’un collectif ne peut apparaître que si on prend soin de lui et de chacun de ses membres, nous affirmons qu’il est indispensable d’inviter le plaisir, le rire et l’émotion dans le travail. \n\nNous sommes exigeant·e·s. La performance, nous allons la chercher en insufflant des pratiques nouvelles, en challengeant vos projets de façon constructive, et en animant des temps de prise de hauteur qui font progresser.\n\nOù trouvons-nous toute cette énergie ? Dans les projets qui nous motivent et dans les échanges avec les personnes qui nous inspirent !\n",
   "principe_image": {
     "src": "/src/assets/home/principe-equipe.png",
     "alt": "Nos PRINCIPES actifs"
   },
-  "principe_text_image": "Toutes et tous **facilitateur·rice·s**, nous jouons également avec beaucoup\nd’autres facettes.\n\n**Côté pile**, nous sommes ingénieur·e·s, docteur·e·s, formateur·rice·s,\nconsultant·e·s.\n\n**Côté face**, nous sommes comédien·ne·s, improvisateur·rice·s, musicien·ne·s,\nphotographes…\n\nNous conjuguons nos savoir-faire d’artistes avec nos connaissances des\nsciences humaines et sociales et des sciences du vivant.\n",
+  "principe_text_image": "Toutes et tous facilitateur·rice·s, nous jouons également avec beaucoup de facettes. \n\nCôté pile, nous sommes ingénieur·e·s, docteur·e·s, formateur·rice·s, consultant·e·s. \n\nCôté face, nous sommes comédien·ne·s, improvisateur·rice·s, musicien·ne·s, photographes… \n\nNous conjuguons nos savoir-faire d’artistes avec nos connaissances des sciences humaines et sociales et des sciences du vivant. \n",
   "principe_text_bt_label": "Découvrir l’équipe",
   "principe_text_bt_url": "/equipe",
   "testimonial": [
@@ -63,6 +63,22 @@
     {
       "text": "Kenober, c’est un triptyque : la capacité à comprendre nos métiers + des méthodes de motivation et d’implication des équipes maîtrisées et adaptées à l’environnement + toujours cette touche fun d’entertainment où finalement, on s’amuse. Ça m'a ouvert une approche différente. A refaire !",
       "name": "Alexandre"
+    },
+    {
+      "text": "Une énergie contagieuse pour activer la créativité et mettre le groupe en mouvement. \n\nUne subtilité rare pour comprendre les intentions d’une séquence, détecter les zones d’ombres et les difficultés potentielles, et se mettre au service du collectif. Kenober sait mettre le groupe en confiance, ce qui permet de s’autoriser le grain de folie qui donne toute leur saveur à leurs accompagnements.",
+      "name": "Céline"
+    },
+    {
+      "text": "L'inventivité dans le design, la capacité à toucher les trois dimensions tête-coeur-corps et la justesse dans la posture de facilitation de Kenober ont très fortement enrichi la démarche de production d’une raison d’être pour notre client. Une chance pour ce travail collectif au long cours (6 mois) !",
+      "name": "Agathe"
+    },
+    {
+      "text": "Les participants se sont sentis entre de bonnes mains. De mon point de vue c'était formidable en termes de consolidation d'équipe, de plaisir et de puissance de ce qui peut être réalisé lorsque nous travaillons ensemble.",
+      "name": "Karina"
+    },
+    {
+      "text": "Kenober arrive à vous mettre à l’aise tout de suite et à capter l’attention et le sujet, pour le rendre attractif. A chaque fois que j’ai eu à travailler avec Kenober, j’y ai vu une plus-value. Vous savez nous aider à sécuriser une relation client en intimité et en bienveillance. Ça nous apporte à nous autant que ça apporte au client, et ça renforce l’intimité que l’on a avec lui.",
+      "name": "Béatrice"
     }
   ],
   "gallery": [

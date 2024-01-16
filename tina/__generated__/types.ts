@@ -508,6 +508,7 @@ export type AssociateAssociatesImage = {
 export type AssociateAssociates = {
   __typename?: 'AssociateAssociates';
   name: Scalars['String']['output'];
+  url?: Maybe<Scalars['String']['output']>;
   published: Scalars['Boolean']['output'];
   description: Scalars['JSON']['output'];
   image?: Maybe<AssociateAssociatesImage>;
@@ -518,7 +519,7 @@ export type Associate = Node & Document & {
   _warning?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
   hero_bg: Scalars['String']['output'];
-  intro?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
   associates?: Maybe<Array<Maybe<AssociateAssociates>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -532,6 +533,7 @@ export type AssociateAssociatesImageFilter = {
 
 export type AssociateAssociatesFilter = {
   name?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
   published?: InputMaybe<BooleanFilter>;
   description?: InputMaybe<RichTextFilter>;
   image?: InputMaybe<AssociateAssociatesImageFilter>;
@@ -541,7 +543,7 @@ export type AssociateFilter = {
   _warning?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
-  intro?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
   associates?: InputMaybe<AssociateAssociatesFilter>;
 };
 
@@ -1035,6 +1037,7 @@ export type AssociateAssociatesImageMutation = {
 
 export type AssociateAssociatesMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
   published?: InputMaybe<Scalars['Boolean']['input']>;
   description?: InputMaybe<Scalars['JSON']['input']>;
   image?: InputMaybe<AssociateAssociatesImageMutation>;
@@ -1044,7 +1047,7 @@ export type AssociateMutation = {
   _warning?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
-  intro?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
   associates?: InputMaybe<Array<InputMaybe<AssociateAssociatesMutation>>>;
 };
 
@@ -1123,7 +1126,7 @@ export type HomeDataPartsFragment = { __typename: 'HomeData', _warning?: string 
 
 export type TeamPartsFragment = { __typename: 'Team', _warning?: string | null, _team?: string | null, _contact?: string | null, equipe?: { __typename: 'TeamEquipe', title: string, hero_bg: string } | null, contact?: { __typename: 'TeamContact', title: string, hero_bg: string, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null };
 
-export type AssociatePartsFragment = { __typename: 'Associate', _warning?: string | null, title: string, hero_bg: string, intro?: string | null, associates?: Array<{ __typename: 'AssociateAssociates', name: string, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null };
+export type AssociatePartsFragment = { __typename: 'Associate', _warning?: string | null, title: string, hero_bg: string, intro?: any | null, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null };
 
 export type PagePartsFragment = { __typename: 'Page', _warning?: string | null, title: string, hero_bg: string, createdAt?: string | null, updatedAt?: string | null, description: string, useProse?: boolean | null, body?: any | null };
 
@@ -1176,7 +1179,7 @@ export type AssociateQueryVariables = Exact<{
 }>;
 
 
-export type AssociateQuery = { __typename?: 'Query', associate: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } };
+export type AssociateQuery = { __typename?: 'Query', associate: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } };
 
 export type AssociateConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1188,7 +1191,7 @@ export type AssociateConnectionQueryVariables = Exact<{
 }>;
 
 
-export type AssociateConnectionQuery = { __typename?: 'Query', associateConnection: { __typename?: 'AssociateConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AssociateConnectionEdges', cursor: string, node?: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } | null } | null> | null } };
+export type AssociateConnectionQuery = { __typename?: 'Query', associateConnection: { __typename?: 'AssociateConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AssociateConnectionEdges', cursor: string, node?: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } | null } | null> | null } };
 
 export type PageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1352,6 +1355,7 @@ export const AssociatePartsFragmentDoc = gql`
   associates {
     __typename
     name
+    url
     published
     description
     image {
