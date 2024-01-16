@@ -1,8 +1,8 @@
-import { onPagesBeforeSubmit_Page } from "./commons/utils";
-import type { Collection, Form, TinaCMS } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const team: Collection = {
-  label: "Complices",
+/** @type {import("tinacms").Collection} */
+const team = {
+  label: "Page: Complices",
   name: "associate",
   path: "src/data",
   match: { include: "associate" },
@@ -15,6 +15,15 @@ const team: Collection = {
     },
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
     { type: "string", name: "title", label: "Titre", required: true },
     { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro", label: "Intro" },

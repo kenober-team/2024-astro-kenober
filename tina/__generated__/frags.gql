@@ -1,99 +1,6 @@
-fragment NavDataPrimaryParts on NavDataPrimary {
-  __typename
-  links {
-    __typename
-    name
-    path
-    title
-    isButton
-    target
-    children {
-      __typename
-      name
-      title
-      isButton
-      path
-      target
-    }
-  }
-}
-
-fragment NavDataSecondaryParts on NavDataSecondary {
-  __typename
-  links {
-    __typename
-    name
-    path
-    title
-    isButton
-    target
-  }
-}
-
-fragment SiteDataParts on SiteData {
-  __typename
-  title
-  titleTemplate
-  twitterUsername
-  fbPageUrl
-  description
-  image {
-    __typename
-    url
-    alt
-  }
-  informations
-  networks {
-    __typename
-    url
-    title
-    icon
-  }
-}
-
-fragment PageParts on Page {
-  __typename
-  title
-  hero_bg
-  createdAt
-  updatedAt
-  description
-  useProse
-  body
-}
-
-fragment TeamParts on Team {
-  __typename
-  equipe {
-    __typename
-    title
-    hero_bg
-  }
-  Contact {
-    __typename
-    title
-    hero_bg
-    before_text
-    after_title
-    after_text
-  }
-  members {
-    __typename
-    name
-    published
-    role
-    education
-    citation
-    bio
-    image_inactive
-    image_active
-    linkedin
-    email
-  }
-}
-
 fragment HomeDataParts on HomeData {
   __typename
+  _warning
   hero_text
   intro_title
   intro_text
@@ -132,8 +39,42 @@ fragment HomeDataParts on HomeData {
   }
 }
 
+fragment TeamParts on Team {
+  __typename
+  _warning
+  _team
+  equipe {
+    __typename
+    title
+    hero_bg
+  }
+  _contact
+  contact {
+    __typename
+    title
+    hero_bg
+    before_text
+    after_title
+    after_text
+  }
+  members {
+    __typename
+    name
+    published
+    role
+    education
+    citation
+    bio
+    image_inactive
+    image_active
+    linkedin
+    email
+  }
+}
+
 fragment AssociateParts on Associate {
   __typename
+  _warning
   title
   hero_bg
   intro
@@ -147,5 +88,75 @@ fragment AssociateParts on Associate {
       src
       alt
     }
+  }
+}
+
+fragment PageParts on Page {
+  __typename
+  _warning
+  title
+  hero_bg
+  createdAt
+  updatedAt
+  description
+  useProse
+  body
+}
+
+fragment NavDataPrimaryParts on NavDataPrimary {
+  __typename
+  _warning
+  links {
+    __typename
+    name
+    path
+    title
+    isButton
+    target
+    children {
+      __typename
+      name
+      title
+      isButton
+      path
+      target
+    }
+  }
+}
+
+fragment NavDataSecondaryParts on NavDataSecondary {
+  __typename
+  _warning
+  links {
+    __typename
+    name
+    path
+    title
+    isButton
+    target
+  }
+}
+
+fragment SiteDataParts on SiteData {
+  __typename
+  _warning
+  _seo
+  title
+  description
+  titleTemplate
+  twitterUsername
+  fbPageUrl
+  image {
+    __typename
+    url
+    alt
+  }
+  _footer
+  informations
+  networks {
+    __typename
+    url
+    title
+    icon
   }
 }

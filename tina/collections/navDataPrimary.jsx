@@ -1,6 +1,7 @@
-import type { Collection } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const navDataPrimary: Collection = {
+/** @type {import("tinacms").Collection} */
+const navDataPrimary = {
   label: "Primary Navigation",
   name: "navDataPrimary",
   path: "src/data",
@@ -19,6 +20,15 @@ const navDataPrimary: Collection = {
     };
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
     {
       type: "object",
       name: "links",

@@ -1,8 +1,8 @@
-import { onPagesBeforeSubmit_Page } from "./commons/utils";
-import type { Collection, Form, TinaCMS } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const team: Collection = {
-  label: "Équipe",
+/** @type {import("tinacms").Collection} */
+const team = {
+  label: "Page: Équipe / Contact",
   name: "team",
   path: "src/data",
   match: { include: "team" },
@@ -16,18 +16,49 @@ const team: Collection = {
   },
   fields: [
     {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
+    {
+      type: "string",
+      name: "_team",
+      ui: {
+        component: () => {
+          return (
+            <h2 className="mb-2 text-xl font-black">Spécifique page Équipe</h2>
+          );
+        },
+      },
+    },
+    {
       type: "object",
       name: "equipe",
-      label: "Page équipe",
+      label: "Contenu page équipe",
       fields: [
         { type: "string", name: "title", label: "Titre", required: true },
         { type: "image", name: "hero_bg", label: "Hero Image", required: true },
       ],
     },
     {
+      type: "string",
+      name: "_contact",
+      ui: {
+        component: () => {
+          return (
+            <h2 className="mb-2 text-xl font-black">Spécifique page Contact</h2>
+          );
+        },
+      },
+    },
+    {
       type: "object",
-      name: "Contact",
-      label: "Page contact",
+      name: "contact",
+      label: "Contenu page contact",
       fields: [
         { type: "string", name: "title", label: "Titre", required: true },
         { type: "image", name: "hero_bg", label: "Hero Image", required: true },

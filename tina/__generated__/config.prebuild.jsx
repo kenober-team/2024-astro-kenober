@@ -1,31 +1,39 @@
-// src/js/utils.js
-function slugify(text) {
-  return text.toString().normalize("NFD").toLowerCase().replace(/['"]/g, " ").replace(/\s+/g, "-").replace(/[^\w-]+/g, "").replace(/--+/g, "-").replace(/^-+/, "").replace(/[^\x00-\x7F]/g, "-").replace(/-+$/, "");
-}
-
-// tina/collections/commons/utils.ts
-var onPagesBeforeSubmit_Page = async ({
-  form,
-  cms,
-  values
-}) => {
-  if (form.crudType === "create") {
-    return {
-      ...values,
-      createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-      updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
-      filename: slugify(values.title)
-    };
-  }
-  return {
-    ...values,
-    updatedAt: (/* @__PURE__ */ new Date()).toISOString()
-  };
+// tina/collections/commons/warning.jsx
+import { jsx, jsxs } from "react/jsx-runtime";
+var WarningIcon = (props) => {
+  return jsxs(
+    "svg",
+    {
+      stroke: "currentColor",
+      fill: "currentColor",
+      "stroke-width": "0",
+      viewBox: "0 0 24 24",
+      height: "1em",
+      width: "1em",
+      xmlns: "http://www.w3.org/2000/svg",
+      ...props,
+      children: [
+        jsx("path", { d: "M11.001 10h2v5h-2zM11 16h2v2h-2z" }),
+        jsx("path", { d: "M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z" })
+      ]
+    }
+  );
+};
+var RestartWarning = () => {
+  return jsx("p", { className: "mb-4 rounded-lg border border-yellow-200 bg-gradient-to-r from-yellow-50 to-yellow-100 px-4 py-2.5 shadow", children: jsxs("div", { className: "flex items-center gap-2", children: [
+    jsx(WarningIcon, { className: `h-auto w-6 flex-shrink-0 text-yellow-400` }),
+    jsxs("div", { className: `flex-1 whitespace-normal text-sm text-yellow-700	`, children: [
+      "Pour voir les modifications, il faut sauvegarder pour d\xE9clencher un refresh ",
+      jsx("em", { children: "(local development only)" }),
+      "."
+    ] })
+  ] }) });
 };
 
-// tina/collections/associate.ts
+// tina/collections/associate.jsx
+import { jsx as jsx2 } from "react/jsx-runtime";
 var team = {
-  label: "Complices",
+  label: "Page: Complices",
   name: "associate",
   path: "src/data",
   match: { include: "associate" },
@@ -38,6 +46,15 @@ var team = {
     }
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx2(RestartWarning, {});
+        }
+      }
+    },
     { type: "string", name: "title", label: "Titre", required: true },
     { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro", label: "Intro" },
@@ -94,81 +111,10 @@ var associate_default = team;
 // tina/config.ts
 import { defineConfig } from "tinacms";
 
-// tina/collections/commons/templates.ts
-var imageBlock = {
-  name: "PositionableImage",
-  label: "Image",
-  ui: {
-    itemProps: (item) => {
-      return { label: `Image: ${item?.alt}` };
-    }
-  },
-  fields: [
-    {
-      type: "image",
-      label: "Image",
-      name: "src",
-      required: true
-    },
-    { type: "string", label: "Alt", name: "alt", required: true },
-    { type: "string", label: "Caption", name: "caption" },
-    { type: "string", label: "Class", name: "class" },
-    {
-      type: "string",
-      label: "Position",
-      name: "position",
-      required: true,
-      options: ["float-left", "float-right", "block"]
-    },
-    {
-      type: "string",
-      label: "Width",
-      name: "imgWidth",
-      required: true,
-      options: [
-        { label: "auto", value: "w-auto" },
-        { label: "fullWidth", value: "w-full" },
-        { label: "halfWidth", value: "w-full md:w-1/2" },
-        { label: "thirdWidth", value: "w-full md:w-1/3" },
-        { label: "quarterWidth", value: "w-full md:w-1/4" }
-      ]
-    }
-  ]
-};
-
-// tina/collections/commons/tinaFields.ts
-var completeRichText = {
-  type: "rich-text",
-  name: "body",
-  label: "Body",
-  isBody: true,
-  templates: [imageBlock]
-};
-var pagesDefaultFields = [
-  {
-    type: "string",
-    name: "title",
-    label: "Title",
-    isTitle: true,
-    required: true
-  },
-  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
-  { type: "datetime", name: "createdAt", label: "Creation date" },
-  { type: "datetime", name: "updatedAt", label: "Updated date" },
-  {
-    type: "string",
-    name: "description",
-    label: "Description - SEO",
-    required: true,
-    ui: {
-      component: "textarea"
-    }
-  }
-];
-
-// tina/collections/home.ts
+// tina/collections/home.jsx
+import { jsx as jsx3 } from "react/jsx-runtime";
 var home = {
-  label: "Home page",
+  label: "Page: Accueil",
   name: "homeData",
   path: "src/data",
   match: { include: "homeData" },
@@ -181,6 +127,15 @@ var home = {
     }
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx3(RestartWarning, {});
+        }
+      }
+    },
     // ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
     { type: "string", name: "intro_title", label: "Intro - Title" },
@@ -297,7 +252,8 @@ var home = {
 };
 var home_default = home;
 
-// tina/collections/navDataPrimary.ts
+// tina/collections/navDataPrimary.jsx
+import { jsx as jsx4 } from "react/jsx-runtime";
 var navDataPrimary = {
   label: "Primary Navigation",
   name: "navDataPrimary",
@@ -317,6 +273,15 @@ var navDataPrimary = {
     };
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx4(RestartWarning, {});
+        }
+      }
+    },
     {
       type: "object",
       name: "links",
@@ -423,7 +388,8 @@ var navDataPrimary = {
 };
 var navDataPrimary_default = navDataPrimary;
 
-// tina/collections/navDataSecondary.ts
+// tina/collections/navDataSecondary.jsx
+import { jsx as jsx5 } from "react/jsx-runtime";
 var navDataSecondary = {
   label: "Secondary Navigation",
   name: "navDataSecondary",
@@ -443,6 +409,15 @@ var navDataSecondary = {
     };
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx5(RestartWarning, {});
+        }
+      }
+    },
     {
       type: "object",
       name: "links",
@@ -493,13 +468,125 @@ var navDataSecondary = {
 };
 var navDataSecondary_default = navDataSecondary;
 
-// tina/collections/page.ts
+// tina/collections/commons/templates.ts
+var imageBlock = {
+  name: "PositionableImage",
+  label: "Image",
+  ui: {
+    itemProps: (item) => {
+      return { label: `Image: ${item?.alt}` };
+    }
+  },
+  fields: [
+    {
+      type: "image",
+      label: "Image",
+      name: "src",
+      required: true
+    },
+    { type: "string", label: "Alt", name: "alt", required: true },
+    { type: "string", label: "Caption", name: "caption" },
+    { type: "string", label: "Class", name: "class" },
+    {
+      type: "string",
+      label: "Position",
+      name: "position",
+      required: true,
+      options: ["float-left", "float-right", "block"]
+    },
+    {
+      type: "string",
+      label: "Width",
+      name: "imgWidth",
+      required: true,
+      options: [
+        { label: "auto", value: "w-auto" },
+        { label: "fullWidth", value: "w-full" },
+        { label: "halfWidth", value: "w-full md:w-1/2" },
+        { label: "thirdWidth", value: "w-full md:w-1/3" },
+        { label: "quarterWidth", value: "w-full md:w-1/4" }
+      ]
+    }
+  ]
+};
+
+// tina/collections/commons/tinaFields.ts
+var completeRichText = {
+  type: "rich-text",
+  name: "body",
+  label: "Body",
+  isBody: true,
+  templates: [imageBlock]
+};
+var pagesDefaultFields = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    isTitle: true,
+    required: true
+  },
+  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+  {
+    type: "datetime",
+    name: "createdAt",
+    label: "Creation date",
+    ui: {
+      component: "hidden"
+    }
+  },
+  {
+    type: "datetime",
+    name: "updatedAt",
+    label: "Updated date",
+    ui: {
+      component: "hidden"
+    }
+  },
+  {
+    type: "string",
+    name: "description",
+    label: "Description - SEO",
+    required: true,
+    ui: {
+      component: "textarea"
+    }
+  }
+];
+
+// src/js/utils.js
+function slugify(text) {
+  return text.toString().normalize("NFD").toLowerCase().replace(/['"]/g, " ").replace(/\s+/g, "-").replace(/[^\w-]+/g, "").replace(/--+/g, "-").replace(/^-+/, "").replace(/[^\x00-\x7F]/g, "-").replace(/-+$/, "");
+}
+
+// tina/collections/commons/utils.ts
+var onPagesBeforeSubmit_Page = async ({
+  form,
+  cms,
+  values
+}) => {
+  if (form.crudType === "create") {
+    return {
+      ...values,
+      createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+      updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
+      filename: slugify(values.title)
+    };
+  }
+  return {
+    ...values,
+    updatedAt: (/* @__PURE__ */ new Date()).toISOString()
+  };
+};
+
+// tina/collections/page.jsx
+import { jsx as jsx6 } from "react/jsx-runtime";
 var page = {
   name: "page",
-  label: "Pages",
+  label: "Autres pages",
   path: "src/content/pages",
   format: "mdx",
-  match: { exclude: "{about,index,contact}" },
+  match: { exclude: "{index,contact,complices,equipe}" },
   ui: {
     router: ({ document }) => {
       return `/${document._sys.breadcrumbs.join("/")}`;
@@ -507,6 +594,15 @@ var page = {
     beforeSubmit: onPagesBeforeSubmit_Page
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx6(RestartWarning, {});
+        }
+      }
+    },
     ...pagesDefaultFields,
     { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },
     {
@@ -516,9 +612,10 @@ var page = {
 };
 var page_default = page;
 
-// tina/collections/siteData.ts
+// tina/collections/siteData.jsx
+import { jsx as jsx7 } from "react/jsx-runtime";
 var siteData = {
-  label: "Site Informations (Global)",
+  label: "Site Informations (SEO, etc.)",
   name: "siteData",
   path: "src/data",
   match: { include: "siteData" },
@@ -533,10 +630,36 @@ var siteData = {
   fields: [
     {
       type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx7(RestartWarning, {});
+        }
+      }
+    },
+    {
+      type: "string",
+      name: "_seo",
+      ui: {
+        component: () => {
+          return jsx7("h2", { className: "mb-2 text-xl font-black", children: "SEO" });
+        }
+      }
+    },
+    {
+      type: "string",
       name: "title",
-      label: "Title",
+      label: "SEO, default Title",
       isTitle: true,
       required: true
+    },
+    {
+      type: "string",
+      name: "description",
+      label: "SEO, default Description",
+      ui: {
+        component: "textarea"
+      }
     },
     {
       type: "string",
@@ -554,17 +677,9 @@ var siteData = {
       label: "Facebook Page/User URL"
     },
     {
-      type: "string",
-      name: "description",
-      label: "Description",
-      ui: {
-        component: "textarea"
-      }
-    },
-    {
       type: "object",
       name: "image",
-      label: "Image",
+      label: "SEO, default Image",
       fields: [
         {
           type: "image",
@@ -579,6 +694,15 @@ var siteData = {
           required: true
         }
       ]
+    },
+    {
+      type: "string",
+      name: "_footer",
+      ui: {
+        component: () => {
+          return jsx7("h2", { className: "mb-2 text-xl font-black", children: "Footer" });
+        }
+      }
     },
     { type: "rich-text", name: "informations", label: "Informations" },
     {
@@ -613,9 +737,10 @@ var siteData = {
 };
 var siteData_default = siteData;
 
-// tina/collections/team.ts
+// tina/collections/team.jsx
+import { jsx as jsx8 } from "react/jsx-runtime";
 var team2 = {
-  label: "\xC9quipe",
+  label: "Page: \xC9quipe / Contact",
   name: "team",
   path: "src/data",
   match: { include: "team" },
@@ -629,18 +754,45 @@ var team2 = {
   },
   fields: [
     {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return jsx8(RestartWarning, {});
+        }
+      }
+    },
+    {
+      type: "string",
+      name: "_team",
+      ui: {
+        component: () => {
+          return jsx8("h2", { className: "mb-2 text-xl font-black", children: "Sp\xE9cifique page \xC9quipe" });
+        }
+      }
+    },
+    {
       type: "object",
       name: "equipe",
-      label: "Page \xE9quipe",
+      label: "Contenu page \xE9quipe",
       fields: [
         { type: "string", name: "title", label: "Titre", required: true },
         { type: "image", name: "hero_bg", label: "Hero Image", required: true }
       ]
     },
     {
+      type: "string",
+      name: "_contact",
+      ui: {
+        component: () => {
+          return jsx8("h2", { className: "mb-2 text-xl font-black", children: "Sp\xE9cifique page Contact" });
+        }
+      }
+    },
+    {
       type: "object",
-      name: "Contact",
-      label: "Page contact",
+      name: "contact",
+      label: "Contenu page contact",
       fields: [
         { type: "string", name: "title", label: "Titre", required: true },
         { type: "image", name: "hero_bg", label: "Hero Image", required: true },
@@ -738,13 +890,13 @@ var config_default = defineConfig({
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
+      home_default,
+      team_default,
+      associate_default,
+      page_default,
       navDataPrimary_default,
       navDataSecondary_default,
-      siteData_default,
-      page_default,
-      team_default,
-      home_default,
-      associate_default
+      siteData_default
     ]
   }
 });

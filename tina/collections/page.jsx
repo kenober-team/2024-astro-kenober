@@ -1,13 +1,14 @@
 import { pagesDefaultFields, completeRichText } from "./commons/tinaFields";
 import { onPagesBeforeSubmit_Page } from "./commons/utils";
-import type { Collection, Form, TinaCMS } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const page: Collection = {
+/** @type {import("tinacms").Collection} */
+const page = {
   name: "page",
-  label: "Pages",
+  label: "Autres pages",
   path: "src/content/pages",
   format: "mdx",
-  match: { exclude: "{about,index,contact}" },
+  match: { exclude: "{index,contact,complices,equipe}" },
   ui: {
     router: ({ document }) => {
       // navigate to the post that was clicked
@@ -17,6 +18,15 @@ const page: Collection = {
     beforeSubmit: onPagesBeforeSubmit_Page,
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
     ...pagesDefaultFields,
 
     { type: "boolean", name: "useProse", label: "Utiliser le style 'Prose'" },

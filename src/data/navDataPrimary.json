@@ -5,37 +5,7 @@
       "path": "#",
       "title": "Nos offres",
       "isButton": false,
-      "target": "_self",
-      "children": [
-        {
-          "name": "Créez un site web performant et moins polluant",
-          "title": "Créez un site web performant et moins polluant",
-          "isButton": false,
-          "path": "/offres/creez-un-site-web-performant-et-moins-polluant/",
-          "target": "_self"
-        },
-        {
-          "name": "Réduisez l'empreinte de votre site actuel",
-          "title": "Réduisez l'empreinte de votre site actuel",
-          "isButton": false,
-          "path": "/offres/reduisez-l-empreinte-de-votre-site-actuel/",
-          "target": "_self"
-        },
-        {
-          "name": "Créez votre marque 100% digitale",
-          "title": "Créez votre marque 100% digitale",
-          "isButton": false,
-          "path": "/offres/nova-mooon-offre-ux-web/",
-          "target": "_self"
-        },
-        {
-          "name": "Comprenez et intégrez l'éco-conception ♻️",
-          "title": "Comprenez et intégrez l'éco-conception ♻️",
-          "isButton": false,
-          "path": "/offres/comprenez-et-integrez-l-eco-conception/",
-          "target": "_self"
-        }
-      ]
+      "target": "_self"
     },
     {
       "name": "Références",

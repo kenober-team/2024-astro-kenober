@@ -3,7 +3,7 @@
     "title": "L’équipe",
     "hero_bg": "/src/assets/heros/hero-equipe.svg"
   },
-  "Contact": {
+  "contact": {
     "title": "Envie d’échanger avec nous ?  Nous aussi !",
     "hero_bg": "/src/assets/heros/hero-contact.svg",
     "before_text": "Nous vous laissons contacter la personne  de votre choix :",

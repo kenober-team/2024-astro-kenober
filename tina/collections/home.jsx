@@ -1,9 +1,8 @@
-import { pagesDefaultFields, completeRichText } from "./commons/tinaFields";
-import { onPagesBeforeSubmit_Page } from "./commons/utils";
-import type { Collection, Form, TinaCMS } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const home: Collection = {
-  label: "Home page",
+/** @type {import("tinacms").Collection} */
+const home = {
+  label: "Page: Accueil",
   name: "homeData",
   path: "src/data",
   match: { include: "homeData" },
@@ -16,6 +15,15 @@ const home: Collection = {
     },
   },
   fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
     // ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
     { type: "string", name: "intro_title", label: "Intro - Title" },

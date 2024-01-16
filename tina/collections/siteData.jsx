@@ -1,7 +1,8 @@
-import type { Collection } from "tinacms";
+import { RestartWarning } from "./commons/warning";
 
-const siteData: Collection = {
-  label: "Site Informations (Global)",
+/** @type {import("tinacms").Collection} */
+const siteData = {
+  label: "Site Informations (SEO, etc.)",
   name: "siteData",
   path: "src/data",
   match: { include: "siteData" },
@@ -16,10 +17,36 @@ const siteData: Collection = {
   fields: [
     {
       type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
+    {
+      type: "string",
+      name: "_seo",
+      ui: {
+        component: () => {
+          return <h2 className="mb-2 text-xl font-black">SEO</h2>;
+        },
+      },
+    },
+    {
+      type: "string",
       name: "title",
-      label: "Title",
+      label: "SEO, default Title",
       isTitle: true,
       required: true,
+    },
+    {
+      type: "string",
+      name: "description",
+      label: "SEO, default Description",
+      ui: {
+        component: "textarea",
+      },
     },
     {
       type: "string",
@@ -37,17 +64,9 @@ const siteData: Collection = {
       label: "Facebook Page/User URL",
     },
     {
-      type: "string",
-      name: "description",
-      label: "Description",
-      ui: {
-        component: "textarea",
-      },
-    },
-    {
       type: "object",
       name: "image",
-      label: "Image",
+      label: "SEO, default Image",
       fields: [
         {
           type: "image",
@@ -62,6 +81,15 @@ const siteData: Collection = {
           required: true,
         },
       ],
+    },
+    {
+      type: "string",
+      name: "_footer",
+      ui: {
+        component: () => {
+          return <h2 className="mb-2 text-xl font-black">Footer</h2>;
+        },
+      },
     },
     { type: "rich-text", name: "informations", label: "Informations" },
     {

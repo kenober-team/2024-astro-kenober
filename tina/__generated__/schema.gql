@@ -53,30 +53,30 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
+  homeData(relativePath: String): HomeData!
+  homeDataConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeDataFilter): HomeDataConnection!
+  team(relativePath: String): Team!
+  teamConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TeamFilter): TeamConnection!
+  associate(relativePath: String): Associate!
+  associateConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AssociateFilter): AssociateConnection!
+  page(relativePath: String): Page!
+  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
   navDataPrimary(relativePath: String): NavDataPrimary!
   navDataPrimaryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavDataPrimaryFilter): NavDataPrimaryConnection!
   navDataSecondary(relativePath: String): NavDataSecondary!
   navDataSecondaryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavDataSecondaryFilter): NavDataSecondaryConnection!
   siteData(relativePath: String): SiteData!
   siteDataConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteDataFilter): SiteDataConnection!
-  page(relativePath: String): Page!
-  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
-  team(relativePath: String): Team!
-  teamConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TeamFilter): TeamConnection!
-  homeData(relativePath: String): HomeData!
-  homeDataConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeDataFilter): HomeDataConnection!
-  associate(relativePath: String): Associate!
-  associateConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AssociateFilter): AssociateConnection!
 }
 
 input DocumentFilter {
+  homeData: HomeDataFilter
+  team: TeamFilter
+  associate: AssociateFilter
+  page: PageFilter
   navDataPrimary: NavDataPrimaryFilter
   navDataSecondary: NavDataSecondaryFilter
   siteData: SiteDataFilter
-  page: PageFilter
-  team: TeamFilter
-  homeData: HomeDataFilter
-  associate: AssociateFilter
 }
 
 type DocumentConnectionEdges {
@@ -102,27 +102,51 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = NavDataPrimary | NavDataSecondary | SiteData | Page | Team | HomeData | Associate | Folder
+union DocumentNode = HomeData | Team | Associate | Page | NavDataPrimary | NavDataSecondary | SiteData | Folder
 
-type NavDataPrimaryLinksChildren {
-  name: String!
-  title: String!
-  isButton: Boolean!
-  path: String!
-  target: String!
+type HomeDataOffresImage {
+  src: String!
+  alt: String!
 }
 
-type NavDataPrimaryLinks {
-  name: String!
-  path: String!
-  title: String!
-  isButton: Boolean!
-  target: String!
-  children: [NavDataPrimaryLinksChildren]
+type HomeDataOffres {
+  title: String
+  base_line: String
+  text: String
+  image: HomeDataOffresImage
 }
 
-type NavDataPrimary implements Node & Document {
-  links: [NavDataPrimaryLinks]
+type HomeDataPrincipe_image {
+  src: String!
+  alt: String!
+}
+
+type HomeDataTestimonial {
+  text: String
+  name: String
+}
+
+type HomeDataGallery {
+  src: String!
+  alt: String!
+}
+
+type HomeData implements Node & Document {
+  _warning: String
+  hero_text: JSON
+  intro_title: String
+  intro_text: JSON
+  intro_offre: String
+  offres: [HomeDataOffres]
+  principe_title: String
+  principe_sub_title: JSON
+  principe_text: JSON
+  principe_image: HomeDataPrincipe_image
+  principe_text_image: JSON
+  principe_text_bt_label: String
+  principe_text_bt_url: String
+  testimonial: [HomeDataTestimonial]
+  gallery: [HomeDataGallery]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -135,104 +159,10 @@ input StringFilter {
   in: [String]
 }
 
-input BooleanFilter {
-  eq: Boolean
+input RichTextFilter {
+  startsWith: String
+  eq: String
   exists: Boolean
-}
-
-input NavDataPrimaryLinksChildrenFilter {
-  name: StringFilter
-  title: StringFilter
-  isButton: BooleanFilter
-  path: StringFilter
-  target: StringFilter
-}
-
-input NavDataPrimaryLinksFilter {
-  name: StringFilter
-  path: StringFilter
-  title: StringFilter
-  isButton: BooleanFilter
-  target: StringFilter
-  children: NavDataPrimaryLinksChildrenFilter
-}
-
-input NavDataPrimaryFilter {
-  links: NavDataPrimaryLinksFilter
-}
-
-type NavDataPrimaryConnectionEdges {
-  cursor: String!
-  node: NavDataPrimary
-}
-
-type NavDataPrimaryConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [NavDataPrimaryConnectionEdges]
-}
-
-type NavDataSecondaryLinks {
-  name: String!
-  path: String!
-  title: String!
-  isButton: Boolean!
-  target: String!
-}
-
-type NavDataSecondary implements Node & Document {
-  links: [NavDataSecondaryLinks]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input NavDataSecondaryLinksFilter {
-  name: StringFilter
-  path: StringFilter
-  title: StringFilter
-  isButton: BooleanFilter
-  target: StringFilter
-}
-
-input NavDataSecondaryFilter {
-  links: NavDataSecondaryLinksFilter
-}
-
-type NavDataSecondaryConnectionEdges {
-  cursor: String!
-  node: NavDataSecondary
-}
-
-type NavDataSecondaryConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [NavDataSecondaryConnectionEdges]
-}
-
-type SiteDataImage {
-  url: String!
-  alt: String!
-}
-
-type SiteDataNetworks {
-  url: String!
-  title: String!
-  icon: String!
-}
-
-type SiteData implements Node & Document {
-  title: String!
-  titleTemplate: String
-  twitterUsername: String
-  fbPageUrl: String
-  description: String
-  image: SiteDataImage
-  informations: JSON
-  networks: [SiteDataNetworks]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
 }
 
 input ImageFilter {
@@ -242,46 +172,207 @@ input ImageFilter {
   in: [String]
 }
 
-input SiteDataImageFilter {
-  url: ImageFilter
+input HomeDataOffresImageFilter {
+  src: ImageFilter
   alt: StringFilter
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
+input HomeDataOffresFilter {
+  title: StringFilter
+  base_line: StringFilter
+  text: StringFilter
+  image: HomeDataOffresImageFilter
+}
+
+input HomeDataPrincipe_imageFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input HomeDataTestimonialFilter {
+  text: StringFilter
+  name: StringFilter
+}
+
+input HomeDataGalleryFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input HomeDataFilter {
+  _warning: StringFilter
+  hero_text: RichTextFilter
+  intro_title: StringFilter
+  intro_text: RichTextFilter
+  intro_offre: StringFilter
+  offres: HomeDataOffresFilter
+  principe_title: StringFilter
+  principe_sub_title: RichTextFilter
+  principe_text: RichTextFilter
+  principe_image: HomeDataPrincipe_imageFilter
+  principe_text_image: RichTextFilter
+  principe_text_bt_label: StringFilter
+  principe_text_bt_url: StringFilter
+  testimonial: HomeDataTestimonialFilter
+  gallery: HomeDataGalleryFilter
+}
+
+type HomeDataConnectionEdges {
+  cursor: String!
+  node: HomeData
+}
+
+type HomeDataConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [HomeDataConnectionEdges]
+}
+
+type TeamEquipe {
+  title: String!
+  hero_bg: String!
+}
+
+type TeamContact {
+  title: String!
+  hero_bg: String!
+  before_text: String
+  after_title: String
+  after_text: String
+}
+
+type TeamMembers {
+  name: String!
+  published: Boolean!
+  role: String!
+  education: String!
+  citation: String!
+  bio: JSON!
+  image_inactive: String!
+  image_active: String!
+  linkedin: String
+  email: String
+}
+
+type Team implements Node & Document {
+  _warning: String
+  _team: String
+  equipe: TeamEquipe
+  _contact: String
+  contact: TeamContact
+  members: [TeamMembers]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input TeamEquipeFilter {
+  title: StringFilter
+  hero_bg: ImageFilter
+}
+
+input TeamContactFilter {
+  title: StringFilter
+  hero_bg: ImageFilter
+  before_text: StringFilter
+  after_title: StringFilter
+  after_text: StringFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
   exists: Boolean
 }
 
-input SiteDataNetworksFilter {
-  url: StringFilter
-  title: StringFilter
-  icon: StringFilter
+input TeamMembersFilter {
+  name: StringFilter
+  published: BooleanFilter
+  role: StringFilter
+  education: StringFilter
+  citation: StringFilter
+  bio: RichTextFilter
+  image_inactive: ImageFilter
+  image_active: ImageFilter
+  linkedin: StringFilter
+  email: StringFilter
 }
 
-input SiteDataFilter {
-  title: StringFilter
-  titleTemplate: StringFilter
-  twitterUsername: StringFilter
-  fbPageUrl: StringFilter
-  description: StringFilter
-  image: SiteDataImageFilter
-  informations: RichTextFilter
-  networks: SiteDataNetworksFilter
+input TeamFilter {
+  _warning: StringFilter
+  _team: StringFilter
+  equipe: TeamEquipeFilter
+  _contact: StringFilter
+  contact: TeamContactFilter
+  members: TeamMembersFilter
 }
 
-type SiteDataConnectionEdges {
+type TeamConnectionEdges {
   cursor: String!
-  node: SiteData
+  node: Team
 }
 
-type SiteDataConnection implements Connection {
+type TeamConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [SiteDataConnectionEdges]
+  edges: [TeamConnectionEdges]
+}
+
+type AssociateAssociatesImage {
+  src: String!
+  alt: String!
+}
+
+type AssociateAssociates {
+  name: String!
+  published: Boolean!
+  description: JSON!
+  image: AssociateAssociatesImage
+}
+
+type Associate implements Node & Document {
+  _warning: String
+  title: String!
+  hero_bg: String!
+  intro: String
+  associates: [AssociateAssociates]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input AssociateAssociatesImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input AssociateAssociatesFilter {
+  name: StringFilter
+  published: BooleanFilter
+  description: RichTextFilter
+  image: AssociateAssociatesImageFilter
+}
+
+input AssociateFilter {
+  _warning: StringFilter
+  title: StringFilter
+  hero_bg: ImageFilter
+  intro: StringFilter
+  associates: AssociateAssociatesFilter
+}
+
+type AssociateConnectionEdges {
+  cursor: String!
+  node: Associate
+}
+
+type AssociateConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [AssociateConnectionEdges]
 }
 
 type Page implements Node & Document {
+  _warning: String
   title: String!
   hero_bg: String!
   createdAt: String
@@ -316,6 +407,7 @@ input PageBodyFilter {
 }
 
 input PageFilter {
+  _warning: StringFilter
   title: StringFilter
   hero_bg: ImageFilter
   createdAt: DatetimeFilter
@@ -336,236 +428,166 @@ type PageConnection implements Connection {
   edges: [PageConnectionEdges]
 }
 
-type TeamEquipe {
-  title: String!
-  hero_bg: String!
-}
-
-type TeamContact {
-  title: String!
-  hero_bg: String!
-  before_text: String
-  after_title: String
-  after_text: String
-}
-
-type TeamMembers {
+type NavDataPrimaryLinksChildren {
   name: String!
-  published: Boolean!
-  role: String!
-  education: String!
-  citation: String!
-  bio: JSON!
-  image_inactive: String!
-  image_active: String!
-  linkedin: String
-  email: String
-}
-
-type Team implements Node & Document {
-  equipe: TeamEquipe
-  Contact: TeamContact
-  members: [TeamMembers]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input TeamEquipeFilter {
-  title: StringFilter
-  hero_bg: ImageFilter
-}
-
-input TeamContactFilter {
-  title: StringFilter
-  hero_bg: ImageFilter
-  before_text: StringFilter
-  after_title: StringFilter
-  after_text: StringFilter
-}
-
-input TeamMembersFilter {
-  name: StringFilter
-  published: BooleanFilter
-  role: StringFilter
-  education: StringFilter
-  citation: StringFilter
-  bio: RichTextFilter
-  image_inactive: ImageFilter
-  image_active: ImageFilter
-  linkedin: StringFilter
-  email: StringFilter
-}
-
-input TeamFilter {
-  equipe: TeamEquipeFilter
-  Contact: TeamContactFilter
-  members: TeamMembersFilter
-}
-
-type TeamConnectionEdges {
-  cursor: String!
-  node: Team
-}
-
-type TeamConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [TeamConnectionEdges]
-}
-
-type HomeDataOffresImage {
-  src: String!
-  alt: String!
-}
-
-type HomeDataOffres {
-  title: String
-  base_line: String
-  text: String
-  image: HomeDataOffresImage
-}
-
-type HomeDataPrincipe_image {
-  src: String!
-  alt: String!
-}
-
-type HomeDataTestimonial {
-  text: String
-  name: String
-}
-
-type HomeDataGallery {
-  src: String!
-  alt: String!
-}
-
-type HomeData implements Node & Document {
-  hero_text: JSON
-  intro_title: String
-  intro_text: JSON
-  intro_offre: String
-  offres: [HomeDataOffres]
-  principe_title: String
-  principe_sub_title: JSON
-  principe_text: JSON
-  principe_image: HomeDataPrincipe_image
-  principe_text_image: JSON
-  principe_text_bt_label: String
-  principe_text_bt_url: String
-  testimonial: [HomeDataTestimonial]
-  gallery: [HomeDataGallery]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input HomeDataOffresImageFilter {
-  src: ImageFilter
-  alt: StringFilter
-}
-
-input HomeDataOffresFilter {
-  title: StringFilter
-  base_line: StringFilter
-  text: StringFilter
-  image: HomeDataOffresImageFilter
-}
-
-input HomeDataPrincipe_imageFilter {
-  src: ImageFilter
-  alt: StringFilter
-}
-
-input HomeDataTestimonialFilter {
-  text: StringFilter
-  name: StringFilter
-}
-
-input HomeDataGalleryFilter {
-  src: ImageFilter
-  alt: StringFilter
-}
-
-input HomeDataFilter {
-  hero_text: RichTextFilter
-  intro_title: StringFilter
-  intro_text: RichTextFilter
-  intro_offre: StringFilter
-  offres: HomeDataOffresFilter
-  principe_title: StringFilter
-  principe_sub_title: RichTextFilter
-  principe_text: RichTextFilter
-  principe_image: HomeDataPrincipe_imageFilter
-  principe_text_image: RichTextFilter
-  principe_text_bt_label: StringFilter
-  principe_text_bt_url: StringFilter
-  testimonial: HomeDataTestimonialFilter
-  gallery: HomeDataGalleryFilter
-}
-
-type HomeDataConnectionEdges {
-  cursor: String!
-  node: HomeData
-}
-
-type HomeDataConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [HomeDataConnectionEdges]
-}
-
-type AssociateAssociatesImage {
-  src: String!
-  alt: String!
-}
-
-type AssociateAssociates {
-  name: String!
-  published: Boolean!
-  description: JSON!
-  image: AssociateAssociatesImage
-}
-
-type Associate implements Node & Document {
   title: String!
-  hero_bg: String!
-  intro: String
-  associates: [AssociateAssociates]
+  isButton: Boolean!
+  path: String!
+  target: String!
+}
+
+type NavDataPrimaryLinks {
+  name: String!
+  path: String!
+  title: String!
+  isButton: Boolean!
+  target: String!
+  children: [NavDataPrimaryLinksChildren]
+}
+
+type NavDataPrimary implements Node & Document {
+  _warning: String
+  links: [NavDataPrimaryLinks]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input AssociateAssociatesImageFilter {
-  src: ImageFilter
+input NavDataPrimaryLinksChildrenFilter {
+  name: StringFilter
+  title: StringFilter
+  isButton: BooleanFilter
+  path: StringFilter
+  target: StringFilter
+}
+
+input NavDataPrimaryLinksFilter {
+  name: StringFilter
+  path: StringFilter
+  title: StringFilter
+  isButton: BooleanFilter
+  target: StringFilter
+  children: NavDataPrimaryLinksChildrenFilter
+}
+
+input NavDataPrimaryFilter {
+  _warning: StringFilter
+  links: NavDataPrimaryLinksFilter
+}
+
+type NavDataPrimaryConnectionEdges {
+  cursor: String!
+  node: NavDataPrimary
+}
+
+type NavDataPrimaryConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [NavDataPrimaryConnectionEdges]
+}
+
+type NavDataSecondaryLinks {
+  name: String!
+  path: String!
+  title: String!
+  isButton: Boolean!
+  target: String!
+}
+
+type NavDataSecondary implements Node & Document {
+  _warning: String
+  links: [NavDataSecondaryLinks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NavDataSecondaryLinksFilter {
+  name: StringFilter
+  path: StringFilter
+  title: StringFilter
+  isButton: BooleanFilter
+  target: StringFilter
+}
+
+input NavDataSecondaryFilter {
+  _warning: StringFilter
+  links: NavDataSecondaryLinksFilter
+}
+
+type NavDataSecondaryConnectionEdges {
+  cursor: String!
+  node: NavDataSecondary
+}
+
+type NavDataSecondaryConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [NavDataSecondaryConnectionEdges]
+}
+
+type SiteDataImage {
+  url: String!
+  alt: String!
+}
+
+type SiteDataNetworks {
+  url: String!
+  title: String!
+  icon: String!
+}
+
+type SiteData implements Node & Document {
+  _warning: String
+  _seo: String
+  title: String!
+  description: String
+  titleTemplate: String
+  twitterUsername: String
+  fbPageUrl: String
+  image: SiteDataImage
+  _footer: String
+  informations: JSON
+  networks: [SiteDataNetworks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input SiteDataImageFilter {
+  url: ImageFilter
   alt: StringFilter
 }
 
-input AssociateAssociatesFilter {
-  name: StringFilter
-  published: BooleanFilter
-  description: RichTextFilter
-  image: AssociateAssociatesImageFilter
-}
-
-input AssociateFilter {
+input SiteDataNetworksFilter {
+  url: StringFilter
   title: StringFilter
-  hero_bg: ImageFilter
-  intro: StringFilter
-  associates: AssociateAssociatesFilter
+  icon: StringFilter
 }
 
-type AssociateConnectionEdges {
+input SiteDataFilter {
+  _warning: StringFilter
+  _seo: StringFilter
+  title: StringFilter
+  description: StringFilter
+  titleTemplate: StringFilter
+  twitterUsername: StringFilter
+  fbPageUrl: StringFilter
+  image: SiteDataImageFilter
+  _footer: StringFilter
+  informations: RichTextFilter
+  networks: SiteDataNetworksFilter
+}
+
+type SiteDataConnectionEdges {
   cursor: String!
-  node: Associate
+  node: SiteData
 }
 
-type AssociateConnection implements Connection {
+type SiteDataConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [AssociateConnectionEdges]
+  edges: [SiteDataConnectionEdges]
 }
 
 type Mutation {
@@ -573,138 +595,41 @@ type Mutation {
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
+  updateHomeData(relativePath: String!, params: HomeDataMutation!): HomeData!
+  createHomeData(relativePath: String!, params: HomeDataMutation!): HomeData!
+  updateTeam(relativePath: String!, params: TeamMutation!): Team!
+  createTeam(relativePath: String!, params: TeamMutation!): Team!
+  updateAssociate(relativePath: String!, params: AssociateMutation!): Associate!
+  createAssociate(relativePath: String!, params: AssociateMutation!): Associate!
+  updatePage(relativePath: String!, params: PageMutation!): Page!
+  createPage(relativePath: String!, params: PageMutation!): Page!
   updateNavDataPrimary(relativePath: String!, params: NavDataPrimaryMutation!): NavDataPrimary!
   createNavDataPrimary(relativePath: String!, params: NavDataPrimaryMutation!): NavDataPrimary!
   updateNavDataSecondary(relativePath: String!, params: NavDataSecondaryMutation!): NavDataSecondary!
   createNavDataSecondary(relativePath: String!, params: NavDataSecondaryMutation!): NavDataSecondary!
   updateSiteData(relativePath: String!, params: SiteDataMutation!): SiteData!
   createSiteData(relativePath: String!, params: SiteDataMutation!): SiteData!
-  updatePage(relativePath: String!, params: PageMutation!): Page!
-  createPage(relativePath: String!, params: PageMutation!): Page!
-  updateTeam(relativePath: String!, params: TeamMutation!): Team!
-  createTeam(relativePath: String!, params: TeamMutation!): Team!
-  updateHomeData(relativePath: String!, params: HomeDataMutation!): HomeData!
-  createHomeData(relativePath: String!, params: HomeDataMutation!): HomeData!
-  updateAssociate(relativePath: String!, params: AssociateMutation!): Associate!
-  createAssociate(relativePath: String!, params: AssociateMutation!): Associate!
 }
 
 input DocumentUpdateMutation {
+  homeData: HomeDataMutation
+  team: TeamMutation
+  associate: AssociateMutation
+  page: PageMutation
   navDataPrimary: NavDataPrimaryMutation
   navDataSecondary: NavDataSecondaryMutation
   siteData: SiteDataMutation
-  page: PageMutation
-  team: TeamMutation
-  homeData: HomeDataMutation
-  associate: AssociateMutation
   relativePath: String
 }
 
 input DocumentMutation {
+  homeData: HomeDataMutation
+  team: TeamMutation
+  associate: AssociateMutation
+  page: PageMutation
   navDataPrimary: NavDataPrimaryMutation
   navDataSecondary: NavDataSecondaryMutation
   siteData: SiteDataMutation
-  page: PageMutation
-  team: TeamMutation
-  homeData: HomeDataMutation
-  associate: AssociateMutation
-}
-
-input NavDataPrimaryLinksChildrenMutation {
-  name: String
-  title: String
-  isButton: Boolean
-  path: String
-  target: String
-}
-
-input NavDataPrimaryLinksMutation {
-  name: String
-  path: String
-  title: String
-  isButton: Boolean
-  target: String
-  children: [NavDataPrimaryLinksChildrenMutation]
-}
-
-input NavDataPrimaryMutation {
-  links: [NavDataPrimaryLinksMutation]
-}
-
-input NavDataSecondaryLinksMutation {
-  name: String
-  path: String
-  title: String
-  isButton: Boolean
-  target: String
-}
-
-input NavDataSecondaryMutation {
-  links: [NavDataSecondaryLinksMutation]
-}
-
-input SiteDataImageMutation {
-  url: String
-  alt: String
-}
-
-input SiteDataNetworksMutation {
-  url: String
-  title: String
-  icon: String
-}
-
-input SiteDataMutation {
-  title: String
-  titleTemplate: String
-  twitterUsername: String
-  fbPageUrl: String
-  description: String
-  image: SiteDataImageMutation
-  informations: JSON
-  networks: [SiteDataNetworksMutation]
-}
-
-input PageMutation {
-  title: String
-  hero_bg: String
-  createdAt: String
-  updatedAt: String
-  description: String
-  useProse: Boolean
-  body: JSON
-}
-
-input TeamEquipeMutation {
-  title: String
-  hero_bg: String
-}
-
-input TeamContactMutation {
-  title: String
-  hero_bg: String
-  before_text: String
-  after_title: String
-  after_text: String
-}
-
-input TeamMembersMutation {
-  name: String
-  published: Boolean
-  role: String
-  education: String
-  citation: String
-  bio: JSON
-  image_inactive: String
-  image_active: String
-  linkedin: String
-  email: String
-}
-
-input TeamMutation {
-  equipe: TeamEquipeMutation
-  Contact: TeamContactMutation
-  members: [TeamMembersMutation]
 }
 
 input HomeDataOffresImageMutation {
@@ -735,6 +660,7 @@ input HomeDataGalleryMutation {
 }
 
 input HomeDataMutation {
+  _warning: String
   hero_text: JSON
   intro_title: String
   intro_text: JSON
@@ -751,6 +677,41 @@ input HomeDataMutation {
   gallery: [HomeDataGalleryMutation]
 }
 
+input TeamEquipeMutation {
+  title: String
+  hero_bg: String
+}
+
+input TeamContactMutation {
+  title: String
+  hero_bg: String
+  before_text: String
+  after_title: String
+  after_text: String
+}
+
+input TeamMembersMutation {
+  name: String
+  published: Boolean
+  role: String
+  education: String
+  citation: String
+  bio: JSON
+  image_inactive: String
+  image_active: String
+  linkedin: String
+  email: String
+}
+
+input TeamMutation {
+  _warning: String
+  _team: String
+  equipe: TeamEquipeMutation
+  _contact: String
+  contact: TeamContactMutation
+  members: [TeamMembersMutation]
+}
+
 input AssociateAssociatesImageMutation {
   src: String
   alt: String
@@ -764,10 +725,82 @@ input AssociateAssociatesMutation {
 }
 
 input AssociateMutation {
+  _warning: String
   title: String
   hero_bg: String
   intro: String
   associates: [AssociateAssociatesMutation]
+}
+
+input PageMutation {
+  _warning: String
+  title: String
+  hero_bg: String
+  createdAt: String
+  updatedAt: String
+  description: String
+  useProse: Boolean
+  body: JSON
+}
+
+input NavDataPrimaryLinksChildrenMutation {
+  name: String
+  title: String
+  isButton: Boolean
+  path: String
+  target: String
+}
+
+input NavDataPrimaryLinksMutation {
+  name: String
+  path: String
+  title: String
+  isButton: Boolean
+  target: String
+  children: [NavDataPrimaryLinksChildrenMutation]
+}
+
+input NavDataPrimaryMutation {
+  _warning: String
+  links: [NavDataPrimaryLinksMutation]
+}
+
+input NavDataSecondaryLinksMutation {
+  name: String
+  path: String
+  title: String
+  isButton: Boolean
+  target: String
+}
+
+input NavDataSecondaryMutation {
+  _warning: String
+  links: [NavDataSecondaryLinksMutation]
+}
+
+input SiteDataImageMutation {
+  url: String
+  alt: String
+}
+
+input SiteDataNetworksMutation {
+  url: String
+  title: String
+  icon: String
+}
+
+input SiteDataMutation {
+  _warning: String
+  _seo: String
+  title: String
+  description: String
+  titleTemplate: String
+  twitterUsername: String
+  fbPageUrl: String
+  image: SiteDataImageMutation
+  _footer: String
+  informations: JSON
+  networks: [SiteDataNetworksMutation]
 }
 
 schema {

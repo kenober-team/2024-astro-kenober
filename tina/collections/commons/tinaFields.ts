@@ -1,5 +1,5 @@
-import { imageBlock } from "./templates";
 import type { TinaField } from "tinacms";
+import { imageBlock } from "./templates";
 
 /**
  * This constant represents a template for a rich text block.
@@ -25,8 +25,22 @@ const pagesDefaultFields: TinaField[] = [
     required: true,
   },
   { type: "image", name: "hero_bg", label: "Hero Image", required: true },
-  { type: "datetime", name: "createdAt", label: "Creation date" },
-  { type: "datetime", name: "updatedAt", label: "Updated date" },
+  {
+    type: "datetime",
+    name: "createdAt",
+    label: "Creation date",
+    ui: {
+      component: "hidden",
+    },
+  },
+  {
+    type: "datetime",
+    name: "updatedAt",
+    label: "Updated date",
+    ui: {
+      component: "hidden",
+    },
+  },
   {
     type: "string",
     name: "description",
