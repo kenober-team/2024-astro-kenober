@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
+    "build:check": "astro check && astro build",
     "preview": "astro preview",
     "format": "prettier -w --plugin-search-dir=. .",
     "astro": "astro"
@@ -13,6 +14,7 @@
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/mdx": "^2.0.4",
+    "@astrojs/partytown": "^2.0.4",
     "@astrojs/react": "^3.0.9",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",

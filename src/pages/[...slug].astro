@@ -1,6 +1,6 @@
 ---
 import TinaViewer from "@components/tinacms/TinaViewer.astro";
-import MainLayout from "@layouts/MainLayout.astro";
+import SecondaryLayout from "@layouts/SecondaryLayout.astro";
 import { client } from "@tina/__generated__/client";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
@@ -38,7 +38,7 @@ try {
 const { Content } = await entry.render();
 ---
 
-<MainLayout title={entry.data.title} description={entry.data.description}>
+<SecondaryLayout title={entry.data.title} description={entry.data.description}>
   {
     (() => {
       switch (entry.id) {
@@ -56,4 +56,4 @@ const { Content } = await entry.render();
       }
     }).call(this)
   }
-</MainLayout>
+</SecondaryLayout>

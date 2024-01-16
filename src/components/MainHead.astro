@@ -15,39 +15,41 @@ const {
 ---
 
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href={favIcon.src} />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="generator" content={Astro.generator} />
-  {
-    !overrideSiteTemplate && siteData.titleTemplate ? (
-      <title>{siteData.titleTemplate.replace("%s", title)}</title>
-    ) : (
-      <title>{title}</title>
-    )
-  }
-  <meta name="description" content={description} />
-
-  <Seo
-    {title}
-    {description}
-    url={Astro.url}
-    {overrideSiteTemplate}
-    {image}
-    {frontmatter}
-    {noRobots}
-  />
-  <link rel="stylesheet" href="/print.css" media="print" />
-  <script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (
-      localStorage.getItem("color-theme") === "dark" ||
-      (!("color-theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+  <>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" type="image/png" href={favIcon.src} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    {
+      !overrideSiteTemplate && siteData.titleTemplate ? (
+        <title>{siteData.titleTemplate.replace("%s", title)}</title>
+      ) : (
+        <title>{title}</title>
+      )
     }
-  </script>
+    <meta name="description" content={description} />
+
+    <Seo
+      {title}
+      {description}
+      url={Astro.url}
+      {overrideSiteTemplate}
+      {image}
+      {frontmatter}
+      {noRobots}
+    />
+    <link rel="stylesheet" href="/print.css" media="print" />
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </>
 </head>

@@ -1,0 +1,29 @@
+---
+import homeData from "@data/homeData.json";
+import siteData from "@data/siteData.json";
+import OffreCard from "./OffreCard.astro";
+const props = Astro.props;
+---
+
+<>
+  <section
+    class="container mx-auto flex flex-col gap-5 py-[2.95rem] text-center"
+  >
+    <h1 class="text-h1-home">{homeData.intro_title}</h1>
+    <p class="mx-auto w-[80%]">{homeData.intro_text}</p>
+  </section>
+  <section class="bg-gris-1 py-[2.95rem]">
+    <div class="container mx-auto flex flex-col items-center gap-5">
+      <h2 class="title-box">{homeData.intro_offre}</h2>
+      <div class="grid grid-cols-4 gap-1">
+        {
+          homeData.offres.map((offre, idex) => {
+            return <OffreCard {offre} />;
+          })
+        }
+      </div>
+    </div>
+  </section>
+  <!-- <p>{JSON.stringify(homeData, null, 2)}</p> -->
+  <!-- <p>{JSON.stringify(siteData, null, 2)}</p> -->
+</>

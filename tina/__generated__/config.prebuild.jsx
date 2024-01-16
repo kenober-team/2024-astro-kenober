@@ -19,13 +19,23 @@ var WarningIcon = (props) => {
     }
   );
 };
-var RestartWarning = () => {
+var RestartWarning = (view) => {
+  console.log("\u{1F680} ~ RestartWarning ~ view:", view);
   return jsx("p", { className: "mb-4 rounded-lg border border-yellow-200 bg-gradient-to-r from-yellow-50 to-yellow-100 px-4 py-2.5 shadow", children: jsxs("div", { className: "flex items-center gap-2", children: [
     jsx(WarningIcon, { className: `h-auto w-6 flex-shrink-0 text-yellow-400` }),
     jsxs("div", { className: `flex-1 whitespace-normal text-sm text-yellow-700	`, children: [
-      "Pour voir les modifications, il faut sauvegarder pour d\xE9clencher un refresh ",
-      jsx("em", { children: "(local development only)" }),
-      "."
+      "Pour voir les modifications, il faut sauvegarder pour d\xE9clencher un refresh.",
+      " ",
+      view.view && jsx(
+        "a",
+        {
+          href: `${view.view}`,
+          className: "underline",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: "consulter la page"
+        }
+      )
     ] })
   ] }) });
 };
@@ -130,6 +140,13 @@ var home = {
       create: false,
       delete: false
     }
+    // router: ({ document }) => {
+    //   console.log("🚀 ~ home.ui.document:", document);
+    //   // navigate to the post that was clicked
+    //   // return document._sys.path;
+    //   return `/${document._sys.breadcrumbs.join("/")}`;
+    //   return `/`;
+    // },
   },
   fields: [
     {
@@ -137,12 +154,13 @@ var home = {
       name: "_warning",
       ui: {
         component: () => {
-          return jsx3(RestartWarning, {});
+          return jsx3(RestartWarning, { view: `/` });
         }
       }
     },
     // ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
+    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro_title", label: "Intro - Title" },
     { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
     { type: "string", name: "intro_offre", label: "Intro - Offre" },

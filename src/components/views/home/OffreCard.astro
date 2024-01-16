@@ -1,0 +1,31 @@
+---
+import MDXImage from "@components/mdx/MDXImage.astro";
+
+const { offre } = Astro.props;
+---
+
+<div class="flex flex-col gap-4 text-left">
+  {
+    offre?.image && (
+      <MDXImage
+        src={offre?.image.src}
+        alt={offre?.image.alt}
+        width={321}
+        height={279}
+      />
+    )
+  }
+  <h3 class="px-4">{offre.title}</h3>
+  <p class="px-4 text-[0.94737rem]">{offre.base_line}</p>
+  <p class="px-4 text-[0.84211rem] italic text-black opacity-50">
+    {
+      offre.text
+        .split(" ")
+        .map((tag) => (
+          <span class="mx-1 inline-block whitespace-nowrap">
+            {tag.trim().split("_").join(" ")}
+          </span>
+        ))
+    }
+  </p>
+</div>

@@ -14,6 +14,7 @@ const {
   noRobots,
   classes,
   overrideSiteTemplate = false,
+  homeData,
 } = Astro.props;
 ---
 
@@ -28,7 +29,7 @@ const {
   />
   <body>
     <SkipLinks />
-    <Nav />
+    <Nav {homeData} />
     <main id="main-content" class:list={["flex flex-col", classes]}>
       <slot> Default Text</slot>
     </main>

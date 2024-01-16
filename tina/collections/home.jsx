@@ -13,6 +13,13 @@ const home = {
       create: false,
       delete: false,
     },
+    // router: ({ document }) => {
+    //   console.log("🚀 ~ home.ui.document:", document);
+    //   // navigate to the post that was clicked
+    //   // return document._sys.path;
+    //   return `/${document._sys.breadcrumbs.join("/")}`;
+    //   return `/`;
+    // },
   },
   fields: [
     {
@@ -20,12 +27,13 @@ const home = {
       name: "_warning",
       ui: {
         component: () => {
-          return <RestartWarning />;
+          return <RestartWarning view={`/`} />;
         },
       },
     },
     // ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
+    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro_title", label: "Intro - Title" },
     { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
     { type: "string", name: "intro_offre", label: "Intro - Offre" },

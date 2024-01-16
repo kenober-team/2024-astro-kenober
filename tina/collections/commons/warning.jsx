@@ -16,14 +16,25 @@ const WarningIcon = (props) => {
   );
 };
 
-export const RestartWarning = () => {
+export const RestartWarning = (view) => {
+  console.log("🚀 ~ RestartWarning ~ view:", view);
   return (
     <p className="mb-4 rounded-lg border border-yellow-200 bg-gradient-to-r from-yellow-50 to-yellow-100 px-4 py-2.5 shadow">
       <div className="flex items-center gap-2">
         <WarningIcon className={`h-auto w-6 flex-shrink-0 text-yellow-400`} />
         <div className={`flex-1 whitespace-normal text-sm text-yellow-700	`}>
           Pour voir les modifications, il faut sauvegarder pour déclencher un
-          refresh <em>(local development only)</em>.
+          refresh.{" "}
+          {view.view && (
+            <a
+              href={`${view.view}`}
+              className="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              consulter la page
+            </a>
+          )}
         </div>
       </div>
     </p>

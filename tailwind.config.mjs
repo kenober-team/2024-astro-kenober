@@ -4,9 +4,22 @@ export default {
   theme: {
     fontFamily: {},
     extend: {
+      fontFamily: {
+        arial: ["Arial", "Helvetica", "sans-serif"],
+        mesmerize: ["Mesmerize", "Arial", "Helvetica", "sans-serif"],
+      },
+      fontSize: {
+        "hero-home": ["1.789rem", "2.053rem"],
+        "h1-home": ["1.94737rem", "1.5rem"],
+        "nav-principal": ["1.211rem", "1.368rem"],
+        base: ["1.316rem", "1.842rem"],
+        h2: ["2rem"],
+        h3: ["1.47368rem"],
+      },
       colors: {
         primary: "#F6C700",
         neutre: "#000000",
+        "gris-1": "#F2F2F2",
       },
       container: {
         center: true,

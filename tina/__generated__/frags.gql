@@ -2,6 +2,7 @@ fragment HomeDataParts on HomeData {
   __typename
   _warning
   hero_text
+  hero_bg
   intro_title
   intro_text
   intro_offre

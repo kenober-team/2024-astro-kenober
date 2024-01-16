@@ -134,6 +134,7 @@ type HomeDataGallery {
 type HomeData implements Node & Document {
   _warning: String
   hero_text: JSON
+  hero_bg: String!
   intro_title: String
   intro_text: JSON
   intro_offre: String
@@ -202,6 +203,7 @@ input HomeDataGalleryFilter {
 input HomeDataFilter {
   _warning: StringFilter
   hero_text: RichTextFilter
+  hero_bg: ImageFilter
   intro_title: StringFilter
   intro_text: RichTextFilter
   intro_offre: StringFilter
@@ -664,6 +666,7 @@ input HomeDataGalleryMutation {
 input HomeDataMutation {
   _warning: String
   hero_text: JSON
+  hero_bg: String
   intro_title: String
   intro_text: JSON
   intro_offre: String

@@ -1,5 +1,14 @@
 ---
-
+import DefaultView from "@components/views/home/DefaultView.astro";
+import homeData from "@data/homeData.json";
+import siteData from "@data/siteData.json";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<div>Astro - Index</div>
+<MainLayout
+  title={siteData.title}
+  description={siteData.description}
+  {homeData}
+>
+  <DefaultView />
+</MainLayout>

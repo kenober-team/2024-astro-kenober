@@ -3,22 +3,24 @@
 import { Icon } from "astro-icon/components";
 
 // component imports
+import MDXImage from "@components/mdx/MDXImage.astro";
 import NavRoot from "@components/navigation/NavRoot.astro";
-
 // data imports
 import navPrimary from "@data/navDataPrimary.json";
+import SimpleMardownRender from "./SimpleMardownRender.astro";
 
-const navDesignClass: NavClassConfig = {
-  navRoot: "container relative flex flex-wrap items-center justify-between",
+const navDesignClasses: NavClassConfig = {
+  navRoot:
+    "absolute top-2 left-0 container z-20 flex flex-wrap items-center justify-end",
   ulList:
-    "mb-0 my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-4 rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 lg:items-center rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900",
+    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-2 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0 lg:items-center rtl:space-x-reverse",
   menu: {
     button: "btn btn-primary",
     ulList:
       "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
   },
   link: (isButton) => {
-    return isButton ? [`btn btn-cta coucou`] : [`btn btn-primary coucou`];
+    return isButton ? [`btn btn-cta`] : [`btn btn-primary`];
   },
   mobileButton: {
     button:
@@ -26,28 +28,53 @@ const navDesignClass: NavClassConfig = {
     svg: "h-5 w-5",
   },
 };
+
+const { homeData } = Astro.props;
 ---
 
-<header class="sticky top-0 z-10 bg-black">
+<header
+  class="relative z-10 flex h-[27.21053rem] items-center justify-center bg-primary"
+>
+  <MDXImage
+    src={homeData.hero_bg}
+    alt="hero-background"
+    width={1440}
+    height={517}
+    class="absolute left-0 top-0 z-10 h-[27.21053rem] w-full object-contain"
+  />
+  <div class="flex flex-col items-center justify-center gap-10">
+    <a href="/" class="" title="Retour à l'accueil">
+      <Icon
+        name="logomark"
+        width={372}
+        height={60}
+        class="ml-2 aspect-[372/60] h-auto w-[23.25rem] text-neutre md:w-[23.25rem] lg:ml-0"
+      />
+    </a>
+    <SimpleMardownRender
+      markdown={homeData.hero_text}
+      classes="strongiswhite text-center max-w-[48.9375rem] *:text-hero-home"
+    />
+  </div>
   <NavRoot
     menuName="Principal"
-    navDesignConfig={navDesignClass}
+    navDesignConfig={navDesignClasses}
     hasMobileButton
     menuData={navPrimary}
   >
     {/* logo + lien */}
-    <a
+    <!-- <a
       slot="firstPlaceHolder"
       href="/"
-      class="flex items-center space-x-3 rtl:space-x-reverse"
+      class="top-[calc(50%] absolute left-[calc(50%)]"
       title="Retour à l'accueil"
     >
       <Icon
         name="logomark"
         width={201}
         height={32}
-        class="ml-2 w-[201px] text-white md:w-[201px] lg:ml-0"
+        class="ml-2 w-[201px] text-neutre md:w-[201px] lg:ml-0"
       />
-    </a>
+    </a> -->
   </NavRoot>
 </header>

@@ -4,11 +4,9 @@ import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-
 import icon from "astro-icon";
-
+import partytown from "@astrojs/partytown";
 const SITE_URL = process.env.SITE_URL || "http://localhost:4321";
-
 const tina = ({ directiveName = "tina" } = {}) => ({
   name: "tina-cms",
   hooks: {
@@ -46,5 +44,6 @@ export default defineConfig({
       },
     }),
     tina(),
+    partytown(),
   ],
 });

@@ -1,0 +1,13 @@
+---
+import { TinaSimpleReactHelper as TinaHelper } from "@components/tinacms/reactSimple";
+type Props = {
+  response: any;
+  tinaPath: string;
+  path: string;
+};
+const { response, path, tinaPath } = Astro.props;
+---
+
+<TinaHelper client:tina client:only tina={response} {tinaPath} {path}>
+  <slot />
+</TinaHelper>

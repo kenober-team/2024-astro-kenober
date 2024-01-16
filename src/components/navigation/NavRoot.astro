@@ -90,17 +90,17 @@ const hasMenus = links.some((item) => item.children);
     });
   }
 
-  if (hasMenus) {
-    // Set aria-current="page" on current page link
-    const navLinks = document.querySelectorAll(
-      "[aria-label='" + menuName + "'] [data-navLink]",
-    );
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href") === window.location.pathname) {
-        link.setAttribute("aria-current", "page");
-      }
-    });
+  // Set aria-current="page" on current page link
+  const navLinks = document.querySelectorAll(
+    "[aria-label='" + menuName + "'] [data-navLink]",
+  );
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === window.location.pathname) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
 
+  if (hasMenus) {
     // Handle submenus
 
     function openMenu(el) {

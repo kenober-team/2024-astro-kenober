@@ -57,10 +57,10 @@
         "tailwindCSS.experimental.classRegex": [
           ["Classes \\=([^;]*);", "'([^']*)'"],
           ["Classes \\=([^;]*);", "\"([^\"]*)\""],
-          ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"]
-          // "[a-zA-Z]+Class\\s?[=:]\\s?[\"']([^\"^']+)",
-          // "[a-zA-Z]+ClassName=\"([^\"]*)\"",
-          // "[a-zA-Z]+Class=\"([^\"]*)\""
+          ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
+          "[a-zA-Z]+Class\\s?[=:]\\s?[\"']([^\"^']+)",
+          "[a-zA-Z]+ClassName=\"([^\"]*)\"",
+          "[a-zA-Z]+Class=\"([^\"]*)\""
         ],
         "prettier.prettierPath": "/usr/local/share/npm-global/lib/node_modules/prettier/index.cjs",
         "prettier.documentSelectors": ["**/*.astro"],

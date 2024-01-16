@@ -1,39 +1,32 @@
 {
   "links": [
     {
-      "name": "Offres",
-      "path": "#",
-      "title": "Nos offres",
+      "name": "Accueil",
+      "path": "/",
+      "title": "Retour à la home page",
       "isButton": false,
       "target": "_self"
     },
     {
-      "name": "Références",
-      "path": "/references/",
-      "title": "Nos références",
+      "name": "L’équipe",
+      "path": "/equipe/",
+      "title": "Notre équipe à votre service",
       "isButton": false,
       "target": "_self"
     },
     {
-      "name": "A propos",
-      "path": "/a-propos/",
-      "title": "En apprendre plus sur nous",
-      "isButton": false,
-      "target": "_self"
-    },
-    {
-      "name": "Blog",
-      "path": "/posts/",
-      "title": "Nos articles",
+      "name": "Nos complices",
+      "path": "/complices/",
+      "title": "Nos partenaires de crime",
       "isButton": false,
       "target": "_self"
     },
     {
       "name": "Contact",
-      "path": "mailto:contact@novagaia.fr",
-      "title": "Des questions, n'hésitez pas",
-      "isButton": true,
-      "target": "_blank"
+      "path": "/contact/",
+      "title": "Nos coodonnées",
+      "isButton": false,
+      "target": "_self"
     }
   ]
 }

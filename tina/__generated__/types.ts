@@ -308,6 +308,7 @@ export type HomeData = Node & Document & {
   __typename?: 'HomeData';
   _warning?: Maybe<Scalars['String']['output']>;
   hero_text?: Maybe<Scalars['JSON']['output']>;
+  hero_bg: Scalars['String']['output'];
   intro_title?: Maybe<Scalars['String']['output']>;
   intro_text?: Maybe<Scalars['JSON']['output']>;
   intro_offre?: Maybe<Scalars['String']['output']>;
@@ -376,6 +377,7 @@ export type HomeDataGalleryFilter = {
 export type HomeDataFilter = {
   _warning?: InputMaybe<StringFilter>;
   hero_text?: InputMaybe<RichTextFilter>;
+  hero_bg?: InputMaybe<ImageFilter>;
   intro_title?: InputMaybe<StringFilter>;
   intro_text?: InputMaybe<RichTextFilter>;
   intro_offre?: InputMaybe<StringFilter>;
@@ -980,6 +982,7 @@ export type HomeDataGalleryMutation = {
 export type HomeDataMutation = {
   _warning?: InputMaybe<Scalars['String']['input']>;
   hero_text?: InputMaybe<Scalars['JSON']['input']>;
+  hero_bg?: InputMaybe<Scalars['String']['input']>;
   intro_title?: InputMaybe<Scalars['String']['input']>;
   intro_text?: InputMaybe<Scalars['JSON']['input']>;
   intro_offre?: InputMaybe<Scalars['String']['input']>;
@@ -1122,7 +1125,7 @@ export type SiteDataMutation = {
   networks?: InputMaybe<Array<InputMaybe<SiteDataNetworksMutation>>>;
 };
 
-export type HomeDataPartsFragment = { __typename: 'HomeData', _warning?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null };
+export type HomeDataPartsFragment = { __typename: 'HomeData', _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null };
 
 export type TeamPartsFragment = { __typename: 'Team', _warning?: string | null, _team?: string | null, _contact?: string | null, equipe?: { __typename: 'TeamEquipe', title: string, hero_bg: string } | null, contact?: { __typename: 'TeamContact', title: string, hero_bg: string, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null };
 
@@ -1141,7 +1144,7 @@ export type HomeDataQueryVariables = Exact<{
 }>;
 
 
-export type HomeDataQuery = { __typename?: 'Query', homeData: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } };
+export type HomeDataQuery = { __typename?: 'Query', homeData: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } };
 
 export type HomeDataConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1153,7 +1156,7 @@ export type HomeDataConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HomeDataConnectionQuery = { __typename?: 'Query', homeDataConnection: { __typename?: 'HomeDataConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeDataConnectionEdges', cursor: string, node?: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } | null } | null> | null } };
+export type HomeDataConnectionQuery = { __typename?: 'Query', homeDataConnection: { __typename?: 'HomeDataConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeDataConnectionEdges', cursor: string, node?: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } | null } | null> | null } };
 
 export type TeamQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1274,6 +1277,7 @@ export const HomeDataPartsFragmentDoc = gql`
   __typename
   _warning
   hero_text
+  hero_bg
   intro_title
   intro_text
   intro_offre
