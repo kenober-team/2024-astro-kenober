@@ -1,4 +1,6 @@
 ---
+import SimpleMardownRender from "@components/SimpleMardownRender.astro";
+import MDXImage from "@components/mdx/MDXImage.astro";
 import homeData from "@data/homeData.json";
 import siteData from "@data/siteData.json";
 import OffreCard from "./OffreCard.astro";
@@ -6,14 +8,14 @@ const props = Astro.props;
 ---
 
 <>
-  <section
-    class="container mx-auto flex flex-col gap-5 py-[2.95rem] text-center"
-  >
-    <h1 class="text-h1-home">{homeData.intro_title}</h1>
-    <p class="mx-auto w-[80%]">{homeData.intro_text}</p>
+  <section class="section">
+    <div class="container-in-section">
+      <h1 class="text-h1-home">{homeData.intro_title}</h1>
+      <p class="markdown">{homeData.intro_text}</p>
+    </div>
   </section>
-  <section class="bg-gris-1 py-[2.95rem]">
-    <div class="container mx-auto flex flex-col items-center gap-5">
+  <section class="section gris-1">
+    <div class="container-in-section">
       <h2 class="title-box">{homeData.intro_offre}</h2>
       <div class="grid grid-cols-4 gap-1">
         {
@@ -24,6 +26,37 @@ const props = Astro.props;
       </div>
     </div>
   </section>
-  <!-- <p>{JSON.stringify(homeData, null, 2)}</p> -->
-  <!-- <p>{JSON.stringify(siteData, null, 2)}</p> -->
+  <section class="section">
+    <div class="container-in-section">
+      <h2 class="title-box">{homeData.principe_title}</h2>
+      <SimpleMardownRender
+        markdown={homeData.principe_sub_title}
+        classes="markdown *:text-h2-sub"
+      />
+      <SimpleMardownRender
+        markdown={homeData.principe_text}
+        classes="markdown"
+      />
+    </div>
+    <div class="container-in-section flex !flex-row">
+      <MDXImage
+        src={homeData.principe_image.src}
+        alt={homeData.principe_image.alt}
+        width={756}
+        class="image-frame w-[756px] shrink-0"
+        frameClass="image-frame"
+      />
+      <div class="flex-1">
+        <SimpleMardownRender
+          markdown={homeData.principe_text_image}
+          classes="markdown-full"
+        />
+        <a href={homeData.principe_text_bt_url} class="btn btn-primary">
+          {homeData.principe_text_bt_label}
+        </a>
+      </div>
+    </div>
+    <!-- <p>{JSON.stringify(homeData, null, 2)}</p> -->
+    <!-- <p>{JSON.stringify(siteData, null, 2)}</p> -->
+  </section>
 </>

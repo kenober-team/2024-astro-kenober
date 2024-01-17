@@ -151,8 +151,8 @@ export async function entryToPathAndQuery(
 /**
  * Generates a sequence of sizes for responsives images.
  *
- * @param {number} first - The first number in the sequence.
- * @param {number} last - The last number in the sequence.
+ * @param {number} first - The min width in the sequence.
+ * @param {number} last - The max width in the sequence.
  * @param {number} [size=16] - The number of elements in the sequence. Defaults to 16.
  * @returns {number[]} The generated sequence, with each number rounded to the nearest integer.
  */

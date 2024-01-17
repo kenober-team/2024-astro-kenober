@@ -20,7 +20,7 @@ const navDesignClasses: NavClassConfig = {
       "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
   },
   link: (isButton) => {
-    return isButton ? [`btn btn-cta`] : [`btn btn-primary`];
+    return isButton ? [`btn btn-primary`] : [`btn btn-transparent`];
   },
   mobileButton: {
     button:
@@ -39,7 +39,6 @@ const { homeData } = Astro.props;
     src={homeData.hero_bg}
     alt="hero-background"
     width={1440}
-    height={517}
     class="absolute left-0 top-0 z-10 h-[27.21053rem] w-full object-contain"
   />
   <div class="flex flex-col items-center justify-center gap-10">

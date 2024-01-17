@@ -9,6 +9,7 @@ type Props = {
   format?: ImageOutputFormat;
   sizes: number[];
   classes?: string;
+  frameClasses?: string;
 };
 
 async function generateResponsiveImage({
@@ -29,7 +30,15 @@ async function generateResponsiveImage({
   };
 }
 
-const { src, sizes, format = "webp", alt, title = "", classes } = Astro.props;
+const {
+  src,
+  sizes,
+  format = "webp",
+  alt,
+  title = "",
+  classes,
+  frameClasses,
+} = Astro.props;
 
 const { srcSet, imgSrc } = await generateResponsiveImage({
   src,
@@ -38,10 +47,12 @@ const { srcSet, imgSrc } = await generateResponsiveImage({
 });
 ---
 
-<img
-  srcset={srcSet.join(", ")}
-  alt={alt}
-  src={imgSrc}
-  title={title}
-  class={classes}
-/>
+<div class:list={frameClasses}>
+  <img
+    srcset={srcSet.join(", ")}
+    alt={alt}
+    src={imgSrc}
+    title={title}
+    class={classes}
+  />
+</div>

@@ -14,6 +14,7 @@ export default {
         "nav-principal": ["1.211rem", "1.368rem"],
         base: ["1.316rem", "1.842rem"],
         h2: ["2rem"],
+        "h2-sub": ["1.47368rem"],
         h3: ["1.47368rem"],
       },
       colors: {

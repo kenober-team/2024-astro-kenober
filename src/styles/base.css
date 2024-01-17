@@ -34,7 +34,7 @@
     @apply font-mesmerize text-h2 font-extrabold text-primary;
     /* font-family: "Mesmerize"; */
     &.title-box {
-      @apply inline-block w-fit flex-none bg-neutre px-4 py-[2px];
+      @apply inline-block w-fit flex-none bg-neutre px-4 py-[2px] transition-all hover:-translate-y-2 hover:-rotate-2;
     }
   }
   h3 {
@@ -50,10 +50,48 @@
       @apply px-2 py-1 hover:bg-white;
     }
     [aria-current="page"] {
-      @apply bg-white;
+      @apply !bg-white;
     }
   }
   .strongiswhite strong {
     @apply bg-white px-1 font-normal;
+  }
+  .btn {
+    @apply inline-block px-4 py-2 font-black text-neutre transition-all hover:-translate-y-2 hover:-rotate-2;
+    &.btn-primary {
+      @apply bg-primary text-neutre;
+    }
+    &.btn-transparent {
+      @apply bg-transparent text-neutre;
+    }
+  }
+  .section {
+    @apply py-[2.95rem];
+    .container-in-section {
+      @apply container mx-auto flex flex-col items-center gap-5;
+    }
+    .markdown {
+      @apply mx-auto w-[80%] whitespace-pre-line;
+    }
+    .markdown-full {
+      @apply whitespace-pre-line;
+    }
+    &.gris-1 {
+      @apply bg-gris-1;
+    }
+  }
+  .image-frame {
+    @apply relative;
+    &::before {
+      @apply absolute -left-2 -top-2 z-10 h-[20%] w-[30%] bg-primary;
+      content: "";
+    }
+    img {
+      @apply relative z-20;
+    }
+    &::after {
+      @apply absolute -bottom-2 -right-2 z-10 h-[40%] w-[15%] bg-primary;
+      content: "";
+    }
   }
 }
