@@ -8,23 +8,9 @@
       "target": "_self"
     },
     {
-      "name": "Déclaration Environnementale",
-      "path": "/declaration-environnementale/",
-      "title": "La déclaration de environnementale de notre site",
-      "isButton": false,
-      "target": "_self"
-    },
-    {
-      "name": "L'impact du numérique, qu'est-ce que c'est ?",
-      "path": "/cest-quoi-le-probleme-du-numerique-avec-lecologie/",
-      "title": "On vous explique l'impact du numérique",
-      "isButton": false,
-      "target": "_self"
-    },
-    {
-      "name": "C’est quoi l’éco-conception de sites web ?",
-      "path": "/cest-quoi-leco-conception/",
-      "title": "On vous explique l'écoconception de services numériques",
+      "name": "Politique de confidentialité",
+      "path": "/politique-de-confidentialite/",
+      "title": "Notre Politique de confidentialité",
       "isButton": false,
       "target": "_self"
     }

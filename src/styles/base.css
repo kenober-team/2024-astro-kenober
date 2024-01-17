@@ -70,15 +70,19 @@
     .container-in-section {
       @apply container mx-auto flex max-w-screen-xl flex-col items-center gap-5;
     }
-    .markdown {
-      @apply mx-auto w-[80%] whitespace-pre-line;
-    }
-    .markdown-full {
-      @apply whitespace-pre-line;
-    }
+
     &.gris-1 {
       @apply bg-gris-1;
     }
+  }
+  .markdown {
+    @apply mx-auto w-[80%] whitespace-pre-line;
+    a {
+      @apply !underline;
+    }
+  }
+  .markdown-full {
+    @apply whitespace-pre-line;
   }
   .image-frame {
     @apply relative;

@@ -6,26 +6,29 @@ import SimpleMardownRender from "./SimpleMardownRender.astro";
 import NavRoot from "./navigation/NavRoot.astro";
 const navDesignClass: NavClassConfig = {
   navRoot: "",
-  ulList: "flex flex-col gap-4",
+  ulList: "flex flex-row gap-4 justify-center",
   link: (i) => {
     return ["underline dark:dark-primary-content"];
   },
 };
 ---
 
-<footer class="container mb-4 mt-8">
-  <div
-    class="border-souris dark:bg-secondary dark:text-dark-primary-content [&_a:hover]:text-primary-focus flex flex-col gap-4 rounded-md border bg-white p-4 shadow-sm dark:border-transparent [&_a]:text-primary"
-  >
-    <div class="col-span-3 grid px-4">
-      <NavRoot
-        menuData={navSecondary}
-        menuName="Secondary"
-        navDesignConfig={navDesignClass}
-      />
-    </div>
-    <div class="flex items-center gap-4 px-4">
-      <span class="font-bold">Suivez-nous :</span>
+<footer class="mb-4 mt-8 bg-primary p-9">
+  <div class="container flex flex-col gap-5">
+    {
+      siteData.informations && siteData.informations.length > 0 && (
+        <SimpleMardownRender
+          markdown={siteData.informations}
+          classes="markdown *:mb-0 *:text-sm *:text-center mx-auto max-w-[80%] px-4"
+        />
+      )
+    }
+    <NavRoot
+      menuData={navSecondary}
+      menuName="Secondary"
+      navDesignConfig={navDesignClass}
+    />
+    <div class="flex items-center justify-end gap-4 px-4">
       {
         siteData.networks.map((network) => (
           <a
@@ -35,44 +38,31 @@ const navDesignClass: NavClassConfig = {
             rel="noopener noreferrer"
             title={network.title}
           >
-            <Icon name={network.icon} width={30} height={30} />
+            <Icon
+              name={network.icon}
+              width={45}
+              height={45}
+              class={`h-[45px] w-[45px]`}
+            />
           </a>
         ))
       }
     </div>
-    {
-      siteData.informations && siteData.informations.length > 0 && (
-        <div class=" px-4">
-          <SimpleMardownRender
-            markdown={siteData.informations}
-            classes="*:mb-0 *:text-sm"
-          />
-        </div>
-      )
-    }
-    <div class="px-4 *:text-sm">
-      <p>
-        &copy; <a
-          href="https://novagaia.fr/"
-          target="_blank"
-          rel="noopener noreferrer">NovaGaïa</a
-        >
-        <span id="copyright"></span> | All rights reserved
-      </p>
-      <p>
-        <a href="/rss.xml" class="inline-flex gap-1">
-          Subscribe to RSS
-          <Icon name="tabler:rss" width={20} height={20} />
-        </a>
-      </p>
-    </div>
+    <p class="text-center">
+      &copy; <a
+        href="https://novagaia.fr/"
+        target="_blank"
+        rel="noopener noreferrer">NovaGaïa</a
+      >
+      <span id="copyright"></span> | All rights reserved
+    </p>
   </div>
-
-  <script>
-    const obj = document.querySelector("#copyright") || undefined;
-    if (obj !== undefined) {
-      obj.textContent = new Date().getFullYear().toString();
-    } else {
-    }
-  </script>
 </footer>
+
+<script>
+  const obj = document.querySelector("#copyright") || undefined;
+  if (obj !== undefined) {
+    obj.textContent = new Date().getFullYear().toString();
+  } else {
+  }
+</script>

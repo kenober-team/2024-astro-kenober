@@ -112,6 +112,7 @@ const siteData = {
           label: "Network",
           required: true,
           options: [
+            "linkedIn",
             "tabler:brand-github",
             "tabler:brand-linkedin",
             "tabler:brand-facebook",
