@@ -1,0 +1,26 @@
+---
+import MDXImage from "@components/mdx/MDXImage.astro";
+
+type Props = {
+  gallery: {
+    src: string;
+    alt: string;
+  }[];
+};
+const props = Astro.props;
+---
+
+<section class="section">
+  <div class="container-in-section !flex-row flex-wrap !gap-1">
+    {
+      props.gallery.map((image) => (
+        <MDXImage
+          src={image.src}
+          alt={image.alt}
+          width={224}
+          class="aspect-square h-auto w-[212px] object-cover"
+        />
+      ))
+    }
+  </div>
+</section>

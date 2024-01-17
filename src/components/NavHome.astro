@@ -11,7 +11,7 @@ import SimpleMardownRender from "./SimpleMardownRender.astro";
 
 const navDesignClasses: NavClassConfig = {
   navRoot:
-    "absolute top-2 left-0 container z-20 flex flex-wrap items-center justify-end",
+    "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-end",
   ulList:
     "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-2 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0 lg:items-center rtl:space-x-reverse",
   menu: {
@@ -35,13 +35,7 @@ const { homeData } = Astro.props;
 <header
   class="relative z-10 flex h-[27.21053rem] items-center justify-center bg-primary"
 >
-  <MDXImage
-    src={homeData.hero_bg}
-    alt="hero-background"
-    width={1440}
-    class="absolute left-0 top-0 z-10 h-[27.21053rem] w-full object-contain"
-  />
-  <div class="flex flex-col items-center justify-center gap-10">
+  <div class="z-20 flex flex-col items-center justify-center gap-10">
     <a href="/" class="" title="Retour à l'accueil">
       <Icon
         name="logomark"
@@ -55,25 +49,36 @@ const { homeData } = Astro.props;
       classes="strongiswhite text-center max-w-[48.9375rem] *:text-hero-home"
     />
   </div>
-  <NavRoot
-    menuName="Principal"
-    navDesignConfig={navDesignClasses}
-    hasMobileButton
-    menuData={navPrimary}
-  >
+  <div class="absolute right-0 top-2 z-20 w-full">
+    <NavRoot
+      menuName="Principal"
+      navDesignConfig={navDesignClasses}
+      hasMobileButton
+      menuData={navPrimary}
+    />
     {/* logo + lien */}
-    <!-- <a
-      slot="firstPlaceHolder"
-      href="/"
-      class="top-[calc(50%] absolute left-[calc(50%)]"
-      title="Retour à l'accueil"
+    {
+      /* 
+    <a
+    slot="firstPlaceHolder"
+    href="/"
+    class="top-[calc(50%] absolute left-[calc(50%)]"
+    title="Retour à l'accueil"
     >
-      <Icon
-        name="logomark"
-        width={201}
-        height={32}
-        class="ml-2 w-[201px] text-neutre md:w-[201px] lg:ml-0"
-      />
-    </a> -->
-  </NavRoot>
+    <Icon
+    name="logomark"
+    width={201}
+    height={32}
+    class="ml-2 w-[201px] text-neutre md:w-[201px] lg:ml-0"
+    />
+  </a>
+    */
+    }
+  </div>
+  <MDXImage
+    src={homeData.hero_bg}
+    alt="hero-background"
+    width={1440}
+    class="absolute left-0 top-0 z-10 h-[27.21053rem] w-full object-cover"
+  />
 </header>

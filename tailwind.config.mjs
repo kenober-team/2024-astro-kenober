@@ -3,6 +3,22 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {},
+    screens: {
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1300px",
+      // => @media (min-width: 1300px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       fontFamily: {
         arial: ["Arial", "Helvetica", "sans-serif"],
@@ -18,14 +34,24 @@ export default {
         h3: ["1.47368rem"],
       },
       colors: {
-        primary: "#F6C700",
-        neutre: "#000000",
-        "gris-1": "#F2F2F2",
+        primary: {
+          DEFAULT: "#F6C700",
+          content: "#000000",
+        },
+        neutre: {
+          DEFAULT: "#000000",
+          content: "#FFFFFF",
+        },
+        "gris-1": {
+          DEFAULT: "#F2F2F2",
+          content: "#000000",
+        },
       },
       container: {
         center: true,
         padding: {
           DEFAULT: "1rem",
+          lg: "0rem",
           md: "2rem",
         },
       },
