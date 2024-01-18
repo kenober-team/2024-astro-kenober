@@ -29,6 +29,9 @@
   body {
     @apply font-arial text-[19px];
   }
+  html {
+    @apply scroll-smooth;
+  }
 
   h2 {
     @apply font-mesmerize text-h2 font-extrabold text-primary;
@@ -67,8 +70,12 @@
   }
   .section {
     @apply py-[2.95rem];
+
     .container-in-section {
-      @apply container mx-auto flex max-w-screen-xl flex-col items-center gap-5;
+      @apply container mx-auto max-w-screen-xl;
+      &.flex-container {
+        @apply flex flex-col items-center gap-5;
+      }
     }
 
     &.gris-1 {

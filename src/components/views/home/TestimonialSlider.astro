@@ -11,7 +11,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<div class="testimonial relative" data-slide-motion="static">
+<section class="testimonial relative" data-slide-motion="static">
   <div
     class="testimonial-container grid touch-manipulation snap-x snap-mandatory grid-flow-col overflow-auto overflow-x-hidden overflow-y-hidden scroll-smooth"
     data-slide-container=""
@@ -71,7 +71,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     />
     <span class="sr-only">Next</span>
   </button>
-</div>
+</section>
 <script>
   //Get all slideContainers
   const slideContainers = document.querySelectorAll("[data-slide-container]");

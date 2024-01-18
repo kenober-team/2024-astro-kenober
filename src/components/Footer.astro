@@ -8,18 +8,18 @@ const navDesignClass: NavClassConfig = {
   navRoot: "",
   ulList: "flex flex-row gap-4 justify-center",
   link: (i) => {
-    return ["underline dark:dark-primary-content"];
+    return ["underline primary-content text-[0.84211rem]"];
   },
 };
 ---
 
 <footer class="mb-4 mt-8 bg-primary p-9">
-  <div class="container flex flex-col gap-5">
+  <div class="container relative flex flex-col gap-5">
     {
       siteData.informations && siteData.informations.length > 0 && (
         <SimpleMardownRender
           markdown={siteData.informations}
-          classes="markdown *:mb-0 *:text-sm *:text-center mx-auto max-w-[80%] px-4"
+          classes="markdown *:mb-0 *:text-[0.84211rem] *:text-center mx-auto max-w-[80%] px-4"
         />
       )
     }
@@ -28,7 +28,9 @@ const navDesignClass: NavClassConfig = {
       menuName="Secondary"
       navDesignConfig={navDesignClass}
     />
-    <div class="flex items-center justify-end gap-4 px-4">
+    <div
+      class="absolute right-0 top-[calc(50%-16px)] flex items-center justify-end gap-4"
+    >
       {
         siteData.networks.map((network) => (
           <a
@@ -48,13 +50,14 @@ const navDesignClass: NavClassConfig = {
         ))
       }
     </div>
-    <p class="text-center">
+    <p class="text-center text-[0.84211rem]">
       &copy; <a
         href="https://novagaia.fr/"
         target="_blank"
-        rel="noopener noreferrer">NovaGaïa</a
+        rel="noopener noreferrer"
+        >NovaGaïa
+        <span id="copyright"></span> | All rights reserved</a
       >
-      <span id="copyright"></span> | All rights reserved
     </p>
   </div>
 </footer>

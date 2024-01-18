@@ -10,13 +10,13 @@ const props = Astro.props;
 
 <>
   <section class="section">
-    <div class="container-in-section">
+    <div class="container-in-section flex-container">
       <h1 class="text-h1-home">{homeData.intro_title}</h1>
       <p class="markdown">{homeData.intro_text}</p>
     </div>
   </section>
   <section class="section gris-1">
-    <div class="container-in-section">
+    <div class="container-in-section flex-container">
       <h2 class="title-box">{homeData.intro_offre}</h2>
       <div class="grid grid-cols-4 gap-1">
         {
@@ -28,7 +28,7 @@ const props = Astro.props;
     </div>
   </section>
   <section class="section">
-    <div class="container-in-section">
+    <div class="container-in-section flex-container">
       <h2 class="title-box">{homeData.principe_title}</h2>
       <SimpleMardownRender
         markdown={homeData.principe_sub_title}
@@ -39,7 +39,7 @@ const props = Astro.props;
         classes="markdown"
       />
     </div>
-    <div class="container-in-section flex !flex-row">
+    <div class="container-in-section flex-container !flex-row">
       <MDXImage
         src={homeData.principe_image.src}
         alt={homeData.principe_image.alt}
