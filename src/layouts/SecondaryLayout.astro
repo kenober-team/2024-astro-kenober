@@ -1,4 +1,5 @@
 ---
+import Lift from "@components/Lift.astro";
 import "../styles/base.css";
 // component import
 import Footer from "@components/Footer.astro";
@@ -29,8 +30,9 @@ const {
   <body>
     <SkipLinks />
     <Nav />
-    <main id="main-content" class:list={["flex flex-col", classes]}>
+    <main id="main-content" class:list={["relative flex flex-col", classes]}>
       <slot> Default Text</slot>
+      <Lift />
     </main>
     <Footer />
   </body>

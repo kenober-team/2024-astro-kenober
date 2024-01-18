@@ -1,0 +1,16 @@
+---
+import Hero from "@components/Hero.astro";
+import teamData from "@data/team.json";
+import EquipeCard from "./EquipeCard.astro";
+
+const props = Astro.props;
+---
+
+<>
+  <Hero title={teamData.equipe.title} image={teamData.equipe.hero_bg} />
+  <section class="section">
+    <div class="container-in-section flex-container divide-y-2 divide-black/50">
+      {teamData.members.map((member, idx) => <EquipeCard {...member} {idx} />)}
+    </div>
+  </section>
+</>

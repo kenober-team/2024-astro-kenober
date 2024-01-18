@@ -1,5 +1,5 @@
 ---
-import DefaultView from "@components/views/home/DefaultView.astro";
+import HomeView from "@components/views/home/HomeView.astro";
 import homeData from "@data/homeData.json";
 import siteData from "@data/siteData.json";
 import MainLayout from "@layouts/MainLayout.astro";
@@ -10,5 +10,5 @@ import MainLayout from "@layouts/MainLayout.astro";
   description={siteData.description}
   {homeData}
 >
-  <DefaultView />
+  <HomeView />
 </MainLayout>

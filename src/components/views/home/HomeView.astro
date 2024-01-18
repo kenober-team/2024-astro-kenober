@@ -17,7 +17,7 @@ const props = Astro.props;
   </section>
   <section class="section gris-1">
     <div class="container-in-section flex-container">
-      <h2 class="title-box">{homeData.intro_offre}</h2>
+      <h2 class="title-box home">{homeData.intro_offre}</h2>
       <div class="grid grid-cols-4 gap-1">
         {
           homeData.offres.map((offre, idex) => {
@@ -29,7 +29,7 @@ const props = Astro.props;
   </section>
   <section class="section">
     <div class="container-in-section flex-container">
-      <h2 class="title-box">{homeData.principe_title}</h2>
+      <h2 class="title-box home">{homeData.principe_title}</h2>
       <SimpleMardownRender
         markdown={homeData.principe_sub_title}
         classes="markdown *:text-h2-sub"
@@ -52,7 +52,7 @@ const props = Astro.props;
           markdown={homeData.principe_text_image}
           classes="markdown-full"
         />
-        <a href={homeData.principe_text_bt_url} class="btn btn-primary">
+        <a href={homeData.principe_text_bt_url} class="btn btn-primary btn-fat">
           {homeData.principe_text_bt_label}
         </a>
       </div>

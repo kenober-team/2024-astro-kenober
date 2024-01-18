@@ -1,10 +1,25 @@
 ---
+import MDXImage from "./mdx/MDXImage.astro";
+
 type Props = {
   title: string;
+  image?: string;
 };
-const { title } = Astro.props;
+const { title, image } = Astro.props;
 ---
 
-<section class="bg-primary py-8">
-  <h1 class="container text-white dark:text-dark-primary">{title}</h1>
+<section
+  class="relative z-0 flex h-[15.26316rem] items-center overflow-hidden bg-primary py-8"
+>
+  {
+    image && (
+      <MDXImage
+        width={1600}
+        src={image}
+        alt={title}
+        class="absolute left-0 top-0 h-full w-full object-cover"
+      />
+    )
+  }
+  <h1 class="text-h1 container z-0 text-center font-mesmerize">{title}</h1>
 </section>

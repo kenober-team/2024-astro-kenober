@@ -8,17 +8,18 @@ import NavRoot from "@components/navigation/NavRoot.astro";
 // data imports
 import navPrimary from "@data/navDataPrimary.json";
 
-const navDesignClass: NavClassConfig = {
-  navRoot: "container relative flex flex-wrap items-center justify-between",
+const navDesignClasses: NavClassConfig = {
+  navRoot:
+    "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-between py-[1.47rem]",
   ulList:
-    "mb-0 my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-4 rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 lg:items-center rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900",
+    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-2 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0 lg:items-center rtl:space-x-reverse",
   menu: {
     button: "btn btn-primary",
     ulList:
       "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
   },
   link: (isButton) => {
-    return isButton ? [`btn btn-cta coucou`] : [`btn btn-primary coucou`];
+    return isButton ? [`btn btn-primary`] : [`btn btn-white`];
   },
   mobileButton: {
     button:
@@ -31,7 +32,7 @@ const navDesignClass: NavClassConfig = {
 <header class="sticky top-0 z-10 bg-black">
   <NavRoot
     menuName="Principal"
-    navDesignConfig={navDesignClass}
+    navDesignConfig={navDesignClasses}
     hasMobileButton
     menuData={navPrimary}
   >

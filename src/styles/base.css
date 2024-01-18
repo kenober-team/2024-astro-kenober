@@ -34,7 +34,10 @@
   }
 
   h2 {
-    @apply font-mesmerize text-h2 font-extrabold text-primary;
+    @apply text-h2 font-bold;
+    &.home {
+      @apply font-mesmerize font-extrabold text-primary;
+    }
     /* font-family: "Mesmerize"; */
     &.title-box {
       @apply inline-block w-fit flex-none bg-neutre px-4 py-[2px] transition-all hover:-translate-y-2 hover:-rotate-2;
@@ -60,9 +63,18 @@
     @apply bg-white px-1 font-normal;
   }
   .btn {
-    @apply inline-block px-4 py-2 font-black text-neutre transition-all hover:-translate-y-2 hover:-rotate-2;
+    @apply inline-block px-4 py-2 text-neutre transition-all hover:-translate-y-1 hover:-rotate-1;
+    &.btn-fat {
+      @apply font-black;
+    }
     &.btn-primary {
       @apply bg-primary text-neutre;
+    }
+    &.btn-white {
+      @apply bg-transparent text-white hover:text-neutre;
+      &[aria-current="page"] {
+        @apply text-neutre;
+      }
     }
     &.btn-transparent {
       @apply bg-transparent text-neutre;
