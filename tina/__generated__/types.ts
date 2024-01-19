@@ -307,8 +307,13 @@ export type HomeDataGallery = {
 export type HomeData = Node & Document & {
   __typename?: 'HomeData';
   _warning?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
+  hero_title?: Maybe<Scalars['String']['output']>;
+  hero_bg?: Maybe<Scalars['String']['output']>;
   hero_text?: Maybe<Scalars['JSON']['output']>;
-  hero_bg: Scalars['String']['output'];
   intro_title?: Maybe<Scalars['String']['output']>;
   intro_text?: Maybe<Scalars['JSON']['output']>;
   intro_offre?: Maybe<Scalars['String']['output']>;
@@ -334,10 +339,12 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
+export type DatetimeFilter = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type ImageFilter = {
@@ -345,6 +352,12 @@ export type ImageFilter = {
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type RichTextFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type HomeDataOffresImageFilter = {
@@ -376,8 +389,13 @@ export type HomeDataGalleryFilter = {
 
 export type HomeDataFilter = {
   _warning?: InputMaybe<StringFilter>;
-  hero_text?: InputMaybe<RichTextFilter>;
+  title?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  hero_title?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
+  hero_text?: InputMaybe<RichTextFilter>;
   intro_title?: InputMaybe<StringFilter>;
   intro_text?: InputMaybe<RichTextFilter>;
   intro_offre?: InputMaybe<StringFilter>;
@@ -409,13 +427,17 @@ export type HomeDataConnection = Connection & {
 export type TeamEquipe = {
   __typename?: 'TeamEquipe';
   title: Scalars['String']['output'];
-  hero_bg: Scalars['String']['output'];
+  hero_title?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
+  hero_bg?: Maybe<Scalars['String']['output']>;
 };
 
 export type TeamContact = {
   __typename?: 'TeamContact';
   title: Scalars['String']['output'];
-  hero_bg: Scalars['String']['output'];
+  hero_title?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
+  hero_bg?: Maybe<Scalars['String']['output']>;
   before_text?: Maybe<Scalars['String']['output']>;
   after_title?: Maybe<Scalars['String']['output']>;
   after_text?: Maybe<Scalars['String']['output']>;
@@ -450,11 +472,15 @@ export type Team = Node & Document & {
 
 export type TeamEquipeFilter = {
   title?: InputMaybe<StringFilter>;
+  hero_title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
 };
 
 export type TeamContactFilter = {
   title?: InputMaybe<StringFilter>;
+  hero_title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
   before_text?: InputMaybe<StringFilter>;
   after_title?: InputMaybe<StringFilter>;
@@ -520,7 +546,11 @@ export type Associate = Node & Document & {
   __typename?: 'Associate';
   _warning?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
-  hero_bg: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  description: Scalars['String']['output'];
+  hero_title?: Maybe<Scalars['String']['output']>;
+  hero_bg?: Maybe<Scalars['String']['output']>;
   intro?: Maybe<Scalars['JSON']['output']>;
   associates?: Maybe<Array<Maybe<AssociateAssociates>>>;
   id: Scalars['ID']['output'];
@@ -544,6 +574,10 @@ export type AssociateAssociatesFilter = {
 export type AssociateFilter = {
   _warning?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DatetimeFilter>;
+  updatedAt?: InputMaybe<DatetimeFilter>;
+  description?: InputMaybe<StringFilter>;
+  hero_title?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
   intro?: InputMaybe<RichTextFilter>;
   associates?: InputMaybe<AssociateAssociatesFilter>;
@@ -569,20 +603,13 @@ export type Page = Node & Document & {
   createdAt?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['String']['output']>;
   description: Scalars['String']['output'];
+  hero_title?: Maybe<Scalars['String']['output']>;
   hero_bg?: Maybe<Scalars['String']['output']>;
   useProse?: Maybe<Scalars['Boolean']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
-};
-
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type PageBodyPositionableImageFilter = {
@@ -604,6 +631,7 @@ export type PageFilter = {
   createdAt?: InputMaybe<DatetimeFilter>;
   updatedAt?: InputMaybe<DatetimeFilter>;
   description?: InputMaybe<StringFilter>;
+  hero_title?: InputMaybe<StringFilter>;
   hero_bg?: InputMaybe<ImageFilter>;
   useProse?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<PageBodyFilter>;
@@ -981,8 +1009,13 @@ export type HomeDataGalleryMutation = {
 
 export type HomeDataMutation = {
   _warning?: InputMaybe<Scalars['String']['input']>;
-  hero_text?: InputMaybe<Scalars['JSON']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  hero_title?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
+  hero_text?: InputMaybe<Scalars['JSON']['input']>;
   intro_title?: InputMaybe<Scalars['String']['input']>;
   intro_text?: InputMaybe<Scalars['JSON']['input']>;
   intro_offre?: InputMaybe<Scalars['String']['input']>;
@@ -1000,11 +1033,15 @@ export type HomeDataMutation = {
 
 export type TeamEquipeMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  hero_title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type TeamContactMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  hero_title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
   before_text?: InputMaybe<Scalars['String']['input']>;
   after_title?: InputMaybe<Scalars['String']['input']>;
@@ -1049,6 +1086,10 @@ export type AssociateAssociatesMutation = {
 export type AssociateMutation = {
   _warning?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  hero_title?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
   intro?: InputMaybe<Scalars['JSON']['input']>;
   associates?: InputMaybe<Array<InputMaybe<AssociateAssociatesMutation>>>;
@@ -1060,6 +1101,7 @@ export type PageMutation = {
   createdAt?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  hero_title?: InputMaybe<Scalars['String']['input']>;
   hero_bg?: InputMaybe<Scalars['String']['input']>;
   useProse?: InputMaybe<Scalars['Boolean']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -1125,13 +1167,13 @@ export type SiteDataMutation = {
   networks?: InputMaybe<Array<InputMaybe<SiteDataNetworksMutation>>>;
 };
 
-export type HomeDataPartsFragment = { __typename: 'HomeData', _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null };
+export type HomeDataPartsFragment = { __typename: 'HomeData', _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null };
 
-export type TeamPartsFragment = { __typename: 'Team', _warning?: string | null, _team?: string | null, _contact?: string | null, equipe?: { __typename: 'TeamEquipe', title: string, hero_bg: string } | null, contact?: { __typename: 'TeamContact', title: string, hero_bg: string, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null };
+export type TeamPartsFragment = { __typename: 'Team', _warning?: string | null, _team?: string | null, _contact?: string | null, equipe?: { __typename: 'TeamEquipe', title: string, hero_title?: string | null, description: string, hero_bg?: string | null } | null, contact?: { __typename: 'TeamContact', title: string, hero_title?: string | null, description: string, hero_bg?: string | null, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null };
 
-export type AssociatePartsFragment = { __typename: 'Associate', _warning?: string | null, title: string, hero_bg: string, intro?: any | null, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null };
+export type AssociatePartsFragment = { __typename: 'Associate', _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, intro?: any | null, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null };
 
-export type PagePartsFragment = { __typename: 'Page', _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null };
+export type PagePartsFragment = { __typename: 'Page', _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, useProse?: boolean | null, body?: any | null };
 
 export type NavDataPrimaryPartsFragment = { __typename: 'NavDataPrimary', _warning?: string | null, links?: Array<{ __typename: 'NavDataPrimaryLinks', name: string, path: string, title: string, isButton: boolean, target: string, children?: Array<{ __typename: 'NavDataPrimaryLinksChildren', name: string, title: string, isButton: boolean, path: string, target: string } | null> | null } | null> | null };
 
@@ -1144,7 +1186,7 @@ export type HomeDataQueryVariables = Exact<{
 }>;
 
 
-export type HomeDataQuery = { __typename?: 'Query', homeData: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } };
+export type HomeDataQuery = { __typename?: 'Query', homeData: { __typename: 'HomeData', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } };
 
 export type HomeDataConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1156,14 +1198,14 @@ export type HomeDataConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HomeDataConnectionQuery = { __typename?: 'Query', homeDataConnection: { __typename?: 'HomeDataConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeDataConnectionEdges', cursor: string, node?: { __typename: 'HomeData', id: string, _warning?: string | null, hero_text?: any | null, hero_bg: string, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } | null } | null> | null } };
+export type HomeDataConnectionQuery = { __typename?: 'Query', homeDataConnection: { __typename?: 'HomeDataConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeDataConnectionEdges', cursor: string, node?: { __typename: 'HomeData', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, hero_text?: any | null, intro_title?: string | null, intro_text?: any | null, intro_offre?: string | null, principe_title?: string | null, principe_sub_title?: any | null, principe_text?: any | null, principe_text_image?: any | null, principe_text_bt_label?: string | null, principe_text_bt_url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, offres?: Array<{ __typename: 'HomeDataOffres', title?: string | null, base_line?: string | null, text?: string | null, image?: { __typename: 'HomeDataOffresImage', src: string, alt: string } | null } | null> | null, principe_image?: { __typename: 'HomeDataPrincipe_image', src: string, alt: string } | null, testimonial?: Array<{ __typename: 'HomeDataTestimonial', text?: string | null, name?: string | null } | null> | null, gallery?: Array<{ __typename: 'HomeDataGallery', src: string, alt: string } | null> | null } | null } | null> | null } };
 
 export type TeamQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type TeamQuery = { __typename?: 'Query', team: { __typename: 'Team', id: string, _warning?: string | null, _team?: string | null, _contact?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, equipe?: { __typename: 'TeamEquipe', title: string, hero_bg: string } | null, contact?: { __typename: 'TeamContact', title: string, hero_bg: string, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null } };
+export type TeamQuery = { __typename?: 'Query', team: { __typename: 'Team', id: string, _warning?: string | null, _team?: string | null, _contact?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, equipe?: { __typename: 'TeamEquipe', title: string, hero_title?: string | null, description: string, hero_bg?: string | null } | null, contact?: { __typename: 'TeamContact', title: string, hero_title?: string | null, description: string, hero_bg?: string | null, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null } };
 
 export type TeamConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1175,14 +1217,14 @@ export type TeamConnectionQueryVariables = Exact<{
 }>;
 
 
-export type TeamConnectionQuery = { __typename?: 'Query', teamConnection: { __typename?: 'TeamConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TeamConnectionEdges', cursor: string, node?: { __typename: 'Team', id: string, _warning?: string | null, _team?: string | null, _contact?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, equipe?: { __typename: 'TeamEquipe', title: string, hero_bg: string } | null, contact?: { __typename: 'TeamContact', title: string, hero_bg: string, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null } | null } | null> | null } };
+export type TeamConnectionQuery = { __typename?: 'Query', teamConnection: { __typename?: 'TeamConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TeamConnectionEdges', cursor: string, node?: { __typename: 'Team', id: string, _warning?: string | null, _team?: string | null, _contact?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, equipe?: { __typename: 'TeamEquipe', title: string, hero_title?: string | null, description: string, hero_bg?: string | null } | null, contact?: { __typename: 'TeamContact', title: string, hero_title?: string | null, description: string, hero_bg?: string | null, before_text?: string | null, after_title?: string | null, after_text?: string | null } | null, members?: Array<{ __typename: 'TeamMembers', name: string, published: boolean, role: string, education: string, citation: string, bio: any, image_inactive: string, image_active: string, linkedin?: string | null, email?: string | null } | null> | null } | null } | null> | null } };
 
 export type AssociateQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type AssociateQuery = { __typename?: 'Query', associate: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } };
+export type AssociateQuery = { __typename?: 'Query', associate: { __typename: 'Associate', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } };
 
 export type AssociateConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1194,14 +1236,14 @@ export type AssociateConnectionQueryVariables = Exact<{
 }>;
 
 
-export type AssociateConnectionQuery = { __typename?: 'Query', associateConnection: { __typename?: 'AssociateConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AssociateConnectionEdges', cursor: string, node?: { __typename: 'Associate', id: string, _warning?: string | null, title: string, hero_bg: string, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } | null } | null> | null } };
+export type AssociateConnectionQuery = { __typename?: 'Query', associateConnection: { __typename?: 'AssociateConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AssociateConnectionEdges', cursor: string, node?: { __typename: 'Associate', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, intro?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null } | null } | null> | null } };
 
 export type PageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1213,7 +1255,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_title?: string | null, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type NavDataPrimaryQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1276,8 +1318,13 @@ export const HomeDataPartsFragmentDoc = gql`
     fragment HomeDataParts on HomeData {
   __typename
   _warning
-  hero_text
+  title
+  createdAt
+  updatedAt
+  description
+  hero_title
   hero_bg
+  hero_text
   intro_title
   intro_text
   intro_offre
@@ -1323,12 +1370,16 @@ export const TeamPartsFragmentDoc = gql`
   equipe {
     __typename
     title
+    hero_title
+    description
     hero_bg
   }
   _contact
   contact {
     __typename
     title
+    hero_title
+    description
     hero_bg
     before_text
     after_title
@@ -1354,6 +1405,10 @@ export const AssociatePartsFragmentDoc = gql`
   __typename
   _warning
   title
+  createdAt
+  updatedAt
+  description
+  hero_title
   hero_bg
   intro
   associates {
@@ -1378,6 +1433,7 @@ export const PagePartsFragmentDoc = gql`
   createdAt
   updatedAt
   description
+  hero_title
   hero_bg
   useProse
   body

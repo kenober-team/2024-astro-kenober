@@ -1,13 +1,12 @@
 ---
 import HomeView from "@components/views/home/HomeView.astro";
 import homeData from "@data/homeData.json";
-import siteData from "@data/siteData.json";
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
 <MainLayout
-  title={siteData.title}
-  description={siteData.description}
+  title={homeData.title}
+  description={homeData.description}
   {homeData}
 >
   <HomeView />

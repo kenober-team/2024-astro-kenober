@@ -1,8 +1,12 @@
 ---
 import ContactView from "@components/views/contact/ContactView.astro";
+import teamData from "@data/team.json";
 import SecondaryLayout from "@layouts/SecondaryLayout.astro";
 ---
 
-<SecondaryLayout>
+<SecondaryLayout
+  title={teamData.contact.title}
+  description={teamData.contact.description}
+>
   <ContactView />
 </SecondaryLayout>

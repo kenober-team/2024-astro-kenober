@@ -1,8 +1,12 @@
 ---
 import CompliceView from "@components/views/complices/CompliceView.astro";
+import associateData from "@data/associate.json";
 import SecondaryLayout from "@layouts/SecondaryLayout.astro";
 ---
 
-<SecondaryLayout>
+<SecondaryLayout
+  title={associateData.title}
+  description={associateData.description}
+>
   <CompliceView />
 </SecondaryLayout>

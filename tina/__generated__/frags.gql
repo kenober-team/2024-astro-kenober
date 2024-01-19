@@ -1,8 +1,13 @@
 fragment HomeDataParts on HomeData {
   __typename
   _warning
-  hero_text
+  title
+  createdAt
+  updatedAt
+  description
+  hero_title
   hero_bg
+  hero_text
   intro_title
   intro_text
   intro_offre
@@ -47,12 +52,16 @@ fragment TeamParts on Team {
   equipe {
     __typename
     title
+    hero_title
+    description
     hero_bg
   }
   _contact
   contact {
     __typename
     title
+    hero_title
+    description
     hero_bg
     before_text
     after_title
@@ -77,6 +86,10 @@ fragment AssociateParts on Associate {
   __typename
   _warning
   title
+  createdAt
+  updatedAt
+  description
+  hero_title
   hero_bg
   intro
   associates {
@@ -100,6 +113,7 @@ fragment PageParts on Page {
   createdAt
   updatedAt
   description
+  hero_title
   hero_bg
   useProse
   body

@@ -1,3 +1,4 @@
+import { pagesDefaultFields } from "./commons/tinaFields";
 import { RestartWarning } from "./commons/warning";
 
 /** @type {import("tinacms").Collection} */
@@ -31,9 +32,9 @@ const home = {
         },
       },
     },
-    // ...pagesDefaultFields,
+    ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
-    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+    // { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro_title", label: "Intro - Title" },
     { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
     { type: "string", name: "intro_offre", label: "Intro - Offre" },

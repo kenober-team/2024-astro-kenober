@@ -133,8 +133,13 @@ type HomeDataGallery {
 
 type HomeData implements Node & Document {
   _warning: String
+  title: String!
+  createdAt: String
+  updatedAt: String
+  description: String!
+  hero_title: String
+  hero_bg: String
   hero_text: JSON
-  hero_bg: String!
   intro_title: String
   intro_text: JSON
   intro_offre: String
@@ -160,10 +165,12 @@ input StringFilter {
   in: [String]
 }
 
-input RichTextFilter {
-  startsWith: String
+input DatetimeFilter {
+  after: String
+  before: String
   eq: String
   exists: Boolean
+  in: [String]
 }
 
 input ImageFilter {
@@ -171,6 +178,12 @@ input ImageFilter {
   eq: String
   exists: Boolean
   in: [String]
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
 }
 
 input HomeDataOffresImageFilter {
@@ -202,8 +215,13 @@ input HomeDataGalleryFilter {
 
 input HomeDataFilter {
   _warning: StringFilter
-  hero_text: RichTextFilter
+  title: StringFilter
+  createdAt: DatetimeFilter
+  updatedAt: DatetimeFilter
+  description: StringFilter
+  hero_title: StringFilter
   hero_bg: ImageFilter
+  hero_text: RichTextFilter
   intro_title: StringFilter
   intro_text: RichTextFilter
   intro_offre: StringFilter
@@ -232,12 +250,16 @@ type HomeDataConnection implements Connection {
 
 type TeamEquipe {
   title: String!
-  hero_bg: String!
+  hero_title: String
+  description: String!
+  hero_bg: String
 }
 
 type TeamContact {
   title: String!
-  hero_bg: String!
+  hero_title: String
+  description: String!
+  hero_bg: String
   before_text: String
   after_title: String
   after_text: String
@@ -270,11 +292,15 @@ type Team implements Node & Document {
 
 input TeamEquipeFilter {
   title: StringFilter
+  hero_title: StringFilter
+  description: StringFilter
   hero_bg: ImageFilter
 }
 
 input TeamContactFilter {
   title: StringFilter
+  hero_title: StringFilter
+  description: StringFilter
   hero_bg: ImageFilter
   before_text: StringFilter
   after_title: StringFilter
@@ -335,7 +361,11 @@ type AssociateAssociates {
 type Associate implements Node & Document {
   _warning: String
   title: String!
-  hero_bg: String!
+  createdAt: String
+  updatedAt: String
+  description: String!
+  hero_title: String
+  hero_bg: String
   intro: JSON
   associates: [AssociateAssociates]
   id: ID!
@@ -359,6 +389,10 @@ input AssociateAssociatesFilter {
 input AssociateFilter {
   _warning: StringFilter
   title: StringFilter
+  createdAt: DatetimeFilter
+  updatedAt: DatetimeFilter
+  description: StringFilter
+  hero_title: StringFilter
   hero_bg: ImageFilter
   intro: RichTextFilter
   associates: AssociateAssociatesFilter
@@ -381,20 +415,13 @@ type Page implements Node & Document {
   createdAt: String
   updatedAt: String
   description: String!
+  hero_title: String
   hero_bg: String
   useProse: Boolean
   body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
 }
 
 input PageBodyPositionableImageFilter {
@@ -416,6 +443,7 @@ input PageFilter {
   createdAt: DatetimeFilter
   updatedAt: DatetimeFilter
   description: StringFilter
+  hero_title: StringFilter
   hero_bg: ImageFilter
   useProse: BooleanFilter
   body: PageBodyFilter
@@ -665,8 +693,13 @@ input HomeDataGalleryMutation {
 
 input HomeDataMutation {
   _warning: String
-  hero_text: JSON
+  title: String
+  createdAt: String
+  updatedAt: String
+  description: String
+  hero_title: String
   hero_bg: String
+  hero_text: JSON
   intro_title: String
   intro_text: JSON
   intro_offre: String
@@ -684,11 +717,15 @@ input HomeDataMutation {
 
 input TeamEquipeMutation {
   title: String
+  hero_title: String
+  description: String
   hero_bg: String
 }
 
 input TeamContactMutation {
   title: String
+  hero_title: String
+  description: String
   hero_bg: String
   before_text: String
   after_title: String
@@ -733,6 +770,10 @@ input AssociateAssociatesMutation {
 input AssociateMutation {
   _warning: String
   title: String
+  createdAt: String
+  updatedAt: String
+  description: String
+  hero_title: String
   hero_bg: String
   intro: JSON
   associates: [AssociateAssociatesMutation]
@@ -744,6 +785,7 @@ input PageMutation {
   createdAt: String
   updatedAt: String
   description: String
+  hero_title: String
   hero_bg: String
   useProse: Boolean
   body: JSON

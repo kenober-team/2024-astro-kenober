@@ -1,3 +1,4 @@
+import { shortPagesDefaultFields } from "./commons/tinaFields";
 import { RestartWarning } from "./commons/warning";
 
 /** @type {import("tinacms").Collection} */
@@ -39,10 +40,7 @@ const team = {
       type: "object",
       name: "equipe",
       label: "Contenu page équipe",
-      fields: [
-        { type: "string", name: "title", label: "Titre", required: true },
-        { type: "image", name: "hero_bg", label: "Hero Image", required: true },
-      ],
+      fields: [...shortPagesDefaultFields],
     },
     {
       type: "string",
@@ -60,8 +58,7 @@ const team = {
       name: "contact",
       label: "Contenu page contact",
       fields: [
-        { type: "string", name: "title", label: "Titre", required: true },
-        { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+        ...shortPagesDefaultFields,
         { type: "string", name: "before_text", label: "Intro" },
         { type: "string", name: "after_title", label: "Bas de page - Titre" },
         {

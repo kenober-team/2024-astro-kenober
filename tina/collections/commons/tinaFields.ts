@@ -20,7 +20,7 @@ const pagesDefaultFields: TinaField[] = [
   {
     type: "string",
     name: "title",
-    label: "Title",
+    label: "Title - SEO",
     isTitle: true,
     required: true,
   },
@@ -49,6 +49,27 @@ const pagesDefaultFields: TinaField[] = [
       component: "textarea",
     },
   },
+  { type: "string", name: "hero_title", label: "Hero Title" },
   { type: "image", name: "hero_bg", label: "Hero Image" },
 ];
-export { pagesDefaultFields, completeRichText };
+const shortPagesDefaultFields: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    isTitle: true,
+    required: true,
+  },
+  { type: "string", name: "hero_title", label: "Hero Title" },
+  {
+    type: "string",
+    name: "description",
+    label: "Description - SEO",
+    required: true,
+    ui: {
+      component: "textarea",
+    },
+  },
+  { type: "image", name: "hero_bg", label: "Hero Image" },
+];
+export { shortPagesDefaultFields, pagesDefaultFields, completeRichText };

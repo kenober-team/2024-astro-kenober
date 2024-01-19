@@ -1,3 +1,110 @@
+// tina/collections/commons/templates.ts
+var imageBlock = {
+  name: "PositionableImage",
+  label: "Image",
+  ui: {
+    itemProps: (item) => {
+      return { label: `Image: ${item?.alt}` };
+    }
+  },
+  fields: [
+    {
+      type: "image",
+      label: "Image",
+      name: "src",
+      required: true
+    },
+    { type: "string", label: "Alt", name: "alt", required: true },
+    { type: "string", label: "Caption", name: "caption" },
+    { type: "string", label: "Class", name: "class" },
+    {
+      type: "string",
+      label: "Position",
+      name: "position",
+      required: true,
+      options: ["float-left", "float-right", "block"]
+    },
+    {
+      type: "string",
+      label: "Width",
+      name: "imgWidth",
+      required: true,
+      options: [
+        { label: "auto", value: "w-auto" },
+        { label: "fullWidth", value: "w-full" },
+        { label: "halfWidth", value: "w-full md:w-1/2" },
+        { label: "thirdWidth", value: "w-full md:w-1/3" },
+        { label: "quarterWidth", value: "w-full md:w-1/4" }
+      ]
+    }
+  ]
+};
+
+// tina/collections/commons/tinaFields.ts
+var completeRichText = {
+  type: "rich-text",
+  name: "body",
+  label: "Body",
+  isBody: true,
+  templates: [imageBlock]
+};
+var pagesDefaultFields = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title - SEO",
+    isTitle: true,
+    required: true
+  },
+  {
+    type: "datetime",
+    name: "createdAt",
+    label: "Creation date",
+    ui: {
+      component: "hidden"
+    }
+  },
+  {
+    type: "datetime",
+    name: "updatedAt",
+    label: "Updated date",
+    ui: {
+      component: "hidden"
+    }
+  },
+  {
+    type: "string",
+    name: "description",
+    label: "Description - SEO",
+    required: true,
+    ui: {
+      component: "textarea"
+    }
+  },
+  { type: "string", name: "hero_title", label: "Hero Title" },
+  { type: "image", name: "hero_bg", label: "Hero Image" }
+];
+var shortPagesDefaultFields = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    isTitle: true,
+    required: true
+  },
+  { type: "string", name: "hero_title", label: "Hero Title" },
+  {
+    type: "string",
+    name: "description",
+    label: "Description - SEO",
+    required: true,
+    ui: {
+      component: "textarea"
+    }
+  },
+  { type: "image", name: "hero_bg", label: "Hero Image" }
+];
+
 // tina/collections/commons/warning.jsx
 import { jsx, jsxs } from "react/jsx-runtime";
 var WarningIcon = (props) => {
@@ -65,8 +172,9 @@ var team = {
         }
       }
     },
-    { type: "string", name: "title", label: "Titre", required: true },
-    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+    ...pagesDefaultFields,
+    // { type: "string", name: "title", label: "Titre", required: true },
+    // { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "rich-text", name: "intro", label: "Intro" },
     {
       type: "object",
@@ -158,9 +266,9 @@ var home = {
         }
       }
     },
-    // ...pagesDefaultFields,
+    ...pagesDefaultFields,
     { type: "rich-text", name: "hero_text", label: "Hero Texte" },
-    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+    // { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "string", name: "intro_title", label: "Intro - Title" },
     { type: "rich-text", name: "intro_text", label: "Intro - Texte" },
     { type: "string", name: "intro_offre", label: "Intro - Offre" },
@@ -491,92 +599,6 @@ var navDataSecondary = {
 };
 var navDataSecondary_default = navDataSecondary;
 
-// tina/collections/commons/templates.ts
-var imageBlock = {
-  name: "PositionableImage",
-  label: "Image",
-  ui: {
-    itemProps: (item) => {
-      return { label: `Image: ${item?.alt}` };
-    }
-  },
-  fields: [
-    {
-      type: "image",
-      label: "Image",
-      name: "src",
-      required: true
-    },
-    { type: "string", label: "Alt", name: "alt", required: true },
-    { type: "string", label: "Caption", name: "caption" },
-    { type: "string", label: "Class", name: "class" },
-    {
-      type: "string",
-      label: "Position",
-      name: "position",
-      required: true,
-      options: ["float-left", "float-right", "block"]
-    },
-    {
-      type: "string",
-      label: "Width",
-      name: "imgWidth",
-      required: true,
-      options: [
-        { label: "auto", value: "w-auto" },
-        { label: "fullWidth", value: "w-full" },
-        { label: "halfWidth", value: "w-full md:w-1/2" },
-        { label: "thirdWidth", value: "w-full md:w-1/3" },
-        { label: "quarterWidth", value: "w-full md:w-1/4" }
-      ]
-    }
-  ]
-};
-
-// tina/collections/commons/tinaFields.ts
-var completeRichText = {
-  type: "rich-text",
-  name: "body",
-  label: "Body",
-  isBody: true,
-  templates: [imageBlock]
-};
-var pagesDefaultFields = [
-  {
-    type: "string",
-    name: "title",
-    label: "Title",
-    isTitle: true,
-    required: true
-  },
-  {
-    type: "datetime",
-    name: "createdAt",
-    label: "Creation date",
-    ui: {
-      component: "hidden"
-    }
-  },
-  {
-    type: "datetime",
-    name: "updatedAt",
-    label: "Updated date",
-    ui: {
-      component: "hidden"
-    }
-  },
-  {
-    type: "string",
-    name: "description",
-    label: "Description - SEO",
-    required: true,
-    ui: {
-      component: "textarea"
-    }
-  },
-  { type: "image", name: "hero_bg", label: "Hero Image" }
-];
-
 // src/js/utils.js
 function slugify(text) {
   return text.toString().normalize("NFD").toLowerCase().replace(/['"]/g, " ").replace(/\s+/g, "-").replace(/[^\w-]+/g, "").replace(/--+/g, "-").replace(/^-+/, "").replace(/[^\x00-\x7F]/g, "-").replace(/-+$/, "");
@@ -799,10 +821,7 @@ var team2 = {
       type: "object",
       name: "equipe",
       label: "Contenu page \xE9quipe",
-      fields: [
-        { type: "string", name: "title", label: "Titre", required: true },
-        { type: "image", name: "hero_bg", label: "Hero Image", required: true }
-      ]
+      fields: [...shortPagesDefaultFields]
     },
     {
       type: "string",
@@ -818,8 +837,7 @@ var team2 = {
       name: "contact",
       label: "Contenu page contact",
       fields: [
-        { type: "string", name: "title", label: "Titre", required: true },
-        { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+        ...shortPagesDefaultFields,
         { type: "string", name: "before_text", label: "Intro" },
         { type: "string", name: "after_title", label: "Bas de page - Titre" },
         {

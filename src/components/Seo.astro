@@ -34,8 +34,8 @@ const jsonLD = jsonLDGenerator({
     <meta property="og:title" content={title} />
   )
 }
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:title" content={title || siteData.title} />
+<meta property="og:description" content={description || siteData.description} />
 <meta property="og:url" content={url} />
 <meta property="og:image" content={image?.src || siteData.image.url} />
 <meta property="og:image:url" content={image?.src || siteData.image.url} />

@@ -1,3 +1,4 @@
+import { pagesDefaultFields } from "./commons/tinaFields";
 import { RestartWarning } from "./commons/warning";
 
 /** @type {import("tinacms").Collection} */
@@ -24,8 +25,9 @@ const team = {
         },
       },
     },
-    { type: "string", name: "title", label: "Titre", required: true },
-    { type: "image", name: "hero_bg", label: "Hero Image", required: true },
+    ...pagesDefaultFields,
+    // { type: "string", name: "title", label: "Titre", required: true },
+    // { type: "image", name: "hero_bg", label: "Hero Image", required: true },
     { type: "rich-text", name: "intro", label: "Intro" },
     {
       type: "object",

@@ -1,8 +1,12 @@
 ---
 import EquipeView from "@components/views/equipe/EquipeView.astro";
+import teamData from "@data/team.json";
 import SecondaryLayout from "@layouts/SecondaryLayout.astro";
 ---
 
-<SecondaryLayout>
+<SecondaryLayout
+  title={teamData.equipe.title}
+  description={teamData.equipe.description}
+>
   <EquipeView />
 </SecondaryLayout>

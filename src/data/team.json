@@ -1,10 +1,14 @@
 {
   "equipe": {
     "title": "L’équipe",
+    "hero_title": "L’équipe",
+    "description": "<Description SEO page equipe>",
     "hero_bg": "/src/assets/heros/hero-equipe.svg"
   },
   "contact": {
-    "title": "Envie d’échanger avec nous ?<br />Nous aussi !",
+    "title": "Contact",
+    "hero_title": "Envie d’échanger avec nous ?<br />Nous aussi !",
+    "description": "<Description SEO page contact>",
     "hero_bg": "/src/assets/heros/hero-contact.svg",
     "before_text": "Nous vous laissons contacter la personne  de votre choix :",
     "after_title": "Trop de choix ?",
