@@ -46,6 +46,7 @@ const { Content } = await entry.render();
           return (
             <TinaViewer
               displayTitle={entry.data.title}
+              displayBG={entry.data.hero_bg || undefined}
               {entry}
               {Content}
               {response}

@@ -566,10 +566,10 @@ export type Page = Node & Document & {
   __typename?: 'Page';
   _warning?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
-  hero_bg: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['String']['output']>;
   description: Scalars['String']['output'];
+  hero_bg?: Maybe<Scalars['String']['output']>;
   useProse?: Maybe<Scalars['Boolean']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
@@ -601,10 +601,10 @@ export type PageBodyFilter = {
 export type PageFilter = {
   _warning?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  hero_bg?: InputMaybe<ImageFilter>;
   createdAt?: InputMaybe<DatetimeFilter>;
   updatedAt?: InputMaybe<DatetimeFilter>;
   description?: InputMaybe<StringFilter>;
+  hero_bg?: InputMaybe<ImageFilter>;
   useProse?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<PageBodyFilter>;
 };
@@ -1057,10 +1057,10 @@ export type AssociateMutation = {
 export type PageMutation = {
   _warning?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  hero_bg?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  hero_bg?: InputMaybe<Scalars['String']['input']>;
   useProse?: InputMaybe<Scalars['Boolean']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
@@ -1131,7 +1131,7 @@ export type TeamPartsFragment = { __typename: 'Team', _warning?: string | null, 
 
 export type AssociatePartsFragment = { __typename: 'Associate', _warning?: string | null, title: string, hero_bg: string, intro?: any | null, associates?: Array<{ __typename: 'AssociateAssociates', name: string, url?: string | null, published: boolean, description: any, image?: { __typename: 'AssociateAssociatesImage', src: string, alt: string } | null } | null> | null };
 
-export type PagePartsFragment = { __typename: 'Page', _warning?: string | null, title: string, hero_bg: string, createdAt?: string | null, updatedAt?: string | null, description: string, useProse?: boolean | null, body?: any | null };
+export type PagePartsFragment = { __typename: 'Page', _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null };
 
 export type NavDataPrimaryPartsFragment = { __typename: 'NavDataPrimary', _warning?: string | null, links?: Array<{ __typename: 'NavDataPrimaryLinks', name: string, path: string, title: string, isButton: boolean, target: string, children?: Array<{ __typename: 'NavDataPrimaryLinksChildren', name: string, title: string, isButton: boolean, path: string, target: string } | null> | null } | null> | null };
 
@@ -1201,7 +1201,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, _warning?: string | null, title: string, hero_bg: string, createdAt?: string | null, updatedAt?: string | null, description: string, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1213,7 +1213,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, _warning?: string | null, title: string, hero_bg: string, createdAt?: string | null, updatedAt?: string | null, description: string, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, _warning?: string | null, title: string, createdAt?: string | null, updatedAt?: string | null, description: string, hero_bg?: string | null, useProse?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type NavDataPrimaryQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1375,10 +1375,10 @@ export const PagePartsFragmentDoc = gql`
   __typename
   _warning
   title
-  hero_bg
   createdAt
   updatedAt
   description
+  hero_bg
   useProse
   body
 }

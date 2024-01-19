@@ -549,7 +549,6 @@ var pagesDefaultFields = [
     isTitle: true,
     required: true
   },
-  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
   {
     type: "datetime",
     name: "createdAt",
@@ -574,7 +573,8 @@ var pagesDefaultFields = [
     ui: {
       component: "textarea"
     }
-  }
+  },
+  { type: "image", name: "hero_bg", label: "Hero Image" }
 ];
 
 // src/js/utils.js

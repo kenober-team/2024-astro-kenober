@@ -97,10 +97,10 @@ fragment PageParts on Page {
   __typename
   _warning
   title
-  hero_bg
   createdAt
   updatedAt
   description
+  hero_bg
   useProse
   body
 }

@@ -24,7 +24,6 @@ const pagesDefaultFields: TinaField[] = [
     isTitle: true,
     required: true,
   },
-  { type: "image", name: "hero_bg", label: "Hero Image", required: true },
   {
     type: "datetime",
     name: "createdAt",
@@ -50,5 +49,6 @@ const pagesDefaultFields: TinaField[] = [
       component: "textarea",
     },
   },
+  { type: "image", name: "hero_bg", label: "Hero Image" },
 ];
 export { pagesDefaultFields, completeRichText };

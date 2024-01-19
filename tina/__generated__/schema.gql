@@ -378,10 +378,10 @@ type AssociateConnection implements Connection {
 type Page implements Node & Document {
   _warning: String
   title: String!
-  hero_bg: String!
   createdAt: String
   updatedAt: String
   description: String!
+  hero_bg: String
   useProse: Boolean
   body: JSON
   id: ID!
@@ -413,10 +413,10 @@ input PageBodyFilter {
 input PageFilter {
   _warning: StringFilter
   title: StringFilter
-  hero_bg: ImageFilter
   createdAt: DatetimeFilter
   updatedAt: DatetimeFilter
   description: StringFilter
+  hero_bg: ImageFilter
   useProse: BooleanFilter
   body: PageBodyFilter
 }
@@ -741,10 +741,10 @@ input AssociateMutation {
 input PageMutation {
   _warning: String
   title: String
-  hero_bg: String
   createdAt: String
   updatedAt: String
   description: String
+  hero_bg: String
   useProse: Boolean
   body: JSON
 }

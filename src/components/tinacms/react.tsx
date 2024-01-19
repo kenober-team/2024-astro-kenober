@@ -19,18 +19,20 @@ export const TinaReactHelper: React.FC<TinaReactHelperProps> = ({
       return true;
     }
   }
+  const btClasses =
+    "bg-gray-800 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded whitespace-nowrap flex items-center gap-2 w-fit flex-none";
   return (
     <>
-      <nav className="flex items-center gap-4 bg-gray-900 p-4 text-neutral-content">
-        <div className="container">
-          <span className="font-bold">TinaCMS:</span>{" "}
+      <nav className="bg-gray-900 p-4">
+        <div className="container flex items-center gap-4">
+          <span className="font-bold text-white">TinaCMS:</span>{" "}
           {inIframe() ? (
             <a
               href={`/${entry.collection !== "pages" ? entry.collection : ""}/${
                 entry.slug
               }`}
               target="_blank"
-              className="btn btn-primary"
+              className={btClasses}
             >
               View{" "}
               <svg
@@ -53,7 +55,7 @@ export const TinaReactHelper: React.FC<TinaReactHelperProps> = ({
             <a
               href={`/admin/index.html#/~/${entry.slug}`}
               target="_blank"
-              className="btn btn-primary"
+              className={btClasses}
             >
               Edit
             </a>

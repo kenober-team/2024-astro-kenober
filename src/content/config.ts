@@ -21,6 +21,7 @@ export const collections = {
         createdAt: z.date().optional(),
         updatedAt: z.date().optional(),
         useProse: z.boolean().optional(),
+        hero_bg: z.string(),
       }),
   }),
 };
