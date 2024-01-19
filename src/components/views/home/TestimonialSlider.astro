@@ -9,6 +9,7 @@ const props = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   `/src/assets/home/testimonialsBG/verbatim-*.{jpeg,jpg,png,gif,svg}`,
 );
+// https://carlesto.com/blog/posts/462/building-carousels-and-sliders-with-tailwindcss
 ---
 
 <section class="testimonial relative !py-[3.91rem]" data-slide-motion="static">
@@ -75,7 +76,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 <script>
   //Get all slideContainers
   const slideContainers = document.querySelectorAll("[data-slide-container]");
-  const slideDistance = window.screen.availWidth / 4;
+  // testimonial__card
+  const slide = document.querySelector(".testimonial__card");
+  const slideDistance = slide?.clientWidth || 400;
+  // const slideDistance =
+  //   window.screen.availWidth > 400 ? window.screen.availWidth / 4 : 400;
   // Iterate over each container, incase there are more than one carousels in a page
   slideContainers.forEach((container) => {
     let containerMotion =
@@ -90,11 +95,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     let previousButton = document.querySelectorAll("[data-slide-previous]")[0];
 
     //add a click event to each of the slide
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("mousedown", () => {
       container.scrollLeft += slideDistance;
     });
 
-    previousButton.addEventListener("click", () => {
+    previousButton.addEventListener("mousedown", () => {
       container.scrollLeft -= slideDistance;
     });
   });

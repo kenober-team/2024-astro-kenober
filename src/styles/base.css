@@ -143,10 +143,10 @@
     .testimonial__content {
       @apply flex flex-col items-center justify-between gap-4;
       .testimonial__text {
-        @apply text-center;
+        @apply text-center text-[0.84211rem] lg:text-[1.05263rem];
       }
       .testimonial__author {
-        @apply text-neutre-content inline-block w-fit flex-none bg-neutre px-4 py-2 text-center text-[0.84211rems] transition-all;
+        @apply text-neutre-content inline-block w-fit flex-none bg-neutre px-4 py-2 text-center transition-all lg:text-[0.84211rems];
       }
     }
   }
