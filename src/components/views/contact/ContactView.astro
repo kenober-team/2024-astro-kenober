@@ -1,0 +1,31 @@
+---
+import Hero from "@components/Hero.astro";
+import teamData from "@data/team.json";
+import ContactCard from "./ContactCard.astro";
+
+const props = Astro.props;
+---
+
+<>
+  <Hero title={teamData.contact.title} image={teamData.contact.hero_bg} />
+  <section class="section !pb-0">
+    <div class="container-in-section flex-container">
+      <p class="max-w-sm text-center text-[1.47368rem] font-bold">
+        {teamData.contact.before_text}
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div
+      class="container-in-section flex-container !flex-row flex-wrap justify-center !gap-[5.8rem]"
+    >
+      {teamData.members.map((member, idx) => <ContactCard {...member} {idx} />)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-in-section flex-container prose">
+      <p class="text-[1.47368rem] font-bold">{teamData.contact.after_title}</p>
+      <p class="text-[1.05263rem]">{teamData.contact.after_text}</p>
+    </div>
+  </section>
+</>

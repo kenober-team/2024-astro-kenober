@@ -1,0 +1,26 @@
+---
+import Hero from "@components/Hero.astro";
+import SimpleMardownRender from "@components/SimpleMardownRender.astro";
+import associateData from "@data/associate.json";
+import CompliceCard from "./CompliceCard.astro";
+
+const props = Astro.props;
+---
+
+<>
+  <Hero title={associateData.title} image={associateData.hero_bg} />
+  <section class="section !pb-0">
+    <div class="container-in-section flex-container">
+      <SimpleMardownRender markdown={associateData.intro} classes="markdown" />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container-in-section flex-container divide-y-2 divide-black/50">
+      {
+        associateData.associates.map((associate, idx) => (
+          <CompliceCard {...associate} {idx} />
+        ))
+      }
+    </div>
+  </section>
+</>

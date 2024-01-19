@@ -21,5 +21,8 @@ const { title, image } = Astro.props;
       />
     )
   }
-  <h1 class="text-h1 container z-0 text-center font-mesmerize">{title}</h1>
+  <h1
+    class="text-h1 container z-0 text-center font-mesmerize"
+    set:html={title}
+  />
 </section>

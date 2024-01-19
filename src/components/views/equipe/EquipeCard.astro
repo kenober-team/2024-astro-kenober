@@ -18,6 +18,7 @@ type Props = {
 };
 const {
   name,
+  published,
   role,
   education,
   citation,
@@ -30,59 +31,63 @@ const {
 } = Astro.props;
 ---
 
-<article
-  class:list={[
-    "group flex w-full gap-[2.53rem] py-[2.26rem] transition-all",
-    {
-      "flex-row": idx % 2 === 0,
-    },
-    {
-      "flex-row-reverse": idx % 2 === 1,
-    },
-  ]}
->
-  <div class="flex-none">
-    <MDXImage
-      src={image_inactive}
-      alt={name}
-      width={268}
-      class="w-[14.10526rem] rounded-full group-has-[input:checked]:hidden"
-    />
-    <MDXImage
-      src={image_active}
-      alt={name}
-      width={268}
-      class="hidden w-[14.10526rem] rounded-full group-has-[input:checked]:block"
-    />
-  </div>
-  <div class="flex flex-col">
-    <h2>{name}</h2>
-    <p class="text-[1.05263rem]">{role}</p>
-    <p class="mb-4 text-[0.84211rem] italic">{education}</p>
-    <p class="mb-4 w-fit flex-none bg-neutre px-1 font-bold text-primary">
-      “{citation}”
-    </p>
-    <SimpleMardownRender
-      markdown={bio}
-      classes="prose !max-w-full group-has-[input:checked]:line-clamp-none line-clamp-4 transition-all"
-    />
-    <label
-      for={`chk-${idx}`}
-      class="m-2 flex w-fit flex-none -translate-x-2 justify-end"
+{
+  published && (
+    <article
+      class:list={[
+        "group flex w-full gap-[2.53rem] py-[2.26rem] transition-all",
+        {
+          "flex-row": idx % 2 === 0,
+        },
+        {
+          "flex-row-reverse": idx % 2 === 1,
+        },
+      ]}
     >
-      <input id={`chk-${idx}`} type="checkbox" class="peer/chk hidden" />
-      <Icon
-        name="plus"
-        width={24}
-        height={24}
-        class="peer-checked/chk:hidden"
-      />
-      <Icon
-        name="minus"
-        width={24}
-        height={24}
-        class="hidden peer-checked/chk:inline-block"
-      />
-    </label>
-  </div>
-</article>
+      <div class="flex-none">
+        <MDXImage
+          src={image_inactive}
+          alt={name}
+          width={268}
+          class="w-[14.10526rem] rounded-full group-has-[input:checked]:hidden"
+        />
+        <MDXImage
+          src={image_active}
+          alt={name}
+          width={268}
+          class="hidden w-[14.10526rem] rounded-full group-has-[input:checked]:block"
+        />
+      </div>
+      <div class="flex flex-col">
+        <h2>{name}</h2>
+        <p class="text-[1.05263rem]">{role}</p>
+        <p class="mb-4 text-[0.84211rem] italic">{education}</p>
+        <p class="mb-4 w-fit flex-none bg-neutre px-1 font-bold text-primary">
+          “{citation}”
+        </p>
+        <SimpleMardownRender
+          markdown={bio}
+          classes="prose !max-w-full group-has-[input:checked]:line-clamp-none line-clamp-4 transition-all"
+        />
+        <label
+          for={`chk-${idx}`}
+          class="m-2 flex w-fit flex-none -translate-x-2 justify-end"
+        >
+          <input id={`chk-${idx}`} type="checkbox" class="peer/chk hidden" />
+          <Icon
+            name="plus"
+            width={24}
+            height={24}
+            class="peer-checked/chk:hidden"
+          />
+          <Icon
+            name="minus"
+            width={24}
+            height={24}
+            class="hidden peer-checked/chk:inline-block"
+          />
+        </label>
+      </div>
+    </article>
+  )
+}

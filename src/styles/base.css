@@ -89,7 +89,6 @@
         @apply flex flex-col items-center gap-5;
       }
     }
-
     &.gris-1 {
       @apply bg-gris-1;
     }
@@ -98,6 +97,9 @@
     @apply mx-auto w-[80%] whitespace-pre-line;
     a {
       @apply !underline;
+    }
+    > p:last-child {
+      @apply mb-0;
     }
   }
   .markdown-full {

@@ -8,8 +8,8 @@
       "published": true,
       "description": "Plus qu’un partenaire, **Next Level Formation** c’est notre autre identité ! Next Level, c’est notre marque de formation en soft skills. Une entreprise originale qui rassemble 25 adhérent·e·s et une trentaine de formateur·rice·s autour d’une passion pour la formation en intelligence émotionnelle et relationnelle. Chez Next, nous intervenons fréquemment pour animer des formations bien sûr, mais nous sommes aussi de fervent·e·s créateur·rice·s de déroulés pédagogiques nourris notamment par les neurosciences, la fantaisie et le plaisir. Co-fondateur·rice·s de cet écosystème en perpétuel mouvement, nous sommes fièr·e·s de continuer à développer cette organisation et ces offres qui complètent si bien ce que nous faisons avec Kenober !\n",
       "image": {
-        "src": "/src/assets/associates/complice-1.png",
-        "alt": "Next Level Formation "
+        "src": "/src/assets/associates/placeholder-272x302.svg",
+        "alt": "Next Level Formation"
       }
     },
     {
@@ -18,7 +18,7 @@
       "published": true,
       "description": "**Albus Conseil** est un cabinet de conseil qui bouscule les idées reçues que vous pourriez avoir sur les cabinets de conseil… Leur mission : accompagner le changement dans vos organisations. Comme Albus Dumbledore dans Harry Potter (eh oui, leur nom vient de là !), ils jouent pour vous le rôle de magicien pour vous aider à transformer les choses.\n\nGrâce à des outils bien sûr, mais surtout à une approche qui vous fera grandir et prendre confiance en vous … et vos équipes. Chez Albus, on fait de l’impro le lundi après-midi pour travailler sur sa posture, des tournages le vendredi pour proposer des contenus souvent engagés, drôles, étonnants sur le management, mais aussi des articles pour un wikimanagement en opensource !\n\nEt nous, on en profite car nous sommes leurs colocataires depuis presque 10 ans. Et plus nous les fréquentons, plus notre envie de faire des choses ensemble grandit !\n",
       "image": {
-        "src": "/src/assets/associates/complice-2.png",
+        "src": "/src/assets/associates/albus-conseil.png",
         "alt": "Albus Conseil"
       }
     },
@@ -26,31 +26,51 @@
       "name": "Become Studio",
       "url": "https://www.become-studio.com/",
       "published": true,
-      "description": "Johanne de Mones et Sarah Debail, créatrices de **Become Studio**, sont des partenaires de choix. Elles savent à la fois concevoir et décliner une identité de marque (Vous aimez celle de Kenober? C’est leur œuvre !) depuis leur antre à Montreuil, mais elles nous accompagnent aussi régulièrement sur le terrain pour réaliser des facilitations graphiques sur le vif. Vous souhaitez garder une trace vivante, élégante, un poil impertinente de vos échanges au cours d’un séminaire ? Ce sont les bonnes personnes !\n"
+      "description": "Johanne de Mones et Sarah Debail, créatrices de **Become Studio**, sont des partenaires de choix. Elles savent à la fois concevoir et décliner une identité de marque (Vous aimez celle de Kenober? C’est leur œuvre !) depuis leur antre à Montreuil, mais elles nous accompagnent aussi régulièrement sur le terrain pour réaliser des facilitations graphiques sur le vif. Vous souhaitez garder une trace vivante, élégante, un poil impertinente de vos échanges au cours d’un séminaire ? Ce sont les bonnes personnes !\n",
+      "image": {
+        "src": "/src/assets/associates/become-studio.png",
+        "alt": "Albus Conseil"
+      }
     },
     {
       "name": "Luc Fedon",
       "url": "https://www.behance.net/necoflud?locale=fr_FR",
       "published": true,
-      "description": "**Luc Fedon** est un peu fou… et c’est ce qui fait qu’il est merveilleux ! Il a un univers bien à lui qu’il décline sur le papier mais aussi en format numérique et en animation. Ce qu’on aime quand on travaille avec Luc ? On lui apporte un scénario… et il le questionne, il le tourne, le retourne, l’emmène sur une autre galaxie. A l’arrivée, on obtient un objet unique (affiche, film, BD, plateau de jeu, carte de vœux …) souvent surprenant et très pertinent. Luc nous apporte sa touche personnelle sur le fond et sur la forme ! \n"
+      "description": "**Luc Fedon** est un peu fou… et c’est ce qui fait qu’il est merveilleux ! Il a un univers bien à lui qu’il décline sur le papier mais aussi en format numérique et en animation. Ce qu’on aime quand on travaille avec Luc ? On lui apporte un scénario… et il le questionne, il le tourne, le retourne, l’emmène sur une autre galaxie. A l’arrivée, on obtient un objet unique (affiche, film, BD, plateau de jeu, carte de vœux …) souvent surprenant et très pertinent. Luc nous apporte sa touche personnelle sur le fond et sur la forme ! \n",
+      "image": {
+        "src": "/src/assets/associates/luc-fedon.png",
+        "alt": "Luc Fedon"
+      }
     },
     {
       "name": "Orlade",
       "url": "https://www.orlade.com/",
       "published": true,
-      "description": "Expert du secteur industriel, leader dans la performance des projets complexes, **Orlade** est un collectif bâti autour de la passion du projet … Et en général, nous, les passionné·e·s, on aime bien ! Nous travaillons avec Orlade depuis plus de 10 ans à plusieurs niveaux : formation en interne, conception et animation de leurs évènements annuels… et collaboration sur des grands projets industriels complexes qui nous mettent au cœur de dynamiques collectives très intéressantes. Comment la fluidité (ou la non fluidité !) des collaborations humaines impacte-elle les process les mieux huilés et les plannings les mieux pensés ? C’est ce que nous explorons régulièrement main dans la main avec les consultants Orlade : eux avec un prisme projet hardskills et nous avec notre expertise des dynamiques de groupe et de l’intelligence collective. En toute simplexité comme ils·elles disent ! \n"
+      "description": "Expert du secteur industriel, leader dans la performance des projets complexes, **Orlade** est un collectif bâti autour de la passion du projet … Et en général, nous, les passionné·e·s, on aime bien ! Nous travaillons avec Orlade depuis plus de 10 ans à plusieurs niveaux : formation en interne, conception et animation de leurs évènements annuels… et collaboration sur des grands projets industriels complexes qui nous mettent au cœur de dynamiques collectives très intéressantes. Comment la fluidité (ou la non fluidité !) des collaborations humaines impacte-elle les process les mieux huilés et les plannings les mieux pensés ? C’est ce que nous explorons régulièrement main dans la main avec les consultants Orlade : eux avec un prisme projet hardskills et nous avec notre expertise des dynamiques de groupe et de l’intelligence collective. En toute simplexité comme ils·elles disent ! \n",
+      "image": {
+        "src": "/src/assets/associates/placeholder-272x302.svg",
+        "alt": "Orlade"
+      }
     },
     {
       "name": "Pierre-Arnaud Briot",
       "url": "https://www.pierre-arnaudbriot.com/",
       "published": true,
-      "description": "Avec **Pierre-Arnaud**, tout ce qui semble compliqué devient simple… et la pression disparaît comme par enchantement. Pierre-Arnaud est un réalisateur et monteur exigeant, précis, créatif qui gère comme personne les demandes les plus extravagantes dans les conditions les plus extrêmes. Il peut aussi bien enchanter un tournage dans une salle de réunion grisâtre et mal éclairée (le résultat est lumineux !) que retranscrire l’émotion d’un teambuilding géant avec plusieurs centaines de personnes sur une plage de plusieurs kilomètres, ou encore filmer des plats de grands chefs de façon si gourmande qu’il est impossible de ne pas saliver… Et tout ça avec douceur, sympathie, humour et une grande capacité d’écoute. \n"
+      "description": "Avec **Pierre-Arnaud**, tout ce qui semble compliqué devient simple… et la pression disparaît comme par enchantement. Pierre-Arnaud est un réalisateur et monteur exigeant, précis, créatif qui gère comme personne les demandes les plus extravagantes dans les conditions les plus extrêmes. Il peut aussi bien enchanter un tournage dans une salle de réunion grisâtre et mal éclairée (le résultat est lumineux !) que retranscrire l’émotion d’un teambuilding géant avec plusieurs centaines de personnes sur une plage de plusieurs kilomètres, ou encore filmer des plats de grands chefs de façon si gourmande qu’il est impossible de ne pas saliver… Et tout ça avec douceur, sympathie, humour et une grande capacité d’écoute. \n",
+      "image": {
+        "src": "/src/assets/associates/placeholder-272x302.svg",
+        "alt": "Pierre-Arnaud Briot"
+      }
     },
     {
       "name": "The Salmon Consulting",
       "url": "https://thesalmonconsulting.com/",
       "published": true,
-      "description": "Dans la série cabinet de conseil audacieux, nous aimons aussi beaucoup travailler avec **The Salmon Consulting**, qui comme les saumons qui leur donnent leur nom et leur couleur, aiment bien réfléchir à contre-courant pour imaginer des idées étonnantes et souvent percutantes ! L’équipe des saumons est celle qu’il vous faut pour interroger votre fonctionnement actuel, dessiner des plans stratégiques adaptés à notre monde qui frétille ou encore bâtir une culture qui vous ressemble… et vous stimule. The Salmon aime entrecroiser les perspectives économiques, stratégiques et les sciences sociales pour répondre à vos problématiques. Préparez-vous à voyager au cœur de votre organisation comme jamais et à être challengé là où vous ne l’attendez pas !\n"
+      "description": "Dans la série cabinet de conseil audacieux, nous aimons aussi beaucoup travailler avec **The Salmon Consulting**, qui comme les saumons qui leur donnent leur nom et leur couleur, aiment bien réfléchir à contre-courant pour imaginer des idées étonnantes et souvent percutantes ! L’équipe des saumons est celle qu’il vous faut pour interroger votre fonctionnement actuel, dessiner des plans stratégiques adaptés à notre monde qui frétille ou encore bâtir une culture qui vous ressemble… et vous stimule. The Salmon aime entrecroiser les perspectives économiques, stratégiques et les sciences sociales pour répondre à vos problématiques. Préparez-vous à voyager au cœur de votre organisation comme jamais et à être challengé là où vous ne l’attendez pas !\n",
+      "image": {
+        "src": "/src/assets/associates/the-salmon-consulting.png",
+        "alt": "The Salmon Consulting"
+      }
     }
   ]
 }

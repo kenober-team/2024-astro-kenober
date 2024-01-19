@@ -1,0 +1,48 @@
+---
+import MDXImage from "@components/mdx/MDXImage.astro";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  name: string;
+  published: boolean;
+  role: string;
+  education: string;
+  citation: string;
+  bio: string;
+  image_inactive: string;
+  image_active: string;
+  linkedin: string;
+  email: string;
+  idx: number;
+};
+const {
+  name,
+  published,
+  role,
+  education,
+  citation,
+  bio,
+  image_inactive,
+  image_active,
+  linkedin,
+  email,
+  idx,
+} = Astro.props;
+---
+
+{
+  published && (
+    <article class="flex flex-col items-center justify-center gap-2">
+      <MDXImage
+        src={image_inactive}
+        alt={name}
+        width={205}
+        class="w-[10.83126rem] rounded-full"
+      />
+
+      <h2>{name}</h2>
+      <p>{email}</p>
+      {linkedin && <Icon name="linkedIn-primary" width={31} height={31} />}
+    </article>
+  )
+}
