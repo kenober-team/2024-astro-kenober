@@ -2,6 +2,7 @@
 import SimpleMardownRender from "@components/SimpleMardownRender.astro";
 import MDXImage from "@components/mdx/MDXImage.astro";
 import homeData from "@data/homeData.json";
+import { Icon } from "astro-icon/components";
 import Gallery from "./Gallery.astro";
 import OffreCard from "./OffreCard.astro";
 import TestimonialSlider from "./TestimonialSlider.astro";
@@ -9,6 +10,7 @@ const props = Astro.props;
 ---
 
 <>
+  {/* Intro */}
   <section class="section !py-0">
     <div
       class="container-in-section flex-container !my-0 !gap-[1.89rem] !py-[2.95rem]"
@@ -16,7 +18,7 @@ const props = Astro.props;
       <h1 class="text-center font-mesmerize text-h1-home">
         {homeData.intro_title}
       </h1>
-      <p class="markdown text-center text-[1.31579rem]">
+      <p class="markdown text-[0.94737rem] md:text-center lg:text-[1.31579rem]">
         {homeData.intro_text}
       </p>
     </div>
@@ -47,11 +49,11 @@ const props = Astro.props;
       <div class="flex flex-col items-center gap-1">
         <SimpleMardownRender
           markdown={homeData.principe_sub_title}
-          classes="markdown *:text-h2-sub !leading-none"
+          classes="markdown *:text-h2-sub-mobile *:lg:text-h2-sub !leading-none"
         />
         <SimpleMardownRender
           markdown={homeData.principe_text}
-          classes="markdown lg:px-4"
+          classes="markdown *:text-[0.94737rem] *:lg:text-[1.05263rem] lg:px-4"
         />
       </div>
     </div>
@@ -66,10 +68,11 @@ const props = Astro.props;
       <div class="flex-1">
         <SimpleMardownRender
           markdown={homeData.principe_text_image}
-          classes="markdown-full"
+          classes="markdown-full *:text-[0.94737rem] *:lg:text-[1.05263rem]"
         />
         <a href={homeData.principe_text_bt_url} class="btn btn-primary btn-fat">
           {homeData.principe_text_bt_label}
+          <Icon name="chevron" class:list={`md:hidden`} />
         </a>
       </div>
     </div>

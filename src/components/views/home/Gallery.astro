@@ -19,8 +19,9 @@ const props = Astro.props;
         <MDXImage
           src={image.src}
           alt={image.alt}
-          width={224}
-          class="aspect-square h-auto w-[212px] object-cover"
+          width={630}
+          class="aspect-square h-auto w-full object-cover"
+          frameClass="w-[45%] md:w-[212px]"
         />
       ))
     }

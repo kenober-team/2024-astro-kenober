@@ -23,20 +23,20 @@ const { src, alt } = image || {};
       class:list={[
         "group flex w-full gap-[2.53rem] py-[2.26rem] transition-all",
         {
-          "flex-row": idx % 2 === 0,
+          "flex-col md:flex-row": idx % 2 === 0,
         },
         {
-          "flex-row-reverse": idx % 2 === 1,
+          "flex-col md:flex-row-reverse": idx % 2 === 1,
         },
       ]}
     >
-      <div class="flex-none">
+      <div class="flex flex-none justify-center">
         {image ? (
           <MDXImage
             src={src}
             alt={alt}
             width={272}
-            class="h-auto w-[14.34026rem]"
+            class="h-auto w-[11.44921rem] lg:w-[14.34026rem]"
           />
         ) : (
           <svg
@@ -44,6 +44,7 @@ const { src, alt } = image || {};
             width="272"
             height="302"
             viewBox="0 0 272 302"
+            class="h-auto w-[11.44921rem] lg:w-[14.34026rem]"
           >
             <rect width="100%" height="100%" fill="#DDDDDD" />
             <path
@@ -54,7 +55,7 @@ const { src, alt } = image || {};
         )}
       </div>
       <div class="flex flex-col gap-2">
-        <h2 class="text-[1.47368rem]">
+        <h2 class="text-center text-[1.26316rem] lg:text-left lg:text-[1.47368rem]">
           {url ? (
             <a
               href={url}
@@ -68,7 +69,10 @@ const { src, alt } = image || {};
             name
           )}
         </h2>
-        <SimpleMardownRender markdown={description} />
+        <SimpleMardownRender
+          markdown={description}
+          classes="*:text-[0.94737rem] *:lg:text-[0.94737rem]"
+        />
       </div>
     </article>
   )

@@ -26,13 +26,18 @@ export default {
       },
       fontSize: {
         "hero-home": ["1.789rem", "2.053rem"],
+        "hero-home-mobile": ["1.10526rem", "1.421rem"],
         "h1-home": ["1.94737rem", "1.5rem"],
         "nav-principal": ["1.211rem", "1.368rem"],
         base: ["1.316rem", "1.842rem"],
         h1: ["2.52632rem"],
+        "h1-mobile": ["1.89474rem"],
         h2: ["2rem"],
+        "h2-mobile": ["1.31579rem"],
         "h2-sub": ["1.47368rem"],
+        "h2-sub-mobile": ["1.26316rem"],
         h3: ["1.47368rem"],
+        "h3-mobile": ["1.26316rem"],
       },
       colors: {
         primary: {

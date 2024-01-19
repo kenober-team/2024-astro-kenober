@@ -42,12 +42,12 @@ const { homeData } = Astro.props;
         name="logomark"
         width={372}
         height={60}
-        class="ml-2 aspect-[372/60] h-auto w-[23.25rem] text-neutre md:w-[23.25rem] lg:ml-0"
+        class="ml-2 aspect-[372/60] h-auto w-[9rem] text-neutre lg:ml-0 lg:w-[23.25rem]"
       />
     </a>
     <SimpleMardownRender
       markdown={homeData.hero_text}
-      classes="strongiswhite !font-light text-center max-w-[41.21053rem] *:text-hero-home"
+      classes="strongiswhite !font-light text-center max-w-[41.21053rem] *:lg:text-hero-home *:hero-home-mobile"
     />
   </div>
   <div class="absolute right-0 top-0 z-20 w-full">

@@ -34,7 +34,7 @@
   }
 
   h2 {
-    @apply text-h2 font-bold;
+    @apply text-h2-mobile font-bold lg:text-h2;
     &.home {
       @apply font-mesmerize font-extrabold text-primary;
     }
@@ -44,7 +44,7 @@
     }
   }
   h3 {
-    @apply text-h3 font-bold;
+    @apply text-h3-mobile font-bold lg:text-h3;
   }
 }
 
@@ -63,7 +63,7 @@
     @apply bg-white px-1 font-normal;
   }
   .btn {
-    @apply inline-block px-4 py-2 text-neutre transition-all hover:-translate-y-1 hover:-rotate-1;
+    @apply inline-flex flex-row items-center gap-1 px-4 py-2 text-neutre transition-all  hover:-translate-y-1 hover:-rotate-1;
     &.btn-fat {
       @apply font-black;
     }
@@ -121,12 +121,13 @@
   }
   .testimonial {
     --ng-width: 430px;
+    --ng-width-mobile: 350px;
     @apply container mx-auto grid max-w-screen-xl gap-5;
     .testimonial-container {
-      @apply !auto-cols-[var(--ng-width)] gap-1;
+      @apply !auto-cols-[var(--ng-width-mobile)] gap-1 md:!auto-cols-[var(--ng-width)];
     }
     .testimonial__card {
-      @apply flex min-w-[var(--ng-width)] bg-primary p-5;
+      @apply flex min-w-[var(--ng-width-mobile)] bg-primary p-5 md:min-w-[var(--ng-width)];
     }
     .testimonial__content {
       @apply flex flex-col items-center justify-between gap-4;

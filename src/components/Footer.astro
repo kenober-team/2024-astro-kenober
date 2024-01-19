@@ -6,20 +6,20 @@ import SimpleMardownRender from "./SimpleMardownRender.astro";
 import NavRoot from "./navigation/NavRoot.astro";
 const navDesignClass: NavClassConfig = {
   navRoot: "",
-  ulList: "flex flex-row gap-4 justify-center",
+  ulList: "flex flex-row gap-4 md:justify-center",
   link: (i) => {
     return ["underline primary-content text-[0.84211rem]"];
   },
 };
 ---
 
-<footer class="mb-4 mt-8 bg-primary p-9">
+<footer class="mb-4 mt-8 bg-primary px-2 py-9 lg:px-9">
   <div class="container relative flex flex-col gap-2">
     {
       siteData.informations && siteData.informations.length > 0 && (
         <SimpleMardownRender
           markdown={siteData.informations}
-          classes="markdown *:mb-0 *:text-[0.84211rem] *:text-center mx-auto lg:max-w-[80%] px-4"
+          classes="markdown *:mb-0 *:text-[0.84211rem] *:lg:text-[0.84211rem] *:lg:text-center mx-auto !max-w-full lg:!max-w-[80%] px-4"
         />
       )
     }
@@ -29,7 +29,7 @@ const navDesignClass: NavClassConfig = {
       navDesignConfig={navDesignClass}
     />
     <div
-      class="absolute right-0 top-[calc(50%-16px)] flex items-center justify-end gap-4"
+      class="right-0 top-[calc(50%-16px)] flex items-center gap-4 md:absolute md:justify-end"
     >
       {
         siteData.networks.map((network) => (
@@ -50,7 +50,7 @@ const navDesignClass: NavClassConfig = {
         ))
       }
     </div>
-    <p class="text-center text-[0.84211rem]">
+    <p class="text-[0.84211rem] md:text-center">
       &copy; <a
         href="https://novagaia.fr/"
         target="_blank"

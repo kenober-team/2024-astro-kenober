@@ -9,7 +9,7 @@ const { title, image } = Astro.props;
 ---
 
 <section
-  class="relative z-0 flex h-[15.26316rem] items-center overflow-hidden bg-primary py-8"
+  class="relative z-0 flex h-[13.42105rem] items-center overflow-hidden bg-primary py-8 lg:h-[15.26316rem]"
 >
   {
     image && (
@@ -22,7 +22,7 @@ const { title, image } = Astro.props;
     )
   }
   <h1
-    class="text-h1 container z-0 text-center font-mesmerize"
+    class="text-h1-mobile lg:text-h1 container z-0 text-center font-mesmerize"
     set:html={title}
   />
 </section>
