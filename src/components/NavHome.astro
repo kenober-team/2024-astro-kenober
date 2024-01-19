@@ -11,9 +11,9 @@ import SimpleMardownRender from "./SimpleMardownRender.astro";
 
 const navDesignClasses: NavClassConfig = {
   navRoot:
-    "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-between lg:justify-end py-[1.47rem]",
+    "container mx-auto max-w-screen-xl z-20 flex flex-wrap lg:items-center justify-between lg:justify-end py-[1.47rem]",
   ulList:
-    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col bg-white rounded lg:bg-transparent flex-wrap items-start justify-center gap-1 p-4 font-medium md:mt-0 md:flex-row md:p-0 lg:items-center",
+    "mb-0 text-[1.4375rem] my-4 hidden lg:flex flex-col bg-white rounded lg:bg-transparent flex-wrap items-start justify-center gap-1 p-4 font-medium lg:mt-0 lg:flex-row lg:p-0 lg:items-center",
   menu: {
     button: "btn btn-primary",
     ulList:
@@ -24,7 +24,7 @@ const navDesignClasses: NavClassConfig = {
   },
   mobileButton: {
     button:
-      "inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-neutre hover:bg-gray-900 hover:text-white focus:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
+      "inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-neutre hover:bg-gray-900 hover:text-white focus:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
     svg: "h-5 w-5",
   },
 };
@@ -34,20 +34,61 @@ const { homeData } = Astro.props;
 
 <header
   id="top"
-  class="relative z-10 flex min-h-[12.47368rem] flex-col-reverse items-center justify-center bg-primary pb-4 lg:h-[27.21053rem] lg:items-center lg:pb-0"
+  class="relative z-10 flex flex-col-reverse items-center justify-center bg-primary pb-4 lg:h-[27.21053rem] lg:pb-0"
 >
   <div class="z-20 flex flex-col items-center justify-between gap-10">
     <a href="/" class="hidden lg:block" title="Retour à l'accueil">
-      <Icon
-        name="logomark"
-        width={372}
-        height={60}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="201"
+        height="32"
+        viewBox="0 0 201 32"
+        fill="currentColor"
         class="ml-2 aspect-[372/60] h-auto w-[9rem] text-neutre lg:ml-0 lg:w-[23.25rem]"
+      >
+        <g clip-path="url(#clip0_650_1419)">
+          <path
+            d="M99.7439 4.23967C97.9947 4.23967 96.425 4.54589 95.0242 5.15833C93.627 5.77077 92.4346 6.60559 91.4504 7.66642C90.4627 8.72726 89.7084 9.97036 89.184 11.3957C88.6596 12.8211 88.3974 14.3668 88.3974 16.0219C88.3974 17.6769 88.6596 19.1825 89.184 20.6079C89.7084 22.0332 90.4627 23.2764 91.4504 24.3372C92.4346 25.398 93.627 26.2328 95.0242 26.8453C96.4215 27.4577 97.9947 27.7639 99.7439 27.7639C101.493 27.7639 103.023 27.465 104.424 26.8672C105.821 26.2693 107.014 25.4418 108.001 24.3809C108.986 23.3201 109.747 22.077 110.286 20.6516C110.825 19.2262 111.09 17.6842 111.09 16.0255C111.09 14.3668 110.821 12.8175 110.286 11.3775C109.751 9.93756 108.989 8.68716 108.001 7.62632C107.014 6.56549 105.825 5.73797 104.424 5.14011C103.023 4.54225 101.464 4.24332 99.7439 4.24332M99.7043 0.00362885C102.226 0.00362885 104.46 0.452023 106.407 1.34881C108.353 2.2456 109.995 3.44131 111.331 4.93596C112.667 6.43061 113.676 8.14398 114.366 10.0724C115.052 12.0045 115.397 13.9877 115.397 16.0255C115.397 18.0633 115.052 20.0428 114.366 21.9567C113.68 23.8742 112.667 25.5767 111.331 27.0713C109.995 28.5659 108.35 29.7617 106.389 30.6585C104.428 31.5552 102.19 32.0036 99.6684 32.0036C97.147 32.0036 94.877 31.5479 92.9266 30.6366C90.9799 29.7252 89.3528 28.5258 88.0418 27.0276C86.7308 25.5329 85.7395 23.8232 85.0642 21.8911C84.389 19.9626 84.0549 17.9904 84.0549 15.9781C84.0549 13.9658 84.3961 11.9572 85.0858 10.025C85.7718 8.09659 86.7811 6.39051 88.1172 4.9068C89.4534 3.42673 91.0876 2.23831 93.0236 1.34152C94.9596 0.444732 97.1865 -0.00366211 99.7079 -0.00366211"
+            fill="currentColor"></path>
+          <path
+            d="M123.518 27.352H127.523C127.997 27.352 128.406 27.2099 128.758 26.9255C129.107 26.6412 129.401 26.2475 129.638 25.7444C129.875 25.2413 130.051 24.658 130.163 23.9909C130.274 23.3238 130.332 22.6238 130.332 21.8911C130.332 21.1584 130.27 20.422 130.145 19.7694C130.019 19.1169 129.85 18.5446 129.638 18.0561C129.426 17.5676 129.171 17.1848 128.87 16.915C128.572 16.6453 128.234 16.5067 127.857 16.5067H123.514V27.352H123.518ZM123.518 13.7763H127.785C128.485 13.7763 129.021 13.3753 129.394 12.5733C129.768 11.7713 129.958 10.7323 129.958 9.45274C129.958 8.17318 129.739 7.0212 129.301 6.06974C128.862 5.11827 128.158 4.64071 127.185 4.64071H123.518V13.7726V13.7763ZM127.447 0.404663C128.421 0.404663 129.25 0.634328 129.936 1.0973C130.622 1.56028 131.179 2.18001 131.603 2.95285C132.027 3.72569 132.332 4.60425 132.523 5.58124C132.709 6.55823 132.803 7.57896 132.803 8.6398C132.803 10.324 132.602 11.6619 132.203 12.6571C131.804 13.6487 131.316 14.4179 130.741 14.9611C131.463 15.5844 132.084 16.5432 132.594 17.8337C133.104 19.1242 133.363 20.7355 133.363 22.6639C133.363 23.8305 133.255 24.9533 133.043 26.0287C132.831 27.1041 132.501 28.052 132.052 28.8831C131.603 29.7107 131.043 30.3705 130.367 30.859C129.692 31.3475 128.906 31.5917 128.008 31.5917H120.368V0.408309H127.444L127.447 0.404663Z"
+            fill="currentColor"></path>
+          <path
+            d="M3.18226 0.408325V14.1882L10.5203 0.408325H13.778L8.19999 10.6813L14.0402 31.5954H10.5598L5.99104 14.797L3.18226 19.9736V31.5954H-6.10352e-05V0.408325H3.18226Z"
+            fill="currentColor"></path>
+          <path
+            d="M59.2213 0.408325V4.64802H21.0765V13.5758H59.0345V17.6113H21.0765V27.352H59.3722V31.5954H16.3569V0.408325H59.2213Z"
+            fill="currentColor"></path>
+          <path
+            d="M65.295 0L76.3398 20.71V0.408293H79.4108V32H79.1126L68.0284 11.0895V31.5954H64.9969V0H65.295Z"
+            fill="currentColor"></path>
+          <path
+            d="M182.035 0.408325V4.64802H142.989V13.5758H181.849V17.6113H142.989V27.352H182.186V31.5954H138.269V0.408325H182.035Z"
+            fill="currentColor"></path>
+          <path
+            d="M190.516 14.9611H193.662C194.111 14.9611 194.502 14.8189 194.84 14.5345C195.178 14.2466 195.451 13.8674 195.663 13.3935C195.874 12.916 196.036 12.3728 196.151 11.764C196.262 11.1515 196.32 10.5063 196.32 9.82824C196.32 9.15018 196.262 8.49035 196.151 7.85239C196.04 7.21443 195.871 6.66396 195.645 6.20099C195.418 5.73801 195.145 5.36617 194.822 5.07818C194.499 4.79019 194.111 4.64802 193.662 4.64802H190.516V14.9611ZM194.035 0.408325C194.959 0.408325 195.763 0.659863 196.453 1.16294C197.139 1.66601 197.706 2.32585 198.155 3.13879C198.604 3.95537 198.935 4.89226 199.147 5.9531C199.359 7.01393 199.466 8.11486 199.466 9.2559C199.466 10.8599 199.247 12.3691 198.813 13.7799C198.374 15.1944 197.696 16.2807 196.772 17.039L201.004 31.5917H197.52L193.924 17.9759H190.516V31.5917H187.369V0.408325H194.035Z"
+            fill="currentColor"></path>
+        </g>
+        <defs>
+          <clipPath id="clip0_650_1419">
+            <rect width="201" height="32" fill="currentColor"></rect>
+          </clipPath>
+        </defs>
+      </svg>
+      {
+        /*
+      <Icon
+      name="logomark"
+      width={372}
+      height={60}
+      class="ml-2 aspect-[372/60] h-auto w-[9rem] text-neutre lg:ml-0 lg:w-[23.25rem]"
       />
+       */
+      }
     </a>
     <SimpleMardownRender
       markdown={homeData.hero_text}
-      classes="strongiswhite !font-light text-center max-w-[41.21053rem] *:lg:text-hero-home *:hero-home-mobile"
+      classes="strongiswhite !font-light mb-6 lg:mb-0 text-center max-w-[41.21053rem] *:lg:text-hero-home *:hero-home-mobile"
     />
   </div>
   <div class="right-0 top-0 z-20 w-full lg:absolute">
