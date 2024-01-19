@@ -123,7 +123,7 @@
     --ng-width: 430px;
     @apply container mx-auto grid max-w-screen-xl gap-5;
     .testimonial-container {
-      @apply mb-14 !auto-cols-[var(--ng-width)] gap-1;
+      @apply !auto-cols-[var(--ng-width)] gap-1;
     }
     .testimonial__card {
       @apply flex min-w-[var(--ng-width)] bg-primary p-5;

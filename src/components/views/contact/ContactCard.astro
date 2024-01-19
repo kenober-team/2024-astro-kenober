@@ -40,9 +40,17 @@ const {
         class="w-[10.83126rem] rounded-full"
       />
 
-      <h2>{name}</h2>
-      <p>{email}</p>
-      {linkedin && <Icon name="linkedIn-primary" width={31} height={31} />}
+      <h2 class="text-[1.47368rem] font-light">{name}</h2>
+      {email && (
+        <p class="text-[0.94737rem]">
+          <a href={`mailto:${email}`}>{email}</a>
+        </p>
+      )}
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noreferrer">
+          <Icon name="linkedIn-primary" width={31} height={31} />
+        </a>
+      )}
     </article>
   )
 }

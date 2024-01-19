@@ -10,7 +10,7 @@ const props = Astro.props;
   <Hero title={teamData.contact.title} image={teamData.contact.hero_bg} />
   <section class="section !pb-0">
     <div class="container-in-section flex-container">
-      <p class="max-w-sm text-center text-[1.47368rem] font-bold">
+      <p class="max-w-sm text-center text-[1.47368rem] font-bold leading-none">
         {teamData.contact.before_text}
       </p>
     </div>
@@ -23,9 +23,13 @@ const props = Astro.props;
     </div>
   </section>
   <section class="section">
-    <div class="container-in-section flex-container prose">
-      <p class="text-[1.47368rem] font-bold">{teamData.contact.after_title}</p>
-      <p class="text-[1.05263rem]">{teamData.contact.after_text}</p>
+    <div class="container-in-section flex-container">
+      <p class="mb-0 text-[1.47368rem] font-bold">
+        {teamData.contact.after_title}
+      </p>
+      <p class="max-w-[80%] text-center text-[1.05263rem]">
+        {teamData.contact.after_text}
+      </p>
     </div>
   </section>
 </>

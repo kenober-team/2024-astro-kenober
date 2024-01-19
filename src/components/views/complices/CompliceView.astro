@@ -11,7 +11,10 @@ const props = Astro.props;
   <Hero title={associateData.title} image={associateData.hero_bg} />
   <section class="section !pb-0">
     <div class="container-in-section flex-container">
-      <SimpleMardownRender markdown={associateData.intro} classes="markdown" />
+      <SimpleMardownRender
+        markdown={associateData.intro}
+        classes="markdown text-center"
+      />
     </div>
   </section>
   <section class="section">

@@ -26,13 +26,15 @@ const {
       {displayTitle && <Hero title={displayTitle} image={displayBG} />}
       <slot name="before" />
       {Content && (
-        <section
-          class:list={[
-            "section-center my-8",
-            { "prose dark:prose-invert": useProse },
-          ]}
-        >
-          <Content components={components} />
+        <section class="section">
+          <div
+            class:list={[
+              "container-in-section my-8",
+              { "prose dark:prose-invert": useProse },
+            ]}
+          >
+            <Content components={components} />
+          </div>
         </section>
       )}
       <slot />
@@ -43,13 +45,15 @@ const {
       {displayTitle && <Hero title={displayTitle} image={displayBG} />}
       <slot name="before" />
       {Content && (
-        <section
-          class:list={[
-            "section-center my-8",
-            { "prose dark:prose-invert": useProse },
-          ]}
-        >
-          <Content components={components} />
+        <section class="section">
+          <div
+            class:list={[
+              "container-in-section my-8",
+              { "prose dark:prose-invert": useProse },
+            ]}
+          >
+            <Content components={components} />
+          </div>
         </section>
       )}
       <slot />

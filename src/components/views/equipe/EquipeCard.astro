@@ -59,7 +59,7 @@ const {
         />
       </div>
       <div class="flex flex-col">
-        <h2>{name}</h2>
+        <h2 class="mb-1 text-[1.47368rem]">{name}</h2>
         <p class="text-[1.05263rem]">{role}</p>
         <p class="mb-4 text-[0.84211rem] italic">{education}</p>
         <p class="mb-4 w-fit flex-none bg-neutre px-1 font-bold text-primary">
@@ -69,10 +69,7 @@ const {
           markdown={bio}
           classes="prose !max-w-full group-has-[input:checked]:line-clamp-none line-clamp-4 transition-all"
         />
-        <label
-          for={`chk-${idx}`}
-          class="m-2 flex w-fit flex-none -translate-x-2 justify-end"
-        >
+        <label for={`chk-${idx}`} class="m-2 flex translate-x-2 justify-end">
           <input id={`chk-${idx}`} type="checkbox" class="peer/chk hidden" />
           <Icon
             name="plus"

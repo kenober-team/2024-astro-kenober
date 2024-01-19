@@ -13,7 +13,7 @@ const navDesignClasses: NavClassConfig = {
   navRoot:
     "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-end py-[1.47rem]",
   ulList:
-    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-2 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0 lg:items-center rtl:space-x-reverse",
+    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-1 p-4 font-medium md:mt-0 md:flex-row md:p-0 lg:items-center",
   menu: {
     button: "btn btn-primary",
     ulList:
@@ -47,7 +47,7 @@ const { homeData } = Astro.props;
     </a>
     <SimpleMardownRender
       markdown={homeData.hero_text}
-      classes="strongiswhite text-center max-w-[48.9375rem] *:text-hero-home"
+      classes="strongiswhite !font-light text-center max-w-[41.21053rem] *:text-hero-home"
     />
   </div>
   <div class="absolute right-0 top-0 z-20 w-full">
