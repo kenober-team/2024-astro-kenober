@@ -44,8 +44,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   {/* <!-- Slide buttons --> */}
   <button
     type="button"
-    class="group absolute -left-5 top-0 z-20 flex h-full cursor-pointer
-      items-center justify-center focus:outline-none"
+    class="group absolute left-3 top-0 z-20 flex h-full cursor-pointer items-center
+      justify-center focus:outline-none lg:-left-5"
     data-slide-previous=""
   >
     <Icon
@@ -59,7 +59,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   </button>
   <button
     type="button"
-    class="group absolute -right-5 top-0 z-20 flex h-full cursor-pointer items-center justify-center focus:outline-none"
+    class="group absolute right-3 top-0 z-20 flex h-full cursor-pointer items-center justify-center focus:outline-none lg:-right-5"
     data-slide-next=""
   >
     <Icon

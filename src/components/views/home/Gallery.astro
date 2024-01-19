@@ -11,7 +11,9 @@ const props = Astro.props;
 ---
 
 <section class="section !py-[1.8rem]">
-  <div class="container-in-section flex-container !flex-row flex-wrap !gap-1">
+  <div
+    class="container-in-section flex-container !flex-row flex-wrap justify-center !gap-1"
+  >
     {
       props.gallery.map((image) => (
         <MDXImage

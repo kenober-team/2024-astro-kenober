@@ -37,10 +37,10 @@ const {
       class:list={[
         "group flex w-full gap-[2.53rem] py-[2.26rem] transition-all",
         {
-          "flex-row": idx % 2 === 0,
+          "flex-col lg:flex-row": idx % 2 === 0,
         },
         {
-          "flex-row-reverse": idx % 2 === 1,
+          "flex-col lg:flex-row-reverse": idx % 2 === 1,
         },
       ]}
     >
@@ -48,14 +48,14 @@ const {
         <MDXImage
           src={image_inactive}
           alt={name}
-          width={268}
-          class="w-[14.10526rem] rounded-full group-has-[input:checked]:hidden"
+          width={630}
+          class="rounded-full group-has-[input:checked]:hidden md:w-[14.10526rem]"
         />
         <MDXImage
           src={image_active}
           alt={name}
-          width={268}
-          class="hidden w-[14.10526rem] rounded-full group-has-[input:checked]:block"
+          width={630}
+          class="hidden rounded-full group-has-[input:checked]:block md:w-[14.10526rem]"
         />
       </div>
       <div class="flex flex-col">

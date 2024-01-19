@@ -94,7 +94,7 @@
     }
   }
   .markdown {
-    @apply mx-auto w-[80%] whitespace-pre-line;
+    @apply mx-2 whitespace-pre-line lg:mx-auto lg:w-[80%];
     a {
       @apply !underline;
     }

@@ -10,7 +10,7 @@ const props = Astro.props;
   <Hero title={teamData.equipe.title} image={teamData.equipe.hero_bg} />
   <section class="section">
     <div
-      class="container-in-section flex-container !max-w-[80%] divide-y-2 divide-black/50"
+      class="container-in-section flex-container divide-y-2 divide-black/50 lg:!max-w-[80%]"
     >
       {teamData.members.map((member, idx) => <EquipeCard {...member} {idx} />)}
     </div>
