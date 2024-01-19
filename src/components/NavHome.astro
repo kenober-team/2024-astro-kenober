@@ -11,20 +11,20 @@ import SimpleMardownRender from "./SimpleMardownRender.astro";
 
 const navDesignClasses: NavClassConfig = {
   navRoot:
-    "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-end py-[1.47rem]",
+    "container mx-auto max-w-screen-xl z-20 flex flex-wrap items-center justify-between lg:justify-end py-[1.47rem]",
   ulList:
-    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col flex-wrap items-start justify-center gap-1 p-4 font-medium md:mt-0 md:flex-row md:p-0 lg:items-center",
+    "mb-0 text-[1.4375rem] my-4 hidden md:flex flex-col bg-white rounded lg:bg-transparent flex-wrap items-start justify-center gap-1 p-4 font-medium md:mt-0 md:flex-row md:p-0 lg:items-center",
   menu: {
     button: "btn btn-primary",
     ulList:
-      "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4 dark:divide-gray-600 dark:bg-gray-700",
+      "flex w-full flex-col divide-y divide-gray-100 rounded-lg bg-white shadow before:h-4 after:h-4",
   },
   link: (isButton) => {
     return isButton ? [`btn btn-primary`] : [`btn btn-transparent`];
   },
   mobileButton: {
     button:
-      "inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
+      "inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-neutre hover:bg-gray-900 hover:text-white focus:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600",
     svg: "h-5 w-5",
   },
 };
@@ -34,10 +34,10 @@ const { homeData } = Astro.props;
 
 <header
   id="top"
-  class="relative z-10 flex h-[27.21053rem] items-center justify-center bg-primary"
+  class="relative z-10 flex min-h-[12.47368rem] flex-col-reverse items-center justify-center bg-primary pb-4 lg:h-[27.21053rem] lg:items-center lg:pb-0"
 >
-  <div class="z-20 flex flex-col items-center justify-center gap-10">
-    <a href="/" class="" title="Retour à l'accueil">
+  <div class="z-20 flex flex-col items-center justify-between gap-10">
+    <a href="/" class="hidden lg:block" title="Retour à l'accueil">
       <Icon
         name="logomark"
         width={372}
@@ -50,36 +50,34 @@ const { homeData } = Astro.props;
       classes="strongiswhite !font-light text-center max-w-[41.21053rem] *:lg:text-hero-home *:hero-home-mobile"
     />
   </div>
-  <div class="absolute right-0 top-0 z-20 w-full">
+  <div class="right-0 top-0 z-20 w-full lg:absolute">
     <NavRoot
       menuName="Principal"
       navDesignConfig={navDesignClasses}
       hasMobileButton
       menuData={navPrimary}
-    />
-    {/* logo + lien */}
-    {
-      /* 
-    <a
-    slot="firstPlaceHolder"
-    href="/"
-    class="top-[calc(50%] absolute left-[calc(50%)]"
-    title="Retour à l'accueil"
     >
-    <Icon
-    name="logomark"
-    width={201}
-    height={32}
-    class="ml-2 w-[201px] text-neutre md:w-[201px] lg:ml-0"
-    />
-  </a>
-    */
-    }
+      {/* logo + lien */}
+      <a
+        slot="firstPlaceHolder"
+        href="/"
+        class="flex items-center space-x-3 lg:hidden rtl:space-x-reverse"
+        title="Retour à l'accueil"
+      >
+        <Icon
+          name="logomark"
+          width={201}
+          height={32}
+          class="ml-2 w-[201px] text-neutre md:w-[201px] lg:ml-0"
+        />
+      </a>
+    </NavRoot>
   </div>
+
   <MDXImage
     src={homeData.hero_bg}
     alt="hero-background"
     width={1440}
-    class="absolute left-0 top-0 z-10 h-[27.21053rem] w-full object-cover"
+    class="absolute left-0 top-0 z-10 h-[12.47368rem] w-full object-cover lg:h-[27.21053rem]"
   />
 </header>

@@ -40,8 +40,8 @@ const hasMenus = links.some((item) => item.children);
   {...rest}
 >
   <slot name="firstPlaceHolder" />
-  {hasMobileButton && <MobileButton id="mobileButton" />}
-  <div class="group inline w-full md:w-auto">
+  {hasMobileButton && <MobileButton id="mobileButton" {navDesignConfig} />}
+  <div class="group inline w-full lg:w-auto">
     <ul
       class:list={[`menu`, designConfig.ulList]}
       aria-expanded={hasMobileButton && "false"}

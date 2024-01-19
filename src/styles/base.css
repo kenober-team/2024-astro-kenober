@@ -55,6 +55,14 @@
     [data-navlink] {
       @apply px-2 py-1 hover:bg-white;
     }
+  }
+  .home [data-menu="Principal"] [aria-current="page"] {
+    @apply !bg-primary lg:!bg-white;
+  }
+  [data-menu="Secondary"] {
+    [data-navlink] {
+      @apply px-1 py-0 hover:bg-white;
+    }
     [aria-current="page"] {
       @apply !bg-white;
     }
