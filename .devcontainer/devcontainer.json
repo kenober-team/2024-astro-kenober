@@ -10,13 +10,13 @@
     {
       "source": "2024-astro-kenober_node_modules",
       "target": "${containerWorkspaceFolder}/node_modules",
-      "type": "volume"
-    }
+      "type": "volume",
+    },
   ],
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/rio/features/chezmoi:1": {}
+    "ghcr.io/rio/features/chezmoi:1": {},
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -26,7 +26,7 @@
   "postCreateCommand": {
     ".nvmrc": "echo $(node --version) > .nvmrc",
     "chown node_modules": "sudo chown -R node:node node_modules",
-    "prettier": "npm i -g prettier"
+    "prettier": "npm i -g prettier",
   },
 
   // Configure tool-specific properties.
@@ -45,7 +45,8 @@
         "astro-build.astro-vscode",
         "WallabyJs.console-ninja",
         "ChakrounAnas.turbo-console-log",
-        "kamikillerto.vscode-colorize"
+        "kamikillerto.vscode-colorize",
+        "natterstefan.vs-code-toggl-extension",
       ],
       "settings": {
         "tailwindCSS.rootFontSize": 16,
@@ -53,7 +54,7 @@
           "class",
           "className",
           "classes",
-          ".*Classes.*"
+          ".*Classes.*",
         ],
         "tailwindCSS.experimental.classRegex": [
           ["Classes \\=([^;]*);", "'([^']*)'"],
@@ -61,12 +62,12 @@
           ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
           "[a-zA-Z]+Class\\s?[=:]\\s?[\"']([^\"^']+)",
           "[a-zA-Z]+ClassName=\"([^\"]*)\"",
-          "[a-zA-Z]+Class=\"([^\"]*)\""
+          "[a-zA-Z]+Class=\"([^\"]*)\"",
         ],
         "prettier.prettierPath": "/usr/local/share/npm-global/lib/node_modules/prettier/index.cjs",
         "prettier.documentSelectors": ["**/*.astro"],
         "[astro]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
         },
         "colorize.include": [
           "**/*.js",
@@ -75,19 +76,22 @@
           "**/*.tsx",
           "**/*.mjs",
           "**/*.css",
-          "**/*.astro"
-        ]
-      }
-    }
+          "**/*.astro",
+        ],
+        // Kenoker ID Project :
+        // https://track.toggl.com/7917687/projects/198311101/dashboard
+        "toggl.defaultProjectId": 198311101,
+      },
+    },
   },
   "portsAttributes": {
     "4001": {
-      "label": "Tina API"
+      "label": "Tina API",
     },
     "4321": {
-      "label": "Astro"
-    }
-  }
+      "label": "Astro",
+    },
+  },
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
