@@ -44,7 +44,8 @@
         "WakaTime.vscode-wakatime",
         "astro-build.astro-vscode",
         "WallabyJs.console-ninja",
-        "ChakrounAnas.turbo-console-log"
+        "ChakrounAnas.turbo-console-log",
+        "kamikillerto.vscode-colorize"
       ],
       "settings": {
         "tailwindCSS.rootFontSize": 16,
@@ -66,7 +67,16 @@
         "prettier.documentSelectors": ["**/*.astro"],
         "[astro]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
-        }
+        },
+        "colorize.include": [
+          "**/*.js",
+          "**/*.jsx",
+          "**/*.ts",
+          "**/*.tsx",
+          "**/*.mjs",
+          "**/*.css",
+          "**/*.astro"
+        ]
       }
     }
   },
