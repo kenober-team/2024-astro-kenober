@@ -1,0 +1,1 @@
+rsync -a --delete --progress -v ./dist 778fg_hreluin@778fg.ftp.infomaniak.com:sites/2024.astro.kenober.fr/
