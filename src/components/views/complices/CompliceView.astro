@@ -18,7 +18,9 @@ const props = Astro.props;
     </div>
   </section>
   <section class="section">
-    <div class="container-in-section flex-container divide-y-2 divide-black/50">
+    <div
+      class="container-in-section flex-container divide-y-2 divide-black/50 lg:!max-w-[80%]"
+    >
       {
         associateData.associates.map((associate, idx) => (
           <CompliceCard {...associate} {idx} />
