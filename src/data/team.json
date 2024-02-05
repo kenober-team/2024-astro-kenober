@@ -28,6 +28,30 @@
       "email": "pauline@kenober.fr"
     },
     {
+      "name": "Laurent",
+      "published": true,
+      "role": "facilitateur / formateur / consultant / comédien",
+      "education": "CentraleSupelec / Le Magasin - école de théâtre / Fresqueur du climat",
+      "citation": "J’ai plein d’idées",
+      "bio": "Quelque chose vous paraît vraiment trop évident ? Parlez-en à Laurent. Son talent ? Vous donner à voir des connexions et des liens parfois insoupçonnés pour vous permettre de vous poser les bonnes questions. Après avoir parlé avec lui, vous vous direz sûrement : “Ah oui je n’avais pas vu les choses comme ça !”. Laurent est toujours partant pour “diverger”. Et aussi pour essayer, observer, adapter, réessayer, réobserver, réadapter… Une approche qui séduit beaucoup les ingénieur·e·s qui ont besoin de soutien sur leurs projets. Avec Laurent, c’est sûr, les équipes se sentent pousser des ailes… et des solutions ! Parfois, on a l’impression que Laurent est un personnage de fiction qui aurait la perspicacité de Sherlock, la curiosité d’Indiana Jones… et même quelques traits de Gaston Lagaffe ! D’ailleurs, voici Laurent qui démarre un séminaire avec une conférence interactive sur la créativité. Et vous voilà embarqué·e·s là où vous ne vous y attendiez pas… “Prenez un trombone, un pot de mayonnaise et un buvard…”\n\n* Un livre : The hitchhicker’s guide to the galaxy - Douglas Adams\n* Une chanson : Bohemian rhapsody - Queen\n* Une odeur : une petite fraise des bois\n* Un objet : un chargeur de secours\n",
+      "image_inactive": "/src/assets/equipe/team-laurent-inactive.png",
+      "image_active": "/src/assets/equipe/team-laurent-active.png",
+      "linkedin": "https://www.linkedin.com/in/laurent-jacques/",
+      "email": "laurent@kenober.fr"
+    },
+    {
+      "name": "Solen",
+      "published": true,
+      "role": "facilitatrice / formatrice / consultante / comédienne",
+      "education": "Diplômée d’Etat à l’Enseignement Théâtral / DU en intelligence collective - mémoire “le théâtre pour faciliter la transition sociétale”/ Fresqueuse du climat, des limites planétaires, de l’entreprise régénérative. ",
+      "citation": "Travailler moins, œuvrer mieux !",
+      "bio": "Réfléchir en parlant, c’est l’une des spécialités de Solen ! Elle n’est pas en train de faciliter un atelier d’intelligence collective ? C’est peut-être qu’elle est en train de brainstormer au téléphone avec Pauline (ou avec Marine, ou avec Léna ou avec… vous avez compris le principe !), ou de déjeuner dans une cantine solidaire avec un acteur·rice de l’économie sociale, ou bien de se former à une nouvelle fresque, ou encore d’accompagner des dirigeant·e·s dans le cadre de la Convention des Entreprises pour le Climat.\n\nVous ne l’avez toujours pas trouvée ? Allez donc voir dans son potager en permaculture ou à la ressourcerie. A moins qu’elle ne soit en réunion dans son habitat participatif ? \n\nSolen est partout, mais sans jamais se disperser. Elle a la capacité rare de se consacrer à une chose à la fois. Si vous travaillez avec elle, vous sentirez qu’elle est totalement avec vous pour vous aider à tirer les fils de vos problématiques, un par un, jusqu’à assèchement ! Ça y est, tout est clair ? Il ne vous reste plus qu’à vous laisser embarquer dans un atelier dont elle a le secret, mêlant structure et lâcher prise, pour tirer le meilleur de votre collectif. Vous avez envie de la rencontrer ? Désolé, il faudra attendre demain pour lui parler, ce soir elle joue une pièce de théâtre ! \n\n* Un livre : “Tout le monde est occupé” de Christian Bobin et/ou “Alma” de Timothée de Fombelle\n* Une chanson : Gare au gorille (parce que c’est la seule qu’elle sait jouer à la guitare) sinon “Real good time”\n* Une odeur : la menthe poivrée\n* Un objet : un haut-parleur (pour le côté militant, foire, fête, et parole qui porte)\n",
+      "image_inactive": "/src/assets/equipe/team-solenn-inactive.png",
+      "image_active": "/src/assets/equipe/team-solenn-active.png",
+      "linkedin": "https://www.linkedin.com/in/solenlemarec/",
+      "email": "solen@kenober.fr"
+    },
+    {
       "name": "Marine",
       "published": true,
       "role": "facilitatrice / formatrice / consultante / comédienne",
@@ -52,28 +76,16 @@
       "email": "lena@kenober.fr"
     },
     {
-      "name": "Solenn",
+      "name": "Muriel",
       "published": true,
-      "role": "facilitatrice / formatrice / consultante / comédienne",
-      "education": "Diplômée d’Etat à l’Enseignement Théâtral / DU en intelligence collective - mémoire “le théâtre pour faciliter la transition sociétale”/ Fresqueuse du climat, des limites planétaires, de l’entreprise régénérative. ",
-      "citation": "Travailler moins, œuvrer mieux !",
-      "bio": "Réfléchir en parlant, c’est l’une des spécialités de Solen ! Elle n’est pas en train de faciliter un atelier d’intelligence collective ? C’est peut-être qu’elle est en train de brainstormer au téléphone avec Pauline (ou avec Marine, ou avec Léna ou avec… vous avez compris le principe !), ou de déjeuner dans une cantine solidaire avec un acteur·rice de l’économie sociale, ou bien de se former à une nouvelle fresque, ou encore d’accompagner des dirigeant·e·s dans le cadre de la Convention des Entreprises pour le Climat.\n\nVous ne l’avez toujours pas trouvée ? Allez donc voir dans son potager en permaculture ou à la ressourcerie. A moins qu’elle ne soit en réunion dans son habitat participatif ? \n\nSolen est partout, mais sans jamais se disperser. Elle a la capacité rare de se consacrer à une chose à la fois. Si vous travaillez avec elle, vous sentirez qu’elle est totalement avec vous pour vous aider à tirer les fils de vos problématiques, un par un, jusqu’à assèchement ! Ça y est, tout est clair ? Il ne vous reste plus qu’à vous laisser embarquer dans un atelier dont elle a le secret, mêlant structure et lâcher prise, pour tirer le meilleur de votre collectif. Vous avez envie de la rencontrer ? Désolé, il faudra attendre demain pour lui parler, ce soir elle joue une pièce de théâtre ! \n\n* Un livre : “Tout le monde est occupé” de Christian Bobin et/ou “Alma” de Timothée de Fombelle\n* Une chanson : Gare au gorille (parce que c’est la seule qu’elle sait jouer à la guitare) sinon “Real good time”\n* Une odeur : la menthe poivrée\n* Un objet : un haut-parleur (pour le côté militant, foire, fête, et parole qui porte)\n",
-      "image_inactive": "/src/assets/equipe/team-solenn-inactive.png",
-      "image_active": "/src/assets/equipe/team-solenn-active.png",
-      "linkedin": "https://www.linkedin.com/in/solenlemarec/",
-      "email": "solen@kenober.fr"
-    },
-    {
-      "name": "Laurent",
-      "published": true,
-      "role": "facilitateur / formateur / consultant / comédien",
-      "education": "CentraleSupelec / Le Magasin - école de théâtre / Fresqueur du climat",
-      "citation": "J’ai plein d’idées",
-      "bio": "Quelque chose vous paraît vraiment trop évident ? Parlez-en à Laurent. Son talent ? Vous donner à voir des connexions et des liens parfois insoupçonnés pour vous permettre de vous poser les bonnes questions. Après avoir parlé avec lui, vous vous direz sûrement : “Ah oui je n’avais pas vu les choses comme ça !”. Laurent est toujours partant pour “diverger”. Et aussi pour essayer, observer, adapter, réessayer, réobserver, réadapter… Une approche qui séduit beaucoup les ingénieur·e·s qui ont besoin de soutien sur leurs projets. Avec Laurent, c’est sûr, les équipes se sentent pousser des ailes… et des solutions ! Parfois, on a l’impression que Laurent est un personnage de fiction qui aurait la perspicacité de Sherlock, la curiosité d’Indiana Jones… et même quelques traits de Gaston Lagaffe ! D’ailleurs, voici Laurent qui démarre un séminaire avec une conférence interactive sur la créativité. Et vous voilà embarqué·e·s là où vous ne vous y attendiez pas… “Prenez un trombone, un pot de mayonnaise et un buvard…”\n\n* Un livre : The hitchhicker’s guide to the galaxy - Douglas Adams\n* Une chanson : Bohemian rhapsody - Queen\n* Une odeur : une petite fraise des bois\n* Un objet : un chargeur de secours\n",
-      "image_inactive": "/src/assets/equipe/team-laurent-inactive.png",
-      "image_active": "/src/assets/equipe/team-laurent-active.png",
-      "linkedin": "https://www.linkedin.com/in/laurent-jacques/",
-      "email": "laurent@kenober.fr"
+      "role": "formatrice / facilitatrice / consultante / improvisatrice",
+      "education": "PhD en neurosciences cognitives / AgroParisTech / ENS Ulm / Fresqueuse du climat",
+      "citation": "Ce que j’aime : expérimenter, comprendre et transmettre.",
+      "bio": "Certains de nos clients se souviendront longtemps de son imitation du dauphin. Résultat : un ancrage émotionnel fort et une mémorisation garantie à 99%. Vous apprendre comment nous fonctionnons, nous êtres humains, et comment en tirer parti, est l’un des super-pouvoirs de Muriel. Chez Kenober, c’est l’alliée de choc pour construire des séquences pédagogiques méga-robustes, fluides et ludiques. Son secret ? Une pratique ultra-intensive de l’improvisation théâtrale. Presque tous les soirs de la semaine, après 18h, la deuxième journée de Muriel commence : dispense de cours d’impro la semaine, sur les planches le week-end avec ses comparses de Smoking Sofa. Elle imite également très bien le robot, mais ça c’est pour l’autodérision ! “Bon-jour, je-suis-Mu-riel-et-je-suis-su-per-orga-ni-sée, et-su-per-car-rée.” Sans le son, ni l’image, difficile de vous faire une idée… Allez donc la voir jouer ! \n\n* Un livre : Impro and the theater - Keith Johnstone\n* Une chanson : Les Champs Élysées - Joe Dassin\n* Une odeur : celle d’un vieux livre\n* Un objet : un chapeau\n",
+      "image_inactive": "/src/assets/equipe/team-murielle-inactive.png",
+      "image_active": "/src/assets/equipe/team-murielle-active.png",
+      "linkedin": "https://www.linkedin.com/in/muriel-ekovich-45120424/",
+      "email": "muriel@kenober.fr"
     },
     {
       "name": "Julie",
@@ -86,18 +98,6 @@
       "image_active": "/src/assets/equipe/team-julie-active.png",
       "linkedin": "https://www.linkedin.com/in/julie-lefort/",
       "email": "julie@kenober.fr"
-    },
-    {
-      "name": "Muriel",
-      "published": true,
-      "role": "formatrice / facilitatrice / consultante / improvisatrice",
-      "education": "PhD en neurosciences cognitives / AgroParisTech / ENS Ulm / Fresqueuse du climat",
-      "citation": "Ce que j’aime : expérimenter, comprendre et transmettre.",
-      "bio": "Certains de nos clients se souviendront longtemps de son imitation du dauphin. Résultat : un ancrage émotionnel fort et une mémorisation garantie à 99%. Vous apprendre comment nous fonctionnons, nous êtres humains, et comment en tirer parti, est l’un des super-pouvoirs de Muriel. Chez Kenober, c’est l’alliée de choc pour construire des séquences pédagogiques méga-robustes, fluides et ludiques. Son secret ? Une pratique ultra-intensive de l’improvisation théâtrale. Presque tous les soirs de la semaine, après 18h, la deuxième journée de Muriel commence : dispense de cours d’impro la semaine, sur les planches le week-end avec ses comparses de Smoking Sofa. Elle imite également très bien le robot, mais ça c’est pour l’autodérision ! “Bon-jour, je-suis-Mu-riel-et-je-suis-su-per-orga-ni-sée, et-su-per-car-rée.” Sans le son, ni l’image, difficile de vous faire une idée… Allez donc la voir jouer ! \n\n* Un livre : Impro and the theater - Keith Johnstone\n* Une chanson : Les Champs Élysées - Joe Dassin\n* Une odeur : celle d’un vieux livre\n* Un objet : un chapeau\n",
-      "image_inactive": "/src/assets/equipe/team-murielle-inactive.png",
-      "image_active": "/src/assets/equipe/team-murielle-active.png",
-      "linkedin": "https://www.linkedin.com/in/muriel-ekovich-45120424/",
-      "email": "muriel@kenober.fr"
     }
   ]
 }
