@@ -25,9 +25,12 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": {
     ".nvmrc": "echo $(node --version) > .nvmrc",
-    "git config --global core.autocrlf true": "git config --global core.autocrlf true",
     "chown node_modules": "sudo chown -R node:node node_modules",
     "prettier": "npm i -g prettier",
+  },
+
+  "postAttachCommand": {
+    "git config --global core.autocrlf true": "git config --global core.autocrlf true"
   },
 
   // Configure tool-specific properties.
