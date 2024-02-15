@@ -25,6 +25,7 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": {
     ".nvmrc": "echo $(node --version) > .nvmrc",
+    "git config --global core.autocrlf true": "git config --global core.autocrlf true",
     "chown node_modules": "sudo chown -R node:node node_modules",
     "prettier": "npm i -g prettier",
   },
@@ -34,19 +35,11 @@
     "vscode": {
       "extensions": [
         "bradlc.vscode-tailwindcss",
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
-        "github.vscode-github-actions",
-        "GitHub.vscode-pull-request-github",
         "unifiedjs.vscode-mdx",
         "esbenp.prettier-vscode",
         "vscode-icons-team.vscode-icons",
-        "WakaTime.vscode-wakatime",
         "astro-build.astro-vscode",
-        "WallabyJs.console-ninja",
-        "ChakrounAnas.turbo-console-log",
         "kamikillerto.vscode-colorize",
-        "natterstefan.vs-code-toggl-extension",
       ],
       "settings": {
         "tailwindCSS.rootFontSize": 16,
