@@ -1,7 +1,7 @@
 {
   "title": "KÉNOBER",
   "description": "KENOBER, LABORATOIRE DYNAMIQUES COLLECTIVES\nSéminaires\nFacilitation",
-  "titleTemplate": "%s | KÉNOBER",
+  "titleTemplate": "%s | KENOBER",
   "twitterUsername": "@KÉNOBER",
   "fbPageUrl": "https://www.facebook.com/KÉNOBER",
   "image": {
@@ -11,7 +11,7 @@
   "informations": "Afin de limiter notre impact environnemental et le temps passé sur les écrans, nous avons éco-conçu ce site et avons choisi de présenter l'essentiel. Si vous désirez en savoir plus ou nous parler de vos besoins, [contactez-nous](mailto:contact@novagaia.fr \"Nous écrire\") !\n",
   "networks": [
     {
-      "url": "https://www.linkedin.com/company/novagaiafr/",
+      "url": "https://www.linkedin.com/company/kenober/",
       "title": "Notre page Linkedin",
       "icon": "linkedIn"
     }
