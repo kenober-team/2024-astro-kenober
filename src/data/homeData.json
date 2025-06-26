@@ -3,9 +3,9 @@
   "description": "<Description SEO page Accueil>",
   "hero_title": "<PAS UTILISÉ>",
   "hero_bg": "/src/assets/heros/hero-home.svg",
-  "hero_text": "vous propose un espace de **recherche** et de **création** de formules  singulières, parfois surprenantes, toujours pertinentes pour **épanouir** les  dynamiques de groupe.\n",
+  "hero_text": "vous propose un espace de **recherche** et de **création** de formules singulières, parfois surprenantes, toujours pertinentes pour **épanouir** les dynamiques de groupe.\n",
   "intro_title": "KENOBER, ça veut dire coopération (en breton…)",
-  "intro_text": "Alors bien sûr, cela veut dire que nous aimons le beurre salé, mais c’est aussi une façon pour nous de raconter que nous concevons toutes nos interventions avec une attention particulière à l’identité de nos client·e·s : quel est leur ancrage géographique ? À quel moment de leur histoire sont-ils·elles ? Quelle est leur culture ? Chaque combinaison est unique et nécessite un accompagnement et un design d’intervention spécifique. Ça tombe bien, on adore écouter, inventer, ajuster, adapter, bricoler, affiner… et puis requestionner, réinventer, réajuster, réadapter… enfin, vous voyez l’idée ! \n",
+  "intro_text": "Alors bien sûr, cela veut dire que nous aimons le beurre salé, mais c’est aussi une façon pour nous de raconter que nous concevons toutes nos interventions avec une attention particulière à l’identité de nos clients et clientes : quel est leur ancrage géographique ? À quel moment de leur histoire arrivons-nous ? Quelle est leur culture ? Chaque combinaison est unique et nécessite un accompagnement et un design d’intervention spécifique. Ça tombe bien, on adore écouter, inventer, ajuster, adapter, bricoler, affiner… et puis requestionner, réinventer, réajuster, réadapter… enfin, vous voyez l’idée ! \n",
   "intro_offre": "Nos OFFRES",
   "offres": [
     {
@@ -47,12 +47,12 @@
   ],
   "principe_title": "Nos PRINCIPES actifs",
   "principe_sub_title": "**Une équipe** haute en couleurs aux **méthodes** éprouvées et parfois déroutantes.\n",
-  "principe_text": "Nous mettons de la **joie** et de la **profondeur** dans ce que nous faisons, même lorsque les sujets sont difficiles. Convaincu·e·s que le plus haut potentiel d’un collectif ne peut apparaître que si on **prend soin** de lui et de chacun de ses membres, nous affirmons qu’il est indispensable d’**inviter le plaisir, le rire et l’émotion dans le travail**. \n\nNous sommes **exigeant·e·s**. La performance, nous allons la chercher en insufflant des pratiques nouvelles, en challengeant vos projets de façon constructive, et en animant des temps de **prise de hauteur** qui font progresser.\n\nOù trouvons-nous toute cette **énergie** ? Dans les projets qui nous motivent et dans les échanges avec les personnes qui nous inspirent !\n",
+  "principe_text": "Nous mettons de la **joie** et de la **profondeur** dans ce que nous faisons, même lorsque les sujets sont difficiles. Notre conviction :  le plus haut potentiel d’un collectif ne peut apparaître que si on **prend soin** de lui et de chacun de ses membres. Nous affirmons qu’il est indispensable d’**inviter le plaisir, le rire et l’émotion dans le travail**. \n\nL'exigence est notre seconde nature. La performance, nous allons la chercher en insufflant des pratiques nouvelles, en challengeant vos projets de façon constructive, et en animant des temps de **prise de hauteur** qui font progresser.\n\nOù trouvons-nous toute cette **énergie** ? Dans les projets qui nous motivent et dans les échanges avec les personnes qui nous inspirent !\n",
   "principe_image": {
     "src": "/src/assets/home/principe-equipe.png",
     "alt": "Nos PRINCIPES actifs"
   },
-  "principe_text_image": "Toutes et tous **facilitateur·rice·s**, nous jouons également avec beaucoup de facettes. \n\n**Côté pile**, nous sommes ingénieur·e·s, docteur·e·s, formateur·rice·s, consultant·e·s. \n\n**Côté face**, nous sommes comédien·ne·s, improvisateur·rice·s, musicien·ne·s, photographes… \n\nNous conjuguons nos savoir-faire d’artistes avec nos connaissances des sciences humaines et sociales et des sciences du vivant. \n",
+  "principe_text_image": "Facilitateurs, facilitatrices, nous jouons également avec beaucoup de facettes. \n\n**Côté pile**, nous avons passé du temps sur les bancs des écoles de commerce, d'ingénieurs, à écrire des thèses et des mémoires et nous avons une activité de formation et de conseil.\n\n**Côté face**, nous pratiquons le théâtre, l'improvisation, la musique, le chant, la photo... \n\nNous conjuguons nos savoir-faire d’artistes avec nos connaissances des sciences humaines et sociales et des sciences du vivant. \n",
   "principe_text_bt_label": "Découvrir l’équipe",
   "principe_text_bt_url": "/equipe",
   "testimonial": [
@@ -77,7 +77,7 @@
       "name": "Agathe"
     },
     {
-      "text": "Les participants se sont sentis entre de bonnes mains. De mon point de vue c'était formidable en termes de consolidation d'équipe, de plaisir et de puissance de ce qui peut être réalisé lorsque nous travaillons ensemble.",
+      "text": "Les personnes participantes se sont senties entre de bonnes mains. De mon point de vue c'était formidable en termes de consolidation d'équipe, de plaisir et de puissance de ce qui peut être réalisé lorsque nous travaillons ensemble.",
       "name": "Karina"
     },
     {
@@ -95,7 +95,7 @@
       "alt": "Image 2"
     },
     {
-      "src": "/src/assets/home/gallery/image-3.png",
+      "src": "/src/assets/20241204_Hermes_atelier_participant_pate à modeler_canard5.jpg",
       "alt": "Image 3"
     },
     {
@@ -107,8 +107,12 @@
       "alt": "Image 5"
     },
     {
-      "src": "/src/assets/home/gallery/image-6.png",
+      "src": "/src/assets/20230619_SAMOA_atalier_participants.jpg",
       "alt": "Image 6"
+    },
+    {
+      "src": "/src/assets/20240925_Conférence_théâtre_shadowvengers_laurent_marine_public1.jpg",
+      "alt": "image 7"
     }
   ]
 }
