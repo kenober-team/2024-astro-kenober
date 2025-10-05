@@ -46,7 +46,7 @@ Prérequis : 1 compte GitHub + 1 invitation (acceptée)
 1. Dans la vue `Source Control` (`View` > `Open view` > `view Source Contol` + [ENTER])
 2. Mettez un message parlant de ce que vous venez de faire
 3. Cliquez sur `Commit`
-4. Cliquez sur `Synchronize`.
+4. Cliquez sur `Synch Changes`.
 
 ---
 
