@@ -153,10 +153,10 @@ export async function entryToPathAndQuery(
  *
  * @param {number} first - The min width in the sequence.
  * @param {number} last - The max width in the sequence.
- * @param {number} [size=16] - The number of elements in the sequence. Defaults to 16.
+ * @param {number} [size=8] - The number of elements in the sequence. Defaults to 8.
  * @returns {number[]} The generated sequence, with each number rounded to the nearest integer.
  */
-export function responsiveSequence(first, last, size = 16) {
+export function responsiveSequence(first, last, size = 8) {
   if (size <= 0) return [];
   if (size === 1) return [first];
   if (size === 2) return [first, last];
