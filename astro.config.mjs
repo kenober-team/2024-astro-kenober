@@ -7,7 +7,7 @@ import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 const SITE_URL = process.env.SITE_URL || "http://localhost:4321";
-const REPO_NAME = process.env.REPO_NAME || "2024-astro-kenober";
+// const REPO_NAME = process.env.REPO_NAME || "2024-astro-kenober";
 const tina = ({ directiveName = "tina" } = {}) => ({
   name: "tina-cms",
   hooks: {
@@ -23,7 +23,7 @@ const tina = ({ directiveName = "tina" } = {}) => ({
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  base: `/${REPO_NAME}`,
+  // base: `/${REPO_NAME}`,
   integrations: [
     tailwind({
       // Example: Disable injecting a basic `base.css` import on every page.
