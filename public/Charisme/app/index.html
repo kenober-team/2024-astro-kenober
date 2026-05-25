@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Charisme - Kenober</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chat-container { height: calc(100vh - 180px); }
+        .bubble-bot { border-radius: 2px 15px 15px 15px; border: 1px solid #e5e7eb; }
+        .bubble-user { border-radius: 15px 15px 2px 15px; background: #1e3a8a; color: white; }
+        .markdown-content p { margin-bottom: 0.75rem; }
+        .markdown-content strong { font-weight: 600; color: #1e3a8a; }
+    </style>
+</head>
+<body class="bg-slate-50 flex flex-col h-screen overflow-hidden">
+
+    <header class="bg-white border-b px-6 py-4 flex items-center justify-between shadow-sm">
+        <div>
+            <h1 class="font-bold text-lg text-blue-900 leading-tight">KENOBER</h1>
+            <p class="text-xs text-slate-500 uppercase tracking-widest">Les Territoires du Charisme</p>
+        </div>
+        <button onclick="window.location.reload()" class="text-slate-400 hover:text-blue-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+        </button>
+    </header>
+
+    <main id="chat-box" class="chat-container overflow-y-auto p-4 md:p-8 space-y-6">
+        <div class="flex justify-start">
+            <div class="bg-white p-4 max-w-[85%] bubble-bot shadow-sm text-slate-700">
+                Bonjour. Je suis votre <strong>Coach Charisme</strong>. <br><br>
+                Nous allons travailler vos 6 postures (Expert, Copain, Conteur, Intimiste, Animateur, Général). <br><br>
+                Souhaitez-vous vous entraîner sur un <strong>territoire spécifique</strong> ou préférez-vous un <strong>exercice de transition globale</strong> ?
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-4 bg-white border-t shadow-lg">
+        <div class="max-w-4xl mx-auto flex gap-3">
+            <input type="text" id="user-input" placeholder="Répondez ici..." 
+                class="flex-1 p-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+            <button id="send-btn" onclick="sendMessage()" class="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-md">
+                Envoyer
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        let chatHistory = [];
+        // --- CONFIGURATION ---
+        const API_KEY = "AIzaSyCcDC9QZAsKz3DNo8UIEOgQ2a6SJfJVaXY"; 
+        const SYSTEM_PROMPT = `
+            # CONSIGNES DE RÔLE : COACH CHARISME (Expert Kenober)
+            Tu es un coach expert en communication oratoire, spécialisé dans les "Territoires du Charisme". 
+            Ton rôle est d'accompagner l'utilisateur dans l'apprentissage et la pratique des 6 postures : Expert, Copain, Conteur, Intimiste, Animateur, Général.
+
+            ## TON ET POSTURE
+            - Ton encourageant mais exigeant.
+            - Interdiction de faire des "compliments vides" : chaque retour doit être lié à un point de la matrice.
+            - Focus spécifique pour les Managers de Projet (PM) : aide-les à passer du "reporting technique" au "pitch stratégique".
+
+            # LA MATRICE DES TERRITOIRES (BASE DE CONNAISSANCES)
+            1. L'EXPERT : Dialectique déductive (Plan en 3 points, preuves). Rhétorique technique, pas de "je pense". Non-verbal de précision (doigts qui pincent). Aura de sécurité/compétence. (Ex: Lagarde, Fauci).
+            2. LE COPAIN : Histoires partagées, digressions. Humour, autodérision, "On", questions directes. Proximité physique, sourire facile. Aura de sympathie. (Ex: Borloo, Ellen).
+            3. LE CONTEUR : Chronologique ou sensoriel. Adjectifs sensoriels, métaphores, silences. Regard qui "voit" l'image, mains qui dessinent. Aura d'inspiration. (Ex: Luchini, Steve Jobs).
+            4. L'INTIMISTE : Confessionnel (du "je" au "nous"), partage de faille. Vocabulaire des émotions, ton de confidence. Voix basse, regard intense. Aura de vérité/authenticité. (Ex: Simone Veil, Obama).
+            5. L'ANIMATEUR : Positive & Inclusive (verre à moitié plein). Verbes d'action, superlatifs, exclamations. Énergie haute, déplacement, sourire. Aura solaire/élan. (Ex: Oprah, Ardern).
+            6. LE GÉNÉRAL : Impérative & Stratégique (directives claires). Phrases courtes, présent de vérité, impératif. Ancrage au sol, gestes tranchants. Aura d'autorité/protection. (Ex: De Gaulle, Merkel).
+
+            # MÉTHODE DE COACHING
+            1. PROPOSER L'EXERCICE : Demande le niveau (1. Débutant, 2. PM, 3. Transitions, 4. Pitch Stratégique).
+            2. ANALYSE STRUCTURÉE : Quand l'utilisateur soumet son texte, analyse selon 4 axes :
+            - Dialectique (Structure logique)
+            - Rhétorique (Choix des mots/niveau de langue)
+            - Non-verbal suggéré (Signes physiques à montrer)
+            - Aura visée (Impression générale)
+            3. FEEDBACK : Identifie les "incohérences" (mots incohérents avec le territoire) et les "réussites".
+            4. AXE DE PROGRESSION : Donne un seul conseil prioritaire.
+
+            # PHASE DE CORRECTION (Sur demande ou après 2 tentatives)
+            Tu dois systématiquement fournir deux variantes :
+            - OPTION A (Réaliste) : Version actionnable immédiatement, langage oral naturel, respect des marqueurs de base.
+            - OPTION B (Travaillée) : "Haute Couture" pour Codir/vidéo. Figures de style, rythme maîtrisé, vocabulaire choisi.
+            - ANALYSE DU GAP : Explique ce qui fait la différence entre les deux.
+
+            # OUTILS SPÉCIFIQUES POUR Managers de projet
+            Applique les structures H-P-S (Héro-Problème-Solution), Avant/Après, ou Pyramid Pitch.
+            Interdis le jargon technique s'il n'est pas vulgarisé.
+            Force la hiérarchisation : "Si tu ne devais dire qu'une phrase, laquelle serait-ce ?"
+            `;
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            appendMessage(message, 'user');
+            userInput.value = '';
+            setLoading(true);
+
+            // On ajoute le message de l'utilisateur à l'historique
+            chatHistory.push({ role: "user", parts: [{ text: message }] });
+
+            try {
+                const model = "gemini-flash-latest";
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: chatHistory, // On envoie TOUT l'historique
+                        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] }
+                    })
+                });
+                
+                const data = await response.json();
+                const botReply = data.candidates[0].content.parts[0].text;
+
+                // On ajoute la réponse de l'IA à l'historique pour qu'elle s'en souvienne au prochain tour
+                chatHistory.push({ role: "model", parts: [{ text: botReply }] });
+
+                appendMessage(botReply, 'bot');
+
+            } catch (error) {
+                console.error(error);
+                appendMessage("Erreur de connexion.", 'bot');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function appendMessage(text, side) {
+            const div = document.createElement('div');
+            div.className = `flex ${side === 'user' ? 'justify-end' : 'justify-start'}`;
+            // Simple markdown-like formatting for bold and line breaks
+            const formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            div.innerHTML = `<div class="${side === 'user' ? 'bubble-user shadow-md' : 'bg-white text-slate-800 bubble-bot shadow-sm'} p-4 max-w-[85%] markdown-content">
+                ${formattedText}
+            </div>`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function setLoading(isLoading) {
+            sendBtn.disabled = isLoading;
+            sendBtn.innerText = isLoading ? "..." : "Envoyer";
+            sendBtn.style.opacity = isLoading ? "0.5" : "1";
+        }
+
+        userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+    </script>
+</body>
+</html>
