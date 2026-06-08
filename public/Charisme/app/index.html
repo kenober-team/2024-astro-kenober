@@ -97,43 +97,40 @@
             Force la hiérarchisation : "Si tu ne devais dire qu'une phrase, laquelle serait-ce ?"
             `;
 
-        async function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message) return;
-
-            appendMessage(message, 'user');
-            userInput.value = '';
-            setLoading(true);
-
-            // On ajoute le message de l'utilisateur à l'historique
-            chatHistory.push({ role: "user", parts: [{ text: message }] });
-
+        async function callAI(instruction) {
+            // ÉTAPE A : Vérification flash du décodage Base64 dans l'interface
+            if (!API_KEY || !API_KEY.startsWith("AIzaSy")) {
+                appendMsg(`❌ <b>Erreur Décodage :</b> La clé décodée ne commence pas par 'AIzaSy'. Le problème vient du copier-coller ou de l'encodage Base64. (Longueur lue : ${API_KEY ? API_KEY.length : 0} caractères)`, 'bot');
+                return;
+            }
+        
+            const fullSystemPrompt = `${BASE_PROMPT}\n${KNOWLEDGE[state.zone]}\nMode PM: ${state.pm}\nNiveau: ${state.level}\nFocus: ${state.correction}`;
+        
             try {
-                const model = "gemini-3.0-flash";
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
-                
-                const response = await fetch(url, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: chatHistory, // On envoie TOUT l'historique
-                        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] }
+                        contents: chatHistory.concat([{ role: "user", parts: [{ text: instruction }] }]),
+                        system_instruction: { parts: [{ text: fullSystemPrompt }] }
                     })
                 });
+        
+                const data = await res.json();
                 
-                const data = await response.json();
-                const botReply = data.candidates[0].content.parts[0].text;
-
-                // On ajoute la réponse de l'IA à l'historique pour qu'elle s'en souvienne au prochain tour
-                chatHistory.push({ role: "model", parts: [{ text: botReply }] });
-
-                appendMessage(botReply, 'bot');
-
-            } catch (error) {
-                console.error(error);
-                appendMessage("Erreur de connexion.", 'bot');
-            } finally {
-                setLoading(false);
+                // ÉTAPE B : Si Google refuse la clé ou le domaine, il renvoie un objet "error"
+                if (data.error) {
+                    appendMsg(`❌ <b>Erreur API Google (${data.error.code}) :</b> ${data.error.message}<br><br><i>Conseil : Si c'est un problème de 'API key not valid', la clé est mal copiée. Si c't'un problème de 'HTTP referrer', la restriction de domaine sur Google Cloud bloque l'adresse exacte du site.</i>`, 'bot');
+                    return;
+                }
+        
+                const reply = data.candidates[0].content.parts[0].text;
+                chatHistory.push({ role: "model", parts: [{ text: reply }] });
+                appendMsg(reply, 'bot');
+        
+            } catch (e) {
+                // ÉTAPE C : Si le code JavaScript plante ailleurs
+                appendMsg(`❌ <b>Erreur Système :</b> ${e.message}`, 'bot');
             }
         }
 
