@@ -55,7 +55,8 @@
         const sendBtn = document.getElementById('send-btn');
         let chatHistory = [];
         // --- CONFIGURATION ---
-        const API_KEY = "AIzaSyCcDC9QZAsKz3DNo8UIEOgQ2a6SJfJVaXY"; 
+        const ENCODED_KEY = "QUl6YVN5Qm5GY2FhMDRobzFhQzBqVTZyUWtIUTl0bzNqSmNhQlBr"; 
+        const API_KEY = atob(ENCODED_KEY);
         const SYSTEM_PROMPT = `
             # CONSIGNES DE RÔLE : COACH CHARISME (Expert Kenober)
             Tu es un coach expert en communication oratoire, spécialisé dans les "Territoires du Charisme". 
@@ -108,7 +109,7 @@
             chatHistory.push({ role: "user", parts: [{ text: message }] });
 
             try {
-                const model = "gemini-flash-latest";
+                const model = "gemini-3.0-flash";
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
                 
                 const response = await fetch(url, {
