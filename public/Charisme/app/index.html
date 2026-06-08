@@ -54,9 +54,16 @@
         const userInput = document.getElementById('user-input');
         const sendBtn = document.getElementById('send-btn');
         let chatHistory = [];
-        // --- CONFIGURATION ---
+        
+        // --- CONFIGURATION SÉCURISÉE ---
         const ENCODED_KEY = "QUl6YVN5Qm5GY2FhMDRobzFhQzBqVTZyUWtIUTl0bzNqSmNhQlBr"; 
-        const API_KEY = atob(ENCODED_KEY);
+        let API_KEY = "";
+        try {
+            API_KEY = atob(ENCODED_KEY.replace(/\s/g, ''));
+        } catch(e) {
+            console.error("Erreur décodage de clé", e);
+        }
+
         const SYSTEM_PROMPT = `
             # CONSIGNES DE RÔLE : COACH CHARISME (Expert Kenober)
             Tu es un coach expert en communication oratoire, spécialisé dans les "Territoires du Charisme". 
@@ -76,7 +83,7 @@
             6. LE GÉNÉRAL : Impérative & Stratégique (directives claires). Phrases courtes, présent de vérité, impératif. Ancrage au sol, gestes tranchants. Aura d'autorité/protection. (Ex: De Gaulle, Merkel).
 
             # MÉTHODE DE COACHING
-            1. PROPOSER L'EXERCICE : Demande le niveau (1. Débutant, 2. PM, 3. Transitions, 4. Pitch Stratégique).
+            1. PROPOSER L'EXERCICE : Demande le niveau (1. Débutant, 2. PM, 3. Transitions, 4. Pitch Stratégique) ou propose directement un défi court si l'utilisateur choisit un territoire.
             2. ANALYSE STRUCTURÉE : Quand l'utilisateur soumet son texte, analyse selon 4 axes :
             - Dialectique (Structure logique)
             - Rhétorique (Choix des mots/niveau de langue)
@@ -94,17 +101,27 @@
             # OUTILS SPÉCIFIQUES POUR Managers de projet
             Applique les structures H-P-S (Héro-Problème-Solution), Avant/Après, ou Pyramid Pitch.
             Interdis le jargon technique s'il n'est pas vulgarisé.
-            Force la hiérarchisation : "Si tu ne devais dire qu'une phrase, laquelle serait-ce ?"
-            `;
+            Force la hiérarchisation : "Si tu ne devais dire qu'une phrase, laquelle serait-ce ?"`;
 
+        // FONCTION AJOUTÉE : Gère l'envoi au clic ou touche Entrée
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            appendMessage(text, 'user');
+            userInput.value = '';
+            setLoading(true);
+
+            await callAI(text);
+            setLoading(false);
+        }
+
+        // FONCTION NETTOYÉE ET ADAPTÉE À CE FICHIER UNIQUE
         async function callAI(instruction) {
-            // ÉTAPE A : Vérification flash du décodage Base64 dans l'interface
             if (!API_KEY || !API_KEY.startsWith("AIzaSy")) {
-                appendMsg(`❌ <b>Erreur Décodage :</b> La clé décodée ne commence pas par 'AIzaSy'. Le problème vient du copier-coller ou de l'encodage Base64. (Longueur lue : ${API_KEY ? API_KEY.length : 0} caractères)`, 'bot');
+                appendMessage(`❌ <b>Erreur Décodage :</b> La clé API décodée est absente ou invalide.`, 'bot');
                 return;
             }
-        
-            const fullSystemPrompt = `${BASE_PROMPT}\n${KNOWLEDGE[state.zone]}\nMode PM: ${state.pm}\nNiveau: ${state.level}\nFocus: ${state.correction}`;
         
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`, {
@@ -112,33 +129,36 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: chatHistory.concat([{ role: "user", parts: [{ text: instruction }] }]),
-                        system_instruction: { parts: [{ text: fullSystemPrompt }] }
+                        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] }
                     })
                 });
         
                 const data = await res.json();
                 
-                // ÉTAPE B : Si Google refuse la clé ou le domaine, il renvoie un objet "error"
                 if (data.error) {
-                    appendMsg(`❌ <b>Erreur API Google (${data.error.code}) :</b> ${data.error.message}<br><br><i>Conseil : Si c'est un problème de 'API key not valid', la clé est mal copiée. Si c't'un problème de 'HTTP referrer', la restriction de domaine sur Google Cloud bloque l'adresse exacte du site.</i>`, 'bot');
+                    appendMessage(`❌ <b>Erreur API Google (${data.error.code}) :</b> ${data.error.message}`, 'bot');
                     return;
                 }
         
                 const reply = data.candidates[0].content.parts[0].text;
+                
+                // Sauvegarde de l'échange dans l'historique de contexte
+                chatHistory.push({ role: "user", parts: [{ text: instruction }] });
                 chatHistory.push({ role: "model", parts: [{ text: reply }] });
-                appendMsg(reply, 'bot');
+                
+                appendMessage(reply, 'bot');
         
             } catch (e) {
-                // ÉTAPE C : Si le code JavaScript plante ailleurs
-                appendMsg(`❌ <b>Erreur Système :</b> ${e.message}`, 'bot');
+                appendMessage(`❌ <b>Erreur Système :</b> ${e.message}`, 'bot');
             }
         }
 
         function appendMessage(text, side) {
             const div = document.createElement('div');
             div.className = `flex ${side === 'user' ? 'justify-end' : 'justify-start'}`;
-            // Simple markdown-like formatting for bold and line breaks
-            const formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Formatage léger type markdown (gras et sauts de ligne)
+            const formattedText = text.replace(/\n/g, '<br>').replace(/\*\!(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
             div.innerHTML = `<div class="${side === 'user' ? 'bubble-user shadow-md' : 'bg-white text-slate-800 bubble-bot shadow-sm'} p-4 max-w-[85%] markdown-content">
                 ${formattedText}
