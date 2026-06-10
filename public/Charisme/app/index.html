@@ -118,11 +118,10 @@
 
         // FONCTION NETTOYÉE ET ADAPTÉE À CE FICHIER UNIQUE
         async function callAI(instruction) {
-            if (!API_KEY || !API_KEY.startsWith("AIzaSy")) {
-                appendMessage(`❌ <b>Erreur Décodage :</b> La clé API décodée est absente ou invalide.`, 'bot');
+            if (!API_KEY || (!API_KEY.startsWith("AIzaSy") && !API_KEY.startsWith("AQ."))) {
+                appendMessage(`❌ <b>Erreur Décodage :</b> La clé API décodée est absente ou ne correspond pas au format attendu.`, 'bot');
                 return;
             }
-        
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`, {
                     method: 'POST',
