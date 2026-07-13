@@ -16,6 +16,18 @@
   },
   "members": [
     {
+      "name": "Nathalie",
+      "published": true,
+      "role": "facilitatrice / formatrice / consultante / comédienne",
+      "education": "HEC / Acting International / Professeure de yoga / Fresqueuse du climat, de la santé mentale",
+      "citation": "“Tout se joue ici et maintenant”",
+      "bio": "Cela fait une heure que l’équipe brainstorme à tout va. Ça a fusé dans tous les sens, vous vous demandez ce que vous allez faire de tout ce qui a été dit, quand Nathalie prend la parole. Depuis le début, vous ne l’avez pas beaucoup entendue, elle a juste dit ce qu’elle avait à dire, avec concision et précision. C’est alors qu’elle propose au groupe une solution qui met tout le monde d’accord (ou presque). Comment a-t-elle fait ? Elle vous a écouté. Vraiment écouté. Être présente à soi-même et aux autres est sa manière idéale d’être au monde. Et parlons-en, du monde : elle l’a exploré seule pendant plusieurs mois pour mieux le découvrir, sans planifier son voyage. C’est vous dire son goût de l’imprévu et de l’improvisation, sans parler de sa soif de rencontres et d’apprentissages. En ce moment, c’est le sujet de la santé mentale qu’elle prend plaisir à défricher et s’approprier avec Marine et Muriel. Très enthousiaste à l’idée de transmettre ce qu’elle a appris, là voilà qui accueille joyeusement et tout en douceur les personnes qu’elle va former sur le sujet. Sachez que quand elle anime, elle n’est plus tout à fait la même… on vous souhaite de découvrir ses différentes facettes ! \n\n* Un livre : L’homme joie de Christian Bobin\n* Une chanson : All You Need Is Love des Beatles\n* Une odeur : celle de la mer\n* Un objet : une grelinette\n",
+      "image_inactive": "/src/assets/RondCadrageSiteInternet_Nathalie.jpg",
+      "image_active": "/src/assets/RondCadrageSiteInternet_Nathalie.jpg",
+      "linkedin": "https://www.linkedin.com/in/nathalie-gobin-8974abb3/",
+      "email": "nathalie@kenober.fr"
+    },
+    {
       "name": "Pauline",
       "published": true,
       "role": "coach / facilitatrice / consultante / comédienne",

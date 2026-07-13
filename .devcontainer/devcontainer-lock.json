@@ -1,0 +1,9 @@
+{
+  "features": {
+    "ghcr.io/rio/features/chezmoi:1": {
+      "version": "1.1.1",
+      "resolved": "ghcr.io/rio/features/chezmoi@sha256:1a32b6f89dc8d631ef56dd538e81c06c0d473e6f0a399f9e629d7de4a473d15a",
+      "integrity": "sha256:1a32b6f89dc8d631ef56dd538e81c06c0d473e6f0a399f9e629d7de4a473d15a"
+    }
+  }
+}
