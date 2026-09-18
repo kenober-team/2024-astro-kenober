@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-const SITE_URL = process.env.SITE_URL || "http://localhost:4321";
+const SITE_URL = "https://www.kenober.fr";
 // const REPO_NAME = process.env.REPO_NAME || "2024-astro-kenober";
 const tina = ({ directiveName = "tina" } = {}) => ({
   name: "tina-cms",
