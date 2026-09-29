@@ -4,43 +4,43 @@
   "hero_title": "<PAS UTILISÉ>",
   "hero_bg": "/src/assets/heros/hero-home.svg",
   "hero_text": "Épanouir les **dynamiques** de groupe en créant les conditions qui y sont favorables\n",
-  "intro_title": "Vous êtes dirigeant·e, responsable d’équipe, et vous cherchez à …",
+  "intro_title": "Vous dirigez une structure, vous êtes responsable d’équipe, et vous cherchez à …",
   "intro_text": "… marquer les esprits lors d’un temps fort d’équipe ?\n\n… piloter et faciliter un changement ?\n\n… sensibiliser et faire cheminer votre collectif sur une thématique particulière ?\n\n… développer les compétences coopératives et relationnelles de votre équipe ?\n\nChez KENOBER (qui veut dire coopération en breton), notre conviction profonde est que la coopération est une pratique spécifique à un contexte, à un territoire et à un groupe social. Chaque accompagnement est forcément unique, et chaque design spécifique.\n\nNous avançons main dans la main avec vous pour créer les conditions favorables au faire ensemble et à l’intelligence collective au sein de votre organisation, en activant 3 leviers clés :\n\n**L’environnement :** votre organisation, vos processus, vos habitudes de travail,\n\n**Les relations :** la qualité des liens et la communication interpersonnelle,\n\n**Les individus** : les postures, les compétences, les énergies.\n",
   "intro_offre": "Vos BESOINS",
   "offres": [
     {
-      "title": "Marquer les esprits lors d'un temps fort d’équipe ? ",
-      "base_line": "Nous co-concevons et facilitons des séminaires captivants, rythmés, où vous faites de grands pas sur le fond sans vous ennuyer sur la forme.\n",
-      "text": "#Conception et animation de séminaires d’équipe",
+      "title": "Conception et animation de séminaires d’équipe",
+      "base_line": "Vous souhaitez marquer les esprits lors d'un temps fort d’équipe ?",
+      "text": "Nous co-concevons et facilitons des séminaires captivants, rythmés, où vous faites de grands pas sur le fond sans vous ennuyer sur la forme.",
       "image": {
-        "src": "/src/assets/home/offres/offre-1.png",
+        "src": "/src/assets/Seminaires.jpg",
         "alt": "Séminaires"
       }
     },
     {
-      "title": "Piloter et faciliter un changement ? ",
-      "base_line": "Nous vous accompagnons à imaginer et à mettre en oeuvre des transformations robustes dans le temps, en mobilisant les personnes clés.",
-      "text": "#Accompagnement à la transformation ",
+      "title": "Accompagnement à la transformation",
+      "base_line": "Vous souhaitez piloter et faciliter un changement ?",
+      "text": "Nous vous accompagnons à imaginer et à mettre en œuvre des transformations robustes dans le temps, en mobilisant les personnes clés.",
       "image": {
-        "src": "/src/assets/Piloter et faciliter changement.jpg",
+        "src": "/src/assets/Accompagnementtransfo.jpg",
         "alt": "Fresques et ateliers"
       }
     },
     {
-      "title": "Sensibiliser et faire cheminer votre collectif sur une thématique particulière ? ",
-      "base_line": "Nous facilitons des formats immersifs qui permettent d’aborder et de cheminer collectivement sur des thématiques variées. ",
-      "text": "#Fresques & ateliers de sensibilisation ",
+      "title": "Fresques & Ateliers de sensibilisation",
+      "base_line": "Vous souhaitez sensibiliser et faire cheminer votre collectif sur une thématique particulière ?\n",
+      "text": "Nous facilitons des formats immersifs qui permettent d’aborder et de cheminer collectivement sur des thématiques variées.",
       "image": {
-        "src": "/src/assets/Piloter et faciliter changement.jpg",
+        "src": "/src/assets/FresquesEtAteliers.jpg",
         "alt": "Accompagnements à la transformation"
       }
     },
     {
-      "title": "Développer les compétences coopératives et relationnelles de votre équipe ? ",
-      "base_line": "Nous vous outillons et vous entraînons pour que vous puissiez faire sans nous ce que nous avons fait ensemble. \n",
-      "text": "#Formation softskills et management",
+      "title": "Formation softskills et management",
+      "base_line": "Vous souhaitez développer les compétences coopératives et relationnelles de votre équipe ?",
+      "text": "Nous vous outillons et vous entraînons pour que vous puissiez faire sans nous ce que nous avons fait ensemble.",
       "image": {
-        "src": "/src/assets/home/offres/offre-4.png",
+        "src": "/src/assets/Formation.jpg",
         "alt": "Formations"
       }
     }
