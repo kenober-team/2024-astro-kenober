@@ -147,6 +147,11 @@ const home = {
         { type: "string", name: "alt", label: "Alt", required: true },
       ],
     },
+    {
+      type: "string",
+      name: "link",
+      label: "Lien de la page (ex: /formation)",
+    },
   ],
 };
 

@@ -7,12 +7,23 @@ const { offre } = Astro.props;
 <div class="mb-4 flex flex-col gap-4 text-left lg:mb-auto">
   {
     offre?.image && (
+      offre?.link ? (
+        <a href={offre.link} class="block overflow-hidden transition-transform duration-200 hover:scale-[1.02]">
+          <MDXImage
+            src={offre?.image.src}
+            alt={offre?.image.alt}
+            width={630}
+            class="w-full lg:w-[321px]"
+          />
+        </a>
+      ) : (
       <MDXImage
         src={offre?.image.src}
         alt={offre?.image.alt}
         width={630}
         class="w-full lg:w-[321px]"
       />
+      )
     )
   }
   <h3 class="lg:px-4">{offre.title}</h3>
@@ -25,7 +36,7 @@ const { offre } = Astro.props;
     {
       offre.text
         .split(" ")
-        .map((tag) => (
+        .map((tag: string) => (
           <span class="mx-1 inline-block whitespace-nowrap">
             {tag.trim().split("_").join(" ")}
           </span>

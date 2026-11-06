@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Évaluation de Formation</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #1c1e21; }
+    .container { max-width: 600px; margin: auto; }
+    .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    h2 { color: #0056b3; margin-top: 0; }
+    .question-title { font-size: 20px; font-weight: bold; margin-bottom: 20px; }
+    .progress-container { background: #e9ecef; border-radius: 10px; height: 10px; margin-bottom: 8px; overflow: hidden; }
+    .progress-bar { background: #0d6efd; height: 100%; width: 0%; transition: width 0.4s ease; }
+    .progress-text { text-align: right; font-size: 13px; color: #6c757d; margin-bottom: 20px; font-weight: bold; }
+    .option-btn { display: block; width: 100%; padding: 18px; margin: 10px 0; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; cursor: pointer; font-size: 16px; transition: 0.2s; text-align: left;}
+    .option-btn:hover { background: #e2e6ea; }
+    textarea { width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; box-sizing: border-box; resize: vertical; }
+    .action-btn { display: block; width: 100%; padding: 18px; background: #0d6efd; color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.2s; }
+    .action-btn:disabled { background: #6c757d; cursor: not-allowed; }
+    #loader { text-align: center; font-size: 18px; color: #666; padding: 40px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+<div class="container" id="app">
+  <div id="loader">Connexion sécurisée en cours...</div>
+  <div id="content" class="hidden">
+    <div id="header-info"></div>
+    <div class="progress-container"><div class="progress-bar" id="p-bar"></div></div>
+    <div class="progress-text" id="p-text"></div>
+    <div class="card" id="question-card"></div>
+  </div>
+</div>
+
+<script>
+  // ==========================================
+  // METTEZ VOTRE LIEN GOOGLE SCRIPT ICI :
+  const SCRIPT_URL = "COLLEZ_VOTRE_URL_SCRIPT_ICI";
+  // ==========================================
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get('id');
+  let appData = {};
+  let currentIndex = 0;
+
+  // 1. Démarrage : on va chercher les questions
+  fetch(SCRIPT_URL + "?id=" + token)
+    .then(res => res.json())
+    .then(data => initApp(data))
+    .catch(err => document.getElementById('loader').innerText = "Erreur de connexion.");
+
+  function initApp(data) {
+    const content = document.getElementById('content');
+    document.getElementById('loader').classList.add('hidden');
+    
+    if (data.status === 'closed') { content.innerHTML = '<div class="card"><h2>Phase inactive</h2><p>Aucun questionnaire ouvert.</p></div>'; content.classList.remove('hidden'); return; }
+    if (data.status === 'invalid') { content.innerHTML = '<div class="card"><h2>Erreur</h2><p>QR Code non reconnu.</p></div>'; content.classList.remove('hidden'); return; }
+
+    appData = data;
+    document.getElementById('header-info').innerHTML = `<h2>Bonjour ${data.user.prenom}</h2>`;
+    content.classList.remove('hidden');
+    renderQuestion();
+  }
+
+  // 2. Affichage
+  function renderQuestion() {
+    if (currentIndex >= appData.questions.length) { showEndScreen(); return; }
+    let q = appData.questions[currentIndex];
+    let total = appData.questions.length;
+    let act = currentIndex + 1;
+    document.getElementById('p-bar').style.width = ((act / total) * 100) + '%';
+    document.getElementById('p-text').innerText = `Question ${act} sur ${total}`;
+
+    let html = `<div class="question-title">${q.texte}</div>`;
+    if (q.choix.length > 0) {
+      q.choix.forEach(choix => {
+        let safeChoix = choix.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        html += `<button class="option-btn" onclick="saveData(${q.id}, '${safeChoix}', this)">${choix}</button>`;
+      });
+    } else {
+      html += `<textarea id="text_q" rows="4" placeholder="Votre réponse..."></textarea>
+               <button class="action-btn" onclick="saveData(${q.id}, document.getElementById('text_q').value, this)">Valider</button>`;
+    }
+    document.getElementById('question-card').innerHTML = html;
+  }
+
+  // 3. Sauvegarde via Fetch (API Google)
+  function saveData(qId, valeur, btn) {
+    if(!valeur || valeur.trim() === "") return alert("Veuillez saisir une réponse.");
+    document.querySelectorAll('button').forEach(b => b.disabled = true);
+    btn.style.background = "#0d6efd"; btn.style.color = "white"; btn.innerText = "Enregistrement...";
+
+    const payload = JSON.stringify({ token: appData.user.token, phase: appData.phase, qId: qId, valeur: valeur });
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: payload
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.success) { currentIndex++; renderQuestion(); }
+      else { alert("Erreur : " + res.error); renderQuestion(); }
+    })
+    .catch(err => { alert("Erreur réseau."); renderQuestion(); });
+  }
+
+  function showEndScreen() {
+    document.getElementById('content').innerHTML = `
+      <div class="card" style="text-align:center;">
+        <h2 style="color: #198754;">Terminé !</h2>
+        <p>Toutes vos réponses sont enregistrées.</p>
+      </div>`;
+  }
+</script>
+</body>
+</html>

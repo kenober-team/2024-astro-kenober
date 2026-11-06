@@ -1,0 +1,132 @@
+---
+// src/components/ContactModal.astro
+---
+
+<!-- Fenêtre modale native avec balise <dialog> -->
+<dialog id="contact-modal" class="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm sm:p-8">
+  <div class="relative">
+    <!-- Bouton de fermeture X -->
+    <button 
+      id="close-contact-modal" 
+      type="button" 
+      aria-label="Fermer" 
+      class="absolute right-0 top-0 text-2xl font-bold text-gray-500 transition hover:text-black"
+    >
+      ✕
+    </button>
+
+    <h2 class="mb-6 text-2xl font-bold text-primary">Prendre contact</h2>
+
+    <!-- Formulaire (remplacer l'action par votre endpoint Formspree ou Web3Forms) -->
+    <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4">
+      <!-- Clé API Web3Forms (à remplacer par la vôtre) -->
+        <input type="hidden" name="access_key" value="70834512-73c3-4ca8-ad57-93691273e94e">
+        <input type="text" name="name" required>
+        <input type="email" name="email" required>
+        <textarea name="message" required></textarea>
+        <button type="submit">Submit</button>
+      <!-- Grille Prénom / Nom -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label for="prenom" class="mb-1 block text-sm font-medium text-gray-700">Prénom</label>
+          <input type="text" id="prenom" name="prenom" class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+        </div>
+        <div>
+          <label for="nom" class="mb-1 block text-sm font-medium text-gray-700">Nom</label>
+          <input type="text" id="nom" name="nom" class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+        </div>
+      </div>
+
+      <!-- Société -->
+      <div>
+        <label for="societe" class="mb-1 block text-sm font-medium text-gray-700">Société</label>
+        <input type="text" id="societe" name="societe" class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+      </div>
+
+      <!-- Grille Email / Téléphone -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label for="email" class="mb-1 block text-sm font-medium text-gray-700">Email *</label>
+          <input type="email" id="email" name="email" required class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+        </div>
+        <div>
+          <label for="telephone" class="mb-1 block text-sm font-medium text-gray-700">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+        </div>
+      </div>
+
+      <!-- Objet de prise de contact -->
+      <fieldset class="mt-2">
+        <legend class="mb-2 text-sm font-medium text-gray-800">
+          Objet de votre prise de contact * <span class="text-xs font-normal text-gray-500">(cochez au moins une option)</span>
+        </legend>
+        <div class="flex flex-col gap-2">
+          <label class="flex items-start gap-2.5 text-sm text-gray-700">
+            <input type="checkbox" name="objet" value="Echange 15 min" class="mt-0.5 rounded border-gray-300 text-primary focus:ring-primary" />
+            <span>Je souhaite échanger 15 min par téléphone avec vous</span>
+          </label>
+          <label class="flex items-start gap-2.5 text-sm text-gray-700">
+            <input type="checkbox" name="objet" value="Catalogue formation & teambuilding" class="mt-0.5 rounded border-gray-300 text-primary focus:ring-primary" />
+            <span>Je souhaite recevoir votre catalogue de formation & teambuildings</span>
+          </label>
+          <label class="flex items-start gap-2.5 text-sm text-gray-700">
+            <input type="checkbox" name="objet" value="Autre question" class="mt-0.5 rounded border-gray-300 text-primary focus:ring-primary" />
+            <span>Autre (j'ai une question à vous poser, je souhaite vous faire part d'un sujet...)</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Message libre -->
+      <div>
+        <label for="message" class="mb-1 block text-sm font-medium text-gray-700">Envie d'ajouter quelque chose ?</label>
+        <textarea id="message" name="message" rows="3" class="w-full rounded-lg border border-gray-300 p-2.5 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+      </div>
+
+      <!-- RGPD -->
+      <div class="mt-1">
+        <label class="flex items-start gap-2.5 text-xs text-gray-600">
+          <input type="checkbox" name="rgpd" required class="mt-0.5 rounded border-gray-300 text-primary focus:ring-primary" />
+          <span>J'ai pris connaissance de la politique de confidentialité et j'autorise Kenober à m'envoyer des informations sur ce sujet*.</span>
+        </label>
+      </div>
+
+      <!-- Bouton d'envoi -->
+      <div class="mt-4 flex justify-end">
+        <button type="submit" class="btn btn-primary rounded-lg px-6 py-2.5 font-bold text-white transition hover:opacity-90">
+          Envoyer
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  // Gestion de l'ouverture et fermeture de la modale
+  const modal = document.getElementById("contact-modal") as HTMLDialogElement;
+  const closeBtn = document.getElementById("close-contact-modal");
+  const openButtons = document.querySelectorAll(".trigger-contact-modal");
+
+  openButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal?.showModal();
+    });
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal?.close();
+  });
+
+  // Ferme la modale si on clique en dehors du cadre
+  modal?.addEventListener("click", (e) => {
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      modal.close();
+    }
+  });
+</script>

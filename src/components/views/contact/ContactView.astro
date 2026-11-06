@@ -2,12 +2,15 @@
 import Hero from "@components/Hero.astro";
 import teamData from "@data/team.json";
 import ContactCard from "./ContactCard.astro";
+// 1. Importer la modale
+import ContactModal from "@components/ContactModal.astro";
 
 const props = Astro.props;
 ---
 
 <>
   <Hero title={teamData.contact.hero_title} image={teamData.contact.hero_bg} />
+  
   <section class="section !pb-0">
     <div class="container-in-section flex-container">
       <p
@@ -17,6 +20,7 @@ const props = Astro.props;
       </p>
     </div>
   </section>
+
   <section class="section">
     <div
       class="container-in-section flex-container !flex-row flex-wrap justify-center !gap-[5.8rem]"
@@ -24,6 +28,7 @@ const props = Astro.props;
       {teamData.members.map((member, idx) => <ContactCard {...member} {idx} />)}
     </div>
   </section>
+
   <section class="section">
     <div class="container-in-section flex-container">
       <p class="mb-0 text-[1.47368rem] font-bold">
@@ -32,6 +37,17 @@ const props = Astro.props;
       <p class="max-w-[80%] text-center text-[1.05263rem]">
         {teamData.contact.after_text}
       </p>
+
+      <!-- 2. Bouton principal pour ouvrir le formulaire -->
+      <button 
+        type="button" 
+        class="trigger-contact-modal btn btn-primary mt-4"
+      >
+        Prendre contact
+      </button>
     </div>
   </section>
+
+  <!-- 3. Insertion du formulaire (invisible tant qu'on ne clique pas) -->
+  <ContactModal />
 </>
